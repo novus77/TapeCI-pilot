@@ -1,0 +1,147 @@
+{
+  "title": "TapeCI production",
+  "uid": "tapeci-prod",
+  "schemaVersion": 39,
+  "refresh": "30s",
+  "tags": ["tapeci", "production"],
+  "timezone": "utc",
+  "time": { "from": "now-6h", "to": "now" },
+  "panels": [
+    {
+      "id": 1,
+      "title": "API up",
+      "description": "1 when the API /metrics target is scraped successfully.",
+      "type": "stat",
+      "gridPos": { "h": 4, "w": 4, "x": 0, "y": 0 },
+      "targets": [
+        {
+          "expr": "up{job=\"tapeci-api\"}",
+          "legendFormat": "{{instance}}",
+          "refId": "A"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "API 5xx ratio",
+      "description": "Share of requests returning 5xx over 5m.",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 10, "x": 4, "y": 0 },
+      "targets": [
+        {
+          "expr": "sum(rate(tapeci_api_http_requests_total{status=~\"5..\"}[5m])) / clamp_min(sum(rate(tapeci_api_http_requests_total[5m])), 0.001)",
+          "legendFormat": "5xx ratio",
+          "refId": "A"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "API average latency",
+      "description": "Mean handling time per route, from the request duration sum/count pair.",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 10, "x": 14, "y": 0 },
+      "targets": [
+        {
+          "expr": "sum(rate(tapeci_api_http_request_duration_seconds_sum[5m])) / clamp_min(sum(rate(tapeci_api_http_request_duration_seconds_count[5m])), 0.001)",
+          "legendFormat": "mean seconds",
+          "refId": "A"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Worker up",
+      "description": "1 when the worker health endpoint is scraped successfully.",
+      "type": "stat",
+      "gridPos": { "h": 4, "w": 4, "x": 0, "y": 4 },
+      "targets": [
+        {
+          "expr": "up{job=\"tapeci-worker\"}",
+          "legendFormat": "{{instance}}",
+          "refId": "A"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Worker job failures",
+      "description": "Failed plan/deploy/verify jobs in the last 15m by queue.",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 8 },
+      "targets": [
+        {
+          "expr": "sum(increase(tapeci_worker_job_failures_total[15m])) by (queue)",
+          "legendFormat": "{{queue}}",
+          "refId": "A"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Queue backlog",
+      "description": "Waiting jobs per BullMQ queue. A backlog with a flat worker means jobs are not being consumed.",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 8 },
+      "targets": [
+        {
+          "expr": "sum by (queue) (tapeci_queue_jobs{state=\"waiting\"})",
+          "legendFormat": "{{queue}} waiting",
+          "refId": "A"
+        },
+        {
+          "expr": "sum by (queue) (tapeci_queue_jobs{state=\"active\"})",
+          "legendFormat": "{{queue}} active",
+          "refId": "B"
+        },
+        {
+          "expr": "sum by (queue) (tapeci_queue_jobs{state=\"failed\"})",
+          "legendFormat": "{{queue}} failed",
+          "refId": "C"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "title": "Audit scope resolve failures",
+      "description": "Audit rows whose project/organization scope could not be resolved (new rows in the last hour).",
+      "type": "stat",
+      "gridPos": { "h": 6, "w": 8, "x": 0, "y": 16 },
+      "targets": [
+        {
+          "expr": "increase(tapeci_audit_scope_resolve_failures_total[1h])",
+          "legendFormat": "failures/h",
+          "refId": "A"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "title": "Audit backfill unresolved",
+      "description": "Rows with a concrete path that still do not resolve to a project/organization.",
+      "type": "stat",
+      "gridPos": { "h": 6, "w": 8, "x": 8, "y": 16 },
+      "targets": [
+        {
+          "expr": "tapeci_audit_backfill_unresolved",
+          "legendFormat": "unresolved",
+          "refId": "A"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "title": "Audit backfill age",
+      "description": "Seconds since the scheduled audit backfill last completed. Alert threshold is 2h.",
+      "type": "stat",
+      "gridPos": { "h": 6, "w": 8, "x": 16, "y": 16 },
+      "targets": [
+        {
+          "expr": "time() - tapeci_audit_backfill_last_run_timestamp_seconds",
+          "legendFormat": "seconds since run",
+          "refId": "A"
+        }
+      ]
+    }
+  ]
+}

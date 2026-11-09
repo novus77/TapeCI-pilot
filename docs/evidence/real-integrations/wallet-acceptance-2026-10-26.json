@@ -1,0 +1,35 @@
+{
+  "schema": "tapeci.real-integration.wallet-acceptance.v1",
+  "observedAt": "2026-10-26T03:20:00.000Z",
+  "readOnly": true,
+  "writeActionsPerformed": false,
+  "source": "/Users/a77/Downloads/wallet-acceptance-1792984652105.json (produced by /wallet-check in the user's browser)",
+  "path": "injected browser extension wallet (EIP-1193)",
+  "connector": "Injected (injected)",
+  "chainId": 196,
+  "address": "0x25063c2210a0BCcCE3e15d250573179483275f22",
+  "signature": { "bytes": 65, "algorithm": "secp256k1 ECDSA (EIP-712)" },
+  "payload": {
+    "kind": "test-only",
+    "domain": { "name": "TapeCI", "version": "1", "chainId": 196, "verifyingContract": "0x0000000000000000000000000000000000000000" },
+    "deploymentIdPrefix": "acceptance-",
+    "costCapWei": "0",
+    "note": "Cannot authorize a release: test deployment id, zero verifying contract, zero cost cap, one-hour expiry."
+  },
+  "browserRecovery": { "recovered": "0x25063c2210a0BCcCE3e15d250573179483275f22", "matches": true },
+  "independentRecovery": {
+    "tool": "scripts/real-integrations/wallet/verify-acceptance.ts (viem recoverTypedDataAddress)",
+    "recovered": "0x25063c2210a0BCcCE3e15d250573179483275f22",
+    "matches": true,
+    "verdict": "PASS"
+  },
+  "signedAt": "2026-10-26T03:17:29.899Z",
+  "deviceNote": "",
+  "status": "VERIFIED",
+  "conclusion": "A real browser-extension wallet on X Layer 196 signed the same EIP-712 struct the API verifies, and an independent offline tool recovered the owner address. This proves the wallet -> signature -> verification path end to end without any mainnet write.",
+  "gaps": [
+    "deviceNote is empty, so the exact extension name/version and browser were not recorded; it is optional for the injected path but required for hardware.",
+    "WalletConnect pairing reached the QR + relay handshake (see walletconnect-qr.png and the relay/attestation log) but no phone wallet completed the session.",
+    "No hardware device was used; that path remains HUMAN_REQUIRED."
+  ]
+}

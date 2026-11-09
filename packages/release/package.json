@@ -1,0 +1,19 @@
+{
+  "name": "@tapeci/release",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@tapeci/shared": "workspace:*",
+    "@tapeci/artifact": "workspace:*",
+    "@tapeci/chain": "workspace:*",
+    "@tapeci/config": "workspace:*",
+    "@tapeci/verifier": "workspace:*",
+    "@tapeci/deployer": "workspace:*",
+    "viem": "^2.57.0",
+    "@tapeci/compression": "workspace:*"
+  }
+}

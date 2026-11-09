@@ -1,0 +1,31 @@
+{
+  "schema": "tapeci.real-integration.chain-fees.v1",
+  "observedAt": "2026-10-26T02:55:00.000Z",
+  "readOnly": true,
+  "writeActionsPerformed": false,
+  "method": "For each transaction the operator balance is read at block N-1 and N; the observed debit must equal gasUsed * effectiveGasPrice from the receipt. This proves the fee was actually charged, not merely reported.",
+  "network": { "chainId": 196, "operators": ["okx rpc.xlayer.tech", "drpc xlayer.drpc.org"] },
+  "operator": "0x6c723d1Dc3861C0897848b79e231caA2c57622eb",
+  "deploymentId": "17d33c2a-81c8-4579-afe0-3c28934356e0",
+  "transactions": 21,
+  "debitsMatched": 21,
+  "inconclusive": 0,
+  "totalFeeWei": "1097225674861281",
+  "totalFeeOKB": "0.001097225674861281",
+  "approvedCapWei": "1290779136000000",
+  "withinCap": true,
+  "samples": [
+    { "block": 74156351, "gasUsed": "1546247", "feeOKB": "0.000030924941546247", "deltaOKB": "0.000030924941546247", "matches": true },
+    { "block": 74156354, "gasUsed": "2797976", "feeOKB": "0.000055959522797976", "deltaOKB": "0.000055959522797976", "matches": true },
+    { "block": 74156357, "gasUsed": "781469", "feeOKB": "0.000015629380781469", "deltaOKB": "0.000015629380781469", "matches": true }
+  ],
+  "domainBind": {
+    "tx": "0x613438ce187b87cd018eaec2a776e0a09adf032bcbb19da99e9f1e24cca190b2",
+    "block": 74152054,
+    "gasUsed": "185126",
+    "feeOKB": "0.000003702520185126",
+    "note": "Recorded separately; the holder wallet paid it, not the operator."
+  },
+  "status": "VERIFIED",
+  "note": "Every one of the 21 writes produced an exact balance debit equal to the receipt fee. No discrepancy, so no INCONCLUSIVE row."
+}

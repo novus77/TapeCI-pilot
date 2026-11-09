@@ -1,0 +1,661 @@
+{
+  "schema": "tapeci.compression-benchmark.v1",
+  "date": "2026-10-28",
+  "writeActionsPerformed": false,
+  "runtime": "v24.11.1",
+  "builds": [
+    {
+      "name": "before",
+      "commit": "7454e5f8e18bb050ad410914e7296f9eed2b1a7d"
+    },
+    {
+      "name": "after",
+      "commit": "9f9d8f1bae33183e498527d1e2fdffbe44ed916f"
+    }
+  ],
+  "samples": [
+    {
+      "name": "static",
+      "source": "/private/tmp/tapeci-compression-builds-3exh75i0/static",
+      "command": [
+        "node",
+        "--import",
+        "./node_modules/tsx/dist/loader.mjs",
+        "packages/compression/src/cli.ts",
+        "--input",
+        "/private/tmp/tapeci-compression-builds-3exh75i0/static",
+        "--output",
+        "/private/tmp/tapeci-compression-builds-3exh75i0/static-analysis"
+      ],
+      "report": {
+        "candidates": [
+          {
+            "analysisBytes": 11671,
+            "available": true,
+            "candidateId": "0xd02ed7f7090a60d0084f606499d394e5797ca122907541dbbeaee8cce65a0b1d",
+            "changedObjectBytes": 9910,
+            "indexBytes": 1761,
+            "objects": [
+              {
+                "decodedBytes": 6200,
+                "encoding": "identity",
+                "path": "objects/206f824ac37c5806916c1becd3d10be794d942e4a5e33d8a600387a0ed3af002.bin",
+                "sha256": "0x206f824ac37c5806916c1becd3d10be794d942e4a5e33d8a600387a0ed3af002",
+                "storedBytes": 6200
+              },
+              {
+                "decodedBytes": 3600,
+                "encoding": "identity",
+                "path": "objects/7f9ecef6140e8f2f9ff819d9c913200e541aa5b1354e2f33450cb2ddc61930e4.bin",
+                "sha256": "0x7f9ecef6140e8f2f9ff819d9c913200e541aa5b1354e2f33450cb2ddc61930e4",
+                "storedBytes": 3600
+              },
+              {
+                "decodedBytes": 110,
+                "encoding": "identity",
+                "path": "objects/86f068489b0d1e4a5ea3762b00a538a71e1352d6c490de9e9fedb9fb75abe359.bin",
+                "sha256": "0x86f068489b0d1e4a5ea3762b00a538a71e1352d6c490de9e9fedb9fb75abe359",
+                "storedBytes": 110
+              }
+            ],
+            "payloadChunks": 3,
+            "reason": null,
+            "reusedObjectBytes": 0,
+            "storedBytes": 9910,
+            "strategy": "original"
+          },
+          {
+            "analysisBytes": 2017,
+            "available": true,
+            "candidateId": "0x768100aea110365c0dc558f2fd3f6f254f8891b85aa0769b448848ce186f61d8",
+            "changedObjectBytes": 275,
+            "indexBytes": 1742,
+            "objects": [
+              {
+                "decodedBytes": 6200,
+                "encoding": "gzip",
+                "path": "objects/05a43bc2609d71b2958e1d328e3fffb415f732c71216b0c703f6ebed66dbcd4f.gz",
+                "sha256": "0x05a43bc2609d71b2958e1d328e3fffb415f732c71216b0c703f6ebed66dbcd4f",
+                "storedBytes": 86
+              },
+              {
+                "decodedBytes": 110,
+                "encoding": "gzip",
+                "path": "objects/681905b72c30e997f7c5331287613b8f22c88997509bf8ec743ea09a4f5fc35e.gz",
+                "sha256": "0x681905b72c30e997f7c5331287613b8f22c88997509bf8ec743ea09a4f5fc35e",
+                "storedBytes": 105
+              },
+              {
+                "decodedBytes": 3600,
+                "encoding": "gzip",
+                "path": "objects/a8b2f2131f435633d1e8fd834ba71ba40d9d2fff236446c790781b4cff75df92.gz",
+                "sha256": "0xa8b2f2131f435633d1e8fd834ba71ba40d9d2fff236446c790781b4cff75df92",
+                "storedBytes": 84
+              }
+            ],
+            "payloadChunks": 3,
+            "reason": null,
+            "reusedObjectBytes": 0,
+            "storedBytes": 275,
+            "strategy": "gzip-individual"
+          },
+          {
+            "analysisBytes": 1505,
+            "available": true,
+            "candidateId": "0x4ffd33c988e8799784d71adbd13dd15033012b178aa77a10373d04b69b18f281",
+            "changedObjectBytes": 201,
+            "indexBytes": 1304,
+            "objects": [
+              {
+                "decodedBytes": 9910,
+                "encoding": "gzip",
+                "path": "objects/c0af71ced6a4882ebbeb608c101ecb3027355c03605ecb56cca8b569a83b4397.gz",
+                "sha256": "0xc0af71ced6a4882ebbeb608c101ecb3027355c03605ecb56cca8b569a83b4397",
+                "storedBytes": 201
+              }
+            ],
+            "payloadChunks": 1,
+            "reason": null,
+            "reusedObjectBytes": 0,
+            "storedBytes": 201,
+            "strategy": "gzip-whole"
+          },
+          {
+            "analysisBytes": 1768,
+            "available": true,
+            "candidateId": "0xdcba8658353a094612205a6f4658822e59a4fa6067f0d966c927ecace8f77c6d",
+            "changedObjectBytes": 246,
+            "indexBytes": 1522,
+            "objects": [
+              {
+                "decodedBytes": 6200,
+                "encoding": "gzip",
+                "path": "objects/05a43bc2609d71b2958e1d328e3fffb415f732c71216b0c703f6ebed66dbcd4f.gz",
+                "sha256": "0x05a43bc2609d71b2958e1d328e3fffb415f732c71216b0c703f6ebed66dbcd4f",
+                "storedBytes": 86
+              },
+              {
+                "decodedBytes": 3710,
+                "encoding": "gzip",
+                "path": "objects/9cc8a75348dc3f991f9272a9cfe6e965f37539d37fd92dd427bcd2f631b9dd94.gz",
+                "sha256": "0x9cc8a75348dc3f991f9272a9cfe6e965f37539d37fd92dd427bcd2f631b9dd94",
+                "storedBytes": 160
+              }
+            ],
+            "payloadChunks": 2,
+            "reason": null,
+            "reusedObjectBytes": 0,
+            "storedBytes": 246,
+            "strategy": "gzip-grouped"
+          }
+        ],
+        "compatibility": "unverified",
+        "estimatedFeeWei": null,
+        "productionTotalBytes": null,
+        "reuseEvidence": "local-history-only",
+        "schemaVersion": "tapeci.compression-analysis.v1",
+        "sourceArtifactDigest": "0xb28b73ae8f5ab55189854105e0d056d434f7b7c6a72735548bc1e60c3883feb4",
+        "sourceBytes": 9910,
+        "sourceFileCount": 3,
+        "strictOnChain": true
+      }
+    },
+    {
+      "name": "media",
+      "source": "/private/tmp/tapeci-compression-builds-3exh75i0/media",
+      "command": [
+        "node",
+        "--import",
+        "./node_modules/tsx/dist/loader.mjs",
+        "packages/compression/src/cli.ts",
+        "--input",
+        "/private/tmp/tapeci-compression-builds-3exh75i0/media",
+        "--output",
+        "/private/tmp/tapeci-compression-builds-3exh75i0/media-analysis"
+      ],
+      "report": {
+        "candidates": [
+          {
+            "analysisBytes": 264103,
+            "available": true,
+            "candidateId": "0xc4d93ec38b03ddc6cba9816ce7846fcaaee68d3942cb6b3971629ebb5cfea2f8",
+            "changedObjectBytes": 262838,
+            "indexBytes": 1265,
+            "objects": [
+              {
+                "decodedBytes": 34,
+                "encoding": "identity",
+                "path": "objects/289d7ec9e8455f95e2c0a38a4d3b6ebed91832c8715a64a9910466f44fbad795.bin",
+                "sha256": "0x289d7ec9e8455f95e2c0a38a4d3b6ebed91832c8715a64a9910466f44fbad795",
+                "storedBytes": 34
+              },
+              {
+                "decodedBytes": 262804,
+                "encoding": "identity",
+                "path": "objects/43eb72bc8af27e888e9ed87f09b6d04e28f278779e49d02f99fa4fa5aab640f3.bin",
+                "sha256": "0x43eb72bc8af27e888e9ed87f09b6d04e28f278779e49d02f99fa4fa5aab640f3",
+                "storedBytes": 262804
+              }
+            ],
+            "payloadChunks": 12,
+            "reason": null,
+            "reusedObjectBytes": 0,
+            "storedBytes": 262838,
+            "strategy": "original"
+          },
+          {
+            "analysisBytes": 264106,
+            "available": true,
+            "candidateId": "0x06f6c778845266de0145371682d1ff25576a847e5cd2f3e242fa91c3a6cbc485",
+            "changedObjectBytes": 262838,
+            "indexBytes": 1268,
+            "objects": [
+              {
+                "decodedBytes": 34,
+                "encoding": "identity",
+                "path": "objects/289d7ec9e8455f95e2c0a38a4d3b6ebed91832c8715a64a9910466f44fbad795.bin",
+                "sha256": "0x289d7ec9e8455f95e2c0a38a4d3b6ebed91832c8715a64a9910466f44fbad795",
+                "storedBytes": 34
+              },
+              {
+                "decodedBytes": 262804,
+                "encoding": "identity",
+                "path": "objects/43eb72bc8af27e888e9ed87f09b6d04e28f278779e49d02f99fa4fa5aab640f3.bin",
+                "sha256": "0x43eb72bc8af27e888e9ed87f09b6d04e28f278779e49d02f99fa4fa5aab640f3",
+                "storedBytes": 262804
+              }
+            ],
+            "payloadChunks": 12,
+            "reason": null,
+            "reusedObjectBytes": 0,
+            "storedBytes": 262838,
+            "strategy": "gzip-individual"
+          },
+          {
+            "analysisBytes": 263883,
+            "available": true,
+            "candidateId": "0xc383b6c259cda1a911230f4dd06f2247d5cbd6ff6cc9a356614ba32bf2b87f2c",
+            "changedObjectBytes": 262838,
+            "indexBytes": 1045,
+            "objects": [
+              {
+                "decodedBytes": 262838,
+                "encoding": "identity",
+                "path": "objects/623cba42b158b4e8e390180fab2710478974484d091bfec674d9b9d8f87fa038.bin",
+                "sha256": "0x623cba42b158b4e8e390180fab2710478974484d091bfec674d9b9d8f87fa038",
+                "storedBytes": 262838
+              }
+            ],
+            "payloadChunks": 11,
+            "reason": null,
+            "reusedObjectBytes": 0,
+            "storedBytes": 262838,
+            "strategy": "gzip-whole"
+          },
+          {
+            "analysisBytes": 264103,
+            "available": true,
+            "candidateId": "0x6266523c45f96858130e44fb9c9c805a1e474e67f368444c840f46b42edb6587",
+            "changedObjectBytes": 262838,
+            "indexBytes": 1265,
+            "objects": [
+              {
+                "decodedBytes": 34,
+                "encoding": "identity",
+                "path": "objects/289d7ec9e8455f95e2c0a38a4d3b6ebed91832c8715a64a9910466f44fbad795.bin",
+                "sha256": "0x289d7ec9e8455f95e2c0a38a4d3b6ebed91832c8715a64a9910466f44fbad795",
+                "storedBytes": 34
+              },
+              {
+                "decodedBytes": 262804,
+                "encoding": "identity",
+                "path": "objects/43eb72bc8af27e888e9ed87f09b6d04e28f278779e49d02f99fa4fa5aab640f3.bin",
+                "sha256": "0x43eb72bc8af27e888e9ed87f09b6d04e28f278779e49d02f99fa4fa5aab640f3",
+                "storedBytes": 262804
+              }
+            ],
+            "payloadChunks": 12,
+            "reason": null,
+            "reusedObjectBytes": 0,
+            "storedBytes": 262838,
+            "strategy": "gzip-grouped"
+          }
+        ],
+        "compatibility": "unverified",
+        "estimatedFeeWei": null,
+        "productionTotalBytes": null,
+        "reuseEvidence": "local-history-only",
+        "schemaVersion": "tapeci.compression-analysis.v1",
+        "sourceArtifactDigest": "0x3c281330ebb4563149e4bf7a70cdf86aa04baf73cf300ebe6e97aaed67e32291",
+        "sourceBytes": 262838,
+        "sourceFileCount": 2,
+        "strictOnChain": true
+      }
+    },
+    {
+      "name": "before",
+      "source": "/private/tmp/tapeci-compression-builds-3exh75i0/before/web/dist",
+      "command": [
+        "node",
+        "--import",
+        "./node_modules/tsx/dist/loader.mjs",
+        "packages/compression/src/cli.ts",
+        "--input",
+        "/private/tmp/tapeci-compression-builds-3exh75i0/before/web/dist",
+        "--output",
+        "/private/tmp/tapeci-compression-builds-3exh75i0/before-analysis"
+      ],
+      "report": {
+        "candidates": [
+          {
+            "analysisBytes": 362652,
+            "available": true,
+            "candidateId": "0x6ef1c5d1f9e9e8316a1a91491d4c377b8de9a326aa3b4f375ba0f6cc9caa1f1c",
+            "changedObjectBytes": 359873,
+            "indexBytes": 2779,
+            "objects": [
+              {
+                "decodedBytes": 2835,
+                "encoding": "identity",
+                "path": "objects/0003d184f5bd84399c6191dbb51b59209b9f90a9fb8ecc6536f7409b591daba3.bin",
+                "sha256": "0x0003d184f5bd84399c6191dbb51b59209b9f90a9fb8ecc6536f7409b591daba3",
+                "storedBytes": 2835
+              },
+              {
+                "decodedBytes": 9522,
+                "encoding": "identity",
+                "path": "objects/61bc9a161de58248288e6905425d7180f0624c2865007b97d763fdac12043a66.bin",
+                "sha256": "0x61bc9a161de58248288e6905425d7180f0624c2865007b97d763fdac12043a66",
+                "storedBytes": 9522
+              },
+              {
+                "decodedBytes": 12782,
+                "encoding": "identity",
+                "path": "objects/7db9ff3d974278c306ed1c7a3a17d1bef3283757c2ce68d32a8a8ab40e06e663.bin",
+                "sha256": "0x7db9ff3d974278c306ed1c7a3a17d1bef3283757c2ce68d32a8a8ab40e06e663",
+                "storedBytes": 12782
+              },
+              {
+                "decodedBytes": 588,
+                "encoding": "identity",
+                "path": "objects/ac93d7175d82353d3140e0d436fd1172d7970bdaf9f04b9b94dc9a6d986f517c.bin",
+                "sha256": "0xac93d7175d82353d3140e0d436fd1172d7970bdaf9f04b9b94dc9a6d986f517c",
+                "storedBytes": 588
+              },
+              {
+                "decodedBytes": 334146,
+                "encoding": "identity",
+                "path": "objects/f0476541e933e18975fd9166984022f75fb218ba8dc9c383fe45ecdc033de5a1.bin",
+                "sha256": "0xf0476541e933e18975fd9166984022f75fb218ba8dc9c383fe45ecdc033de5a1",
+                "storedBytes": 334146
+              }
+            ],
+            "payloadChunks": 18,
+            "reason": null,
+            "reusedObjectBytes": 0,
+            "storedBytes": 359873,
+            "strategy": "original"
+          },
+          {
+            "analysisBytes": 109886,
+            "available": true,
+            "candidateId": "0x59bdf49cc41fddf5c2029eae550237b02deda0bbf60d52ceaac6fb4011ed965f",
+            "changedObjectBytes": 107135,
+            "indexBytes": 2751,
+            "objects": [
+              {
+                "decodedBytes": 2835,
+                "encoding": "gzip",
+                "path": "objects/11de6047d9e6a878d923ca7e1327227cd5fec4072f7eb41c2560dc4cf75f29ec.gz",
+                "sha256": "0x11de6047d9e6a878d923ca7e1327227cd5fec4072f7eb41c2560dc4cf75f29ec",
+                "storedBytes": 1305
+              },
+              {
+                "decodedBytes": 588,
+                "encoding": "gzip",
+                "path": "objects/5c94b492f5911da50c6fbc9bee144641597ffa70b26e54a55e442ccfae8dc203.gz",
+                "sha256": "0x5c94b492f5911da50c6fbc9bee144641597ffa70b26e54a55e442ccfae8dc203",
+                "storedBytes": 368
+              },
+              {
+                "decodedBytes": 9522,
+                "encoding": "gzip",
+                "path": "objects/788edd6150d134e492c161322ce727cbe86416ba61b8e132f332bd0772c804a5.gz",
+                "sha256": "0x788edd6150d134e492c161322ce727cbe86416ba61b8e132f332bd0772c804a5",
+                "storedBytes": 1485
+              },
+              {
+                "decodedBytes": 334146,
+                "encoding": "gzip",
+                "path": "objects/93a78db90b0b75746eff41881d1bf7a00d183a664e00e776b45f3fb279141b70.gz",
+                "sha256": "0x93a78db90b0b75746eff41881d1bf7a00d183a664e00e776b45f3fb279141b70",
+                "storedBytes": 100343
+              },
+              {
+                "decodedBytes": 12782,
+                "encoding": "gzip",
+                "path": "objects/df99a9569171cf31f847de81d316632bb4817ffb435712b8b0f5043438dba4d0.gz",
+                "sha256": "0xdf99a9569171cf31f847de81d316632bb4817ffb435712b8b0f5043438dba4d0",
+                "storedBytes": 3634
+              }
+            ],
+            "payloadChunks": 9,
+            "reason": null,
+            "reusedObjectBytes": 0,
+            "storedBytes": 107135,
+            "strategy": "gzip-individual"
+          },
+          {
+            "analysisBytes": 108747,
+            "available": true,
+            "candidateId": "0xc2e7ea385275f8812c5a49cc7a24a3c3b42623088b8ad359ff18862cdca911bd",
+            "changedObjectBytes": 106870,
+            "indexBytes": 1877,
+            "objects": [
+              {
+                "decodedBytes": 359873,
+                "encoding": "gzip",
+                "path": "objects/f37b0defd30c1f1e43bff6783a898dfe458803213168be01d472d66e9899a228.gz",
+                "sha256": "0xf37b0defd30c1f1e43bff6783a898dfe458803213168be01d472d66e9899a228",
+                "storedBytes": 106870
+              }
+            ],
+            "payloadChunks": 5,
+            "reason": null,
+            "reusedObjectBytes": 0,
+            "storedBytes": 106870,
+            "strategy": "gzip-whole"
+          },
+          {
+            "analysisBytes": 109276,
+            "available": true,
+            "candidateId": "0xb6694ca690daf327bfeadf8aedfb7401fb2a5f8e48889531df9c32bd00553e93",
+            "changedObjectBytes": 106963,
+            "indexBytes": 2313,
+            "objects": [
+              {
+                "decodedBytes": 336981,
+                "encoding": "gzip",
+                "path": "objects/5a35cd3fa0b71175cb00b357d046cafec57e87701f53d199fd2351060e4dd952.gz",
+                "sha256": "0x5a35cd3fa0b71175cb00b357d046cafec57e87701f53d199fd2351060e4dd952",
+                "storedBytes": 101501
+              },
+              {
+                "decodedBytes": 9522,
+                "encoding": "gzip",
+                "path": "objects/788edd6150d134e492c161322ce727cbe86416ba61b8e132f332bd0772c804a5.gz",
+                "sha256": "0x788edd6150d134e492c161322ce727cbe86416ba61b8e132f332bd0772c804a5",
+                "storedBytes": 1485
+              },
+              {
+                "decodedBytes": 13370,
+                "encoding": "gzip",
+                "path": "objects/f4e7aab4a1bf3f52dbe9795996191695fb81fc65b81b9f7bc2ea376da7cd3975.gz",
+                "sha256": "0xf4e7aab4a1bf3f52dbe9795996191695fb81fc65b81b9f7bc2ea376da7cd3975",
+                "storedBytes": 3977
+              }
+            ],
+            "payloadChunks": 7,
+            "reason": null,
+            "reusedObjectBytes": 0,
+            "storedBytes": 106963,
+            "strategy": "gzip-grouped"
+          }
+        ],
+        "compatibility": "unverified",
+        "estimatedFeeWei": null,
+        "productionTotalBytes": null,
+        "reuseEvidence": "local-history-only",
+        "schemaVersion": "tapeci.compression-analysis.v1",
+        "sourceArtifactDigest": "0x282bf27084f323114ab3deafeb259229c432e94abee83d8fec0da54dbb48b072",
+        "sourceBytes": 359873,
+        "sourceFileCount": 5,
+        "strictOnChain": true
+      }
+    },
+    {
+      "name": "after",
+      "source": "/private/tmp/tapeci-compression-builds-3exh75i0/after/web/dist",
+      "command": [
+        "node",
+        "--import",
+        "./node_modules/tsx/dist/loader.mjs",
+        "packages/compression/src/cli.ts",
+        "--input",
+        "/private/tmp/tapeci-compression-builds-3exh75i0/after/web/dist",
+        "--output",
+        "/private/tmp/tapeci-compression-builds-3exh75i0/after-analysis",
+        "--previous",
+        "/private/tmp/tapeci-compression-builds-3exh75i0/before-analysis/report.json"
+      ],
+      "report": {
+        "candidates": [
+          {
+            "analysisBytes": 365162,
+            "available": true,
+            "candidateId": "0xff955c9208d91ed29b31cb0e5eae5518e6a97a2eda21288bbaa91771cf870b41",
+            "changedObjectBytes": 340079,
+            "indexBytes": 2779,
+            "objects": [
+              {
+                "decodedBytes": 336656,
+                "encoding": "identity",
+                "path": "objects/572ccee22616f756c7752ae935f82e63ded1b6297e2b292c7947bc7987c5963e.bin",
+                "sha256": "0x572ccee22616f756c7752ae935f82e63ded1b6297e2b292c7947bc7987c5963e",
+                "storedBytes": 336656
+              },
+              {
+                "decodedBytes": 9522,
+                "encoding": "identity",
+                "path": "objects/61bc9a161de58248288e6905425d7180f0624c2865007b97d763fdac12043a66.bin",
+                "sha256": "0x61bc9a161de58248288e6905425d7180f0624c2865007b97d763fdac12043a66",
+                "storedBytes": 9522
+              },
+              {
+                "decodedBytes": 12782,
+                "encoding": "identity",
+                "path": "objects/7db9ff3d974278c306ed1c7a3a17d1bef3283757c2ce68d32a8a8ab40e06e663.bin",
+                "sha256": "0x7db9ff3d974278c306ed1c7a3a17d1bef3283757c2ce68d32a8a8ab40e06e663",
+                "storedBytes": 12782
+              },
+              {
+                "decodedBytes": 2835,
+                "encoding": "identity",
+                "path": "objects/8b29875bb3858446e6a748e40f1dbfe43b1776aea35131626e8f8fbb60f01e08.bin",
+                "sha256": "0x8b29875bb3858446e6a748e40f1dbfe43b1776aea35131626e8f8fbb60f01e08",
+                "storedBytes": 2835
+              },
+              {
+                "decodedBytes": 588,
+                "encoding": "identity",
+                "path": "objects/ceff7ebc24fda888ce8588c1649c59cfb88917b0e11b0aa50138279274914aee.bin",
+                "sha256": "0xceff7ebc24fda888ce8588c1649c59cfb88917b0e11b0aa50138279274914aee",
+                "storedBytes": 588
+              }
+            ],
+            "payloadChunks": 19,
+            "reason": null,
+            "reusedObjectBytes": 22304,
+            "storedBytes": 362383,
+            "strategy": "original"
+          },
+          {
+            "analysisBytes": 110495,
+            "available": true,
+            "candidateId": "0x936374dc2f64999892dca109ca8c91af17d04f390959712b8642f18c3694eb11",
+            "changedObjectBytes": 102625,
+            "indexBytes": 2751,
+            "objects": [
+              {
+                "decodedBytes": 2835,
+                "encoding": "gzip",
+                "path": "objects/55e0f088842c83ef03d6c07cc907624220d26bce737717ff9cf0fdcec42368d5.gz",
+                "sha256": "0x55e0f088842c83ef03d6c07cc907624220d26bce737717ff9cf0fdcec42368d5",
+                "storedBytes": 1304
+              },
+              {
+                "decodedBytes": 9522,
+                "encoding": "gzip",
+                "path": "objects/788edd6150d134e492c161322ce727cbe86416ba61b8e132f332bd0772c804a5.gz",
+                "sha256": "0x788edd6150d134e492c161322ce727cbe86416ba61b8e132f332bd0772c804a5",
+                "storedBytes": 1485
+              },
+              {
+                "decodedBytes": 336656,
+                "encoding": "gzip",
+                "path": "objects/84a8fb7375255fbaf5a6a8d25b201ce4db752d0bb89f45b230c717e5fee8fab1.gz",
+                "sha256": "0x84a8fb7375255fbaf5a6a8d25b201ce4db752d0bb89f45b230c717e5fee8fab1",
+                "storedBytes": 100958
+              },
+              {
+                "decodedBytes": 12782,
+                "encoding": "gzip",
+                "path": "objects/df99a9569171cf31f847de81d316632bb4817ffb435712b8b0f5043438dba4d0.gz",
+                "sha256": "0xdf99a9569171cf31f847de81d316632bb4817ffb435712b8b0f5043438dba4d0",
+                "storedBytes": 3634
+              },
+              {
+                "decodedBytes": 588,
+                "encoding": "gzip",
+                "path": "objects/f7d0cbc29c13fca25725320413a58d62103bde6eec34d909d8a6abefa5274117.gz",
+                "sha256": "0xf7d0cbc29c13fca25725320413a58d62103bde6eec34d909d8a6abefa5274117",
+                "storedBytes": 363
+              }
+            ],
+            "payloadChunks": 9,
+            "reason": null,
+            "reusedObjectBytes": 5119,
+            "storedBytes": 107744,
+            "strategy": "gzip-individual"
+          },
+          {
+            "analysisBytes": 109582,
+            "available": true,
+            "candidateId": "0x8a2e9f2a76db8c49f78bf7ebab80350cdb0f3929e8bb96422c0a8b8d41046bd1",
+            "changedObjectBytes": 107706,
+            "indexBytes": 1876,
+            "objects": [
+              {
+                "decodedBytes": 362383,
+                "encoding": "gzip",
+                "path": "objects/2bbacc32dccc571afd482188fd2bd70193ec7eab278b1987962efe0142df7b47.gz",
+                "sha256": "0x2bbacc32dccc571afd482188fd2bd70193ec7eab278b1987962efe0142df7b47",
+                "storedBytes": 107706
+              }
+            ],
+            "payloadChunks": 5,
+            "reason": null,
+            "reusedObjectBytes": 0,
+            "storedBytes": 107706,
+            "strategy": "gzip-whole"
+          },
+          {
+            "analysisBytes": 109891,
+            "available": true,
+            "candidateId": "0xc6b4a8a4d77a2b7cf8593475c68067c462e9ade679b9f7690f3632229123efa5",
+            "changedObjectBytes": 106093,
+            "indexBytes": 2313,
+            "objects": [
+              {
+                "decodedBytes": 13370,
+                "encoding": "gzip",
+                "path": "objects/09d53e8db1eb7ff797dfede06b932f10eb0d6bf8762ae8a0aeb97a94a82aaaf0.gz",
+                "sha256": "0x09d53e8db1eb7ff797dfede06b932f10eb0d6bf8762ae8a0aeb97a94a82aaaf0",
+                "storedBytes": 3975
+              },
+              {
+                "decodedBytes": 339491,
+                "encoding": "gzip",
+                "path": "objects/304d08ea46e7284a7f2cb00cd46bacff0a2a61b88b3b774fdd76c2fe1f952502.gz",
+                "sha256": "0x304d08ea46e7284a7f2cb00cd46bacff0a2a61b88b3b774fdd76c2fe1f952502",
+                "storedBytes": 102118
+              },
+              {
+                "decodedBytes": 9522,
+                "encoding": "gzip",
+                "path": "objects/788edd6150d134e492c161322ce727cbe86416ba61b8e132f332bd0772c804a5.gz",
+                "sha256": "0x788edd6150d134e492c161322ce727cbe86416ba61b8e132f332bd0772c804a5",
+                "storedBytes": 1485
+              }
+            ],
+            "payloadChunks": 7,
+            "reason": null,
+            "reusedObjectBytes": 1485,
+            "storedBytes": 107578,
+            "strategy": "gzip-grouped"
+          }
+        ],
+        "compatibility": "unverified",
+        "estimatedFeeWei": null,
+        "productionTotalBytes": null,
+        "reuseEvidence": "local-history-only",
+        "schemaVersion": "tapeci.compression-analysis.v1",
+        "sourceArtifactDigest": "0xe2f9a4660b603c71b87a403c6e8a26e5ae69851493e4d6992b7f2a0e9b59b7e7",
+        "sourceBytes": 362383,
+        "sourceFileCount": 5,
+        "strictOnChain": true
+      }
+    }
+  ],
+  "note": "All candidate bytes were decoded and verified by writeAnalysis before report persistence. No browser execution or chain fee simulation."
+}

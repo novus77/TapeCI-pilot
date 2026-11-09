@@ -1,0 +1,23 @@
+{
+  "name": "@tapeci/cli",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/cli.ts"
+  },
+  "bin": {
+    "tapeci": "./src/bin.ts"
+  },
+  "dependencies": {
+    "@tapeci/shared": "workspace:*",
+    "@tapeci/config": "workspace:*",
+    "@tapeci/validator": "workspace:*",
+    "@tapeci/artifact": "workspace:*",
+    "@tapeci/chain": "workspace:*",
+    "@tapeci/deployer": "workspace:*",
+    "@tapeci/verifier": "workspace:*",
+    "@tapeci/release": "workspace:*",
+    "viem": "^2.57.0"
+  }
+}

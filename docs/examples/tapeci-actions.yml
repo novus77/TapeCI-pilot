@@ -1,0 +1,113 @@
+# Copy to .github/workflows/tapeci.yml in the repository connected to TapeCI.
+# Prerequisite: repository variable TAPECI_API_URL (e.g. https://api.example.com)
+# and the TapeCI GitHub App installed on this repository.
+name: TapeCI artifact upload
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+  id-token: write
+env:
+  TAPECI_API_URL: ${{ vars.TAPECI_API_URL }}
+  # No build/install/output defaults here on purpose (SPEC §11.3): the console is
+  # the source of truth, and a workflow that hardcodes `npm ci` would run different
+  # commands than the operator configured, while the UI claimed otherwise. The
+  # config is fetched from `/v1/builds/context` below.
+  OIDC_AUDIENCE: tapeci-artifact-upload
+jobs:
+  build-and-upload:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Fetch the authorized build context
+        id: context
+        run: |
+          # The server decides what to build: the exact commit SHA, the config
+          # version, and the install/build/output commands the operator saved. The
+          # workflow must not invent its own (SPEC §11.3).
+          OIDC=$(curl -sS -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=${OIDC_AUDIENCE}" | jq -r .value)
+          curl -sS -X POST "$TAPECI_API_URL/v1/builds/context" \
+            -H "authorization: Bearer $OIDC" \
+            -H "content-type: application/json" \
+            -d "{\"repository\": \"$GITHUB_REPOSITORY\", \"headSha\": \"$GITHUB_SHA\"}" \
+            > "$RUNNER_TEMP/tapeci-context.json"
+          cat "$RUNNER_TEMP/tapeci-context.json"
+          echo "install=$(jq -r .installCommand "$RUNNER_TEMP/tapeci-context.json")" >> "$GITHUB_OUTPUT"
+          echo "build=$(jq -r .buildCommand "$RUNNER_TEMP/tapeci-context.json")" >> "$GITHUB_OUTPUT"
+          echo "output=$(jq -r .outputDirectory "$RUNNER_TEMP/tapeci-context.json")" >> "$GITHUB_OUTPUT"
+          echo "commit=$(jq -r .commitSha "$RUNNER_TEMP/tapeci-context.json")" >> "$GITHUB_OUTPUT"
+          echo "attempt=$(jq -r .attemptId "$RUNNER_TEMP/tapeci-context.json")" >> "$GITHUB_OUTPUT"
+      - name: Check out the authorized commit
+        # The authorized target SHA, not whatever the workflow file's own ref
+        # happens to be: a branch-history build legitimately runs an older workflow
+        # against a different source commit (SPEC §11.3).
+        run: git checkout --force "${{ steps.context.outputs.commit }}"
+      - name: Install and build using the saved configuration
+        run: |
+          ${{ steps.context.outputs.install }}
+          ${{ steps.context.outputs.build }}
+      - name: Create artifact tar (uncompressed, 24k chunks are handled by TapeCI)
+        run: tar -cf "$RUNNER_TEMP/artifact.tar" -C "${{ steps.context.outputs.output }}" .
+      - name: Exchange GitHub OIDC for a one-time build token
+        id: token
+        env:
+          ACTIONS_ID_TOKEN_REQUEST_URL: ${{ env.ACTIONS_ID_TOKEN_REQUEST_URL }}
+          ACTIONS_ID_TOKEN_REQUEST_TOKEN: ${{ env.ACTIONS_ID_TOKEN_REQUEST_TOKEN }}
+        run: |
+          OIDC=$(curl -sS -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=${OIDC_AUDIENCE}" | jq -r .value)
+          # The webhook may create the deployment a moment after the push.
+          for attempt in $(seq 1 20); do
+            RESPONSE=$(curl -sS -w '\n%{http_code}' -X POST "$TAPECI_API_URL/v1/builds/token" \
+              -H "Authorization: Bearer $OIDC")
+            STATUS=$(echo "$RESPONSE" | tail -n1)
+            BODY=$(echo "$RESPONSE" | sed '$d')
+            if [ "$STATUS" = "200" ]; then
+              echo "build_token=$(echo "$BODY" | jq -r .token)" >> "$GITHUB_OUTPUT"
+              echo "deployment_id=$(echo "$BODY" | jq -r .deploymentId)" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            sleep 5
+          done
+          echo "TapeCI did not issue a build token: $BODY" >&2
+          exit 1
+      - name: Upload artifact
+        env:
+          BUILD_TOKEN: ${{ steps.token.outputs.build_token }}
+        run: |
+          curl -sS --fail-with-body -X POST "$TAPECI_API_URL/v1/builds/artifacts" \
+            -H "Authorization: Bearer $BUILD_TOKEN" \
+            -H "Content-Type: application/x-tar" \
+            --data-binary @"$RUNNER_TEMP/artifact.tar"
+      # SPEC §11.3 requires the failure edge too: without an always() report a build
+      # that dies at install leaves the deployment in RECEIVED forever, because nothing
+      # ever tells TapeCI the attempt ended. This step therefore runs on success AND
+      # failure, and reports the *outcome*, not an assumption.
+      - name: Report the attempt outcome to TapeCI
+        if: always()
+        env:
+          ACTIONS_ID_TOKEN_REQUEST_URL: ${{ env.ACTIONS_ID_TOKEN_REQUEST_URL }}
+          ACTIONS_ID_TOKEN_REQUEST_TOKEN: ${{ env.ACTIONS_ID_TOKEN_REQUEST_TOKEN }}
+          ATTEMPT_ID: ${{ steps.context.outputs.attempt }}
+          RUN_ID: ${{ github.run_id }}
+          RUN_ATTEMPT: ${{ github.run_attempt }}
+        run: |
+          if [ -z "$ATTEMPT_ID" ]; then
+            # No context was authorized, so there is no attempt to close. Say so instead
+            # of inventing one.
+            echo "no attempt was authorized; nothing to report"
+            exit 0
+          fi
+          STATUS="failed"
+          [ "${{ job.status }}" = "success" ] && STATUS="succeeded"
+          OIDC=$(curl -sS -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=${OIDC_AUDIENCE}" | jq -r .value)
+          curl -sS --fail-with-body -X POST "$TAPECI_API_URL/v1/builds/events" \
+            -H "Authorization: Bearer $OIDC" \
+            -H "Content-Type: application/json" \
+            -d "{\"attemptId\": \"$ATTEMPT_ID\", \"phase\": \"attempt\", \"status\": \"$STATUS\", \"runId\": \"$RUN_ID\", \"runAttempt\": $RUN_ATTEMPT}"

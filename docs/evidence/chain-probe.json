@@ -1,0 +1,2737 @@
+{
+  "schemaVersion": "tapeci.chain-probe.v1",
+  "generatedBy": "scripts/probe/probe.ts (read-only; no transactions broadcast)",
+  "task": "P0-02 chain/implementation probe + P0-03 ABI selector validation support data",
+  "observedAt": "2026-10-19T06:48:40.206Z",
+  "tapekitSource": {
+    "repository": "https://github.com/TapeOutProtocol/TapeKit",
+    "commit": "40994bd65baedbda4df72cb0985031a5f082f606",
+    "commitDate": "2026-10-11T11:08:10+04:00",
+    "specVersion": "SPEC.md v0.2 draft (BNB-first normative text)",
+    "configFile": "kernel/src/config.js"
+  },
+  "network": {
+    "chainId": 196,
+    "name": "X Layer",
+    "nativeCurrency": "OKB",
+    "area": 2,
+    "factory": "0x1f09daefa827f02cbb40967cc91b259763760761",
+    "opener": "0x536add8f30f03b69f6fbf29d425a816a0dc50106",
+    "siteRegistry": "0xd6efb7adcc9c83dc4924ad56f6a8e4e969b9adb6",
+    "domainBinding": "0x68809fd2fb343aa57d0aeb7f33defe477c9666f9",
+    "implementationSlot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+    "observedSiteName": "2.2.0.tape",
+    "observedContainer": "0x25B20D3eA6b207506340eab2Eb0f45Edc800F6b3",
+    "observedPath": "index.html"
+  },
+  "pin": {
+    "mode": "latest",
+    "pinnedBlock": "73623480",
+    "pinnedBlockHash": "0x28ff5575e7f7aaab1535ff3380cc639eb7a7a1f6a683c5d1d5306846e15fbb6e",
+    "pinnedBlockParentHash": "0xda05c895ac59e8e0fa311bc091b02b86fa89be97d0e1c2bd56bc83d5fb134402",
+    "pinnedBlockTimestamp": "1792392516",
+    "pinnedBlockIso": "2026-10-19T06:48:36.000Z",
+    "highestObservedHead": "73623482",
+    "lagBlocks": "2",
+    "maxLagBlocks": 300,
+    "stale": false,
+    "pinOffset": 2,
+    "operatorBases": {
+      "okx": "73623482",
+      "drpc": "73623482"
+    },
+    "endpointHeads": [
+      {
+        "url": "https://rpc.xlayer.tech",
+        "operator": "okx",
+        "head": "73623482",
+        "error": null
+      },
+      {
+        "url": "https://xlayerrpc.okx.com",
+        "operator": "okx",
+        "head": "73623482",
+        "error": null
+      },
+      {
+        "url": "https://xlayer.drpc.org",
+        "operator": "drpc",
+        "head": "73623482",
+        "error": null
+      },
+      {
+        "url": "https://196.rpc.thirdweb.com",
+        "operator": "okx",
+        "head": "73623482",
+        "error": null
+      }
+    ]
+  },
+  "chainProbe": {
+    "observedAt": "2026-10-19T06:48:40.206Z",
+    "chainId": 196,
+    "latestBlock": 73623482,
+    "fees": {
+      "gasPriceWei": "20000001",
+      "openerOpenFeeWei": "80000000000000000",
+      "monthlyFeeWei": "0",
+      "factoryDeployFeeWei": "6600000000000000"
+    },
+    "implementations": [
+      {
+        "role": "factory",
+        "proxy": "0x1f09daefa827f02cbb40967cc91b259763760761",
+        "slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+        "implementation": "0x74956236Ab64eD143933040B4137E8A352e4d17b",
+        "allowlisted": true,
+        "expected": [
+          "0x74956236ab64ed143933040b4137e8a352e4d17b"
+        ],
+        "codeSize": 130
+      },
+      {
+        "role": "siteRegistry",
+        "proxy": "0xd6efb7adcc9c83dc4924ad56f6a8e4e969b9adb6",
+        "slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+        "implementation": "0xa85c4143d1D4A77f54b8e4ecC9E6D1418Afea45f",
+        "allowlisted": true,
+        "expected": [
+          "0xa85c4143d1d4a77f54b8e4ecc9e6d1418afea45f"
+        ],
+        "codeSize": 176
+      },
+      {
+        "role": "domainBinding",
+        "proxy": "0x68809fd2fb343aa57d0aeb7f33defe477c9666f9",
+        "slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+        "implementation": "0x5eBF29b80789e548907C707530C3C7607C4347Df",
+        "allowlisted": true,
+        "expected": [
+          "0x5ebf29b80789e548907c707530c3c7607c4347df"
+        ],
+        "codeSize": 176
+      }
+    ],
+    "contracts": {
+      "factory": {
+        "address": "0x1f09daefa827f02cbb40967cc91b259763760761",
+        "codeSize": 130,
+        "cpuCount": 369,
+        "isSealed": false
+      },
+      "opener": {
+        "address": "0x536add8f30f03b69f6fbf29d425a816a0dc50106",
+        "codeSize": 2604,
+        "openFeeWei": "80000000000000000"
+      },
+      "siteRegistry": {
+        "address": "0xd6efb7adcc9c83dc4924ad56f6a8e4e969b9adb6",
+        "codeSize": 14377,
+        "implementation": "0xa85c4143d1D4A77f54b8e4ecC9E6D1418Afea45f",
+        "chunkMax": 24000
+      },
+      "domainBinding": {
+        "address": "0x68809fd2fb343aa57d0aeb7f33defe477c9666f9",
+        "codeSize": 176,
+        "implementation": "0x5eBF29b80789e548907C707530C3C7607C4347Df",
+        "monthlyFeeWei": "0"
+      }
+    },
+    "selectors": {
+      "siteRegistry": [
+        {
+          "name": "cpuCount",
+          "signature": "cpuCount()",
+          "selector": "0xa94da8a7",
+          "present": false
+        },
+        {
+          "name": "cpuAt",
+          "signature": "cpuAt(uint256)",
+          "selector": "0x4bc7cbbd",
+          "present": false
+        },
+        {
+          "name": "cpus",
+          "signature": "cpus(uint256)",
+          "selector": "0xd2c26963",
+          "present": false
+        },
+        {
+          "name": "isCPU",
+          "signature": "isCPU(address)",
+          "selector": "0x5f5a364f",
+          "present": false
+        },
+        {
+          "name": "accountOf",
+          "signature": "accountOf(address,uint256)",
+          "selector": "0x0c1905e5",
+          "present": true
+        },
+        {
+          "name": "isOpened",
+          "signature": "isOpened(address,uint256)",
+          "selector": "0x8b508494",
+          "present": true
+        },
+        {
+          "name": "isDeployed",
+          "signature": "isDeployed(address,uint256)",
+          "selector": "0xf13906b8",
+          "present": false
+        },
+        {
+          "name": "open",
+          "signature": "open(address,uint256)",
+          "selector": "0x0a0e5c9d",
+          "present": false
+        },
+        {
+          "name": "token",
+          "signature": "token()",
+          "selector": "0xfc0c546a",
+          "present": true
+        },
+        {
+          "name": "ownerOf",
+          "signature": "ownerOf(uint256)",
+          "selector": "0x6352211e",
+          "present": false
+        },
+        {
+          "name": "name",
+          "signature": "name()",
+          "selector": "0x06fdde03",
+          "present": false
+        },
+        {
+          "name": "fileInfo",
+          "signature": "fileInfo(address,string)",
+          "selector": "0x6c609107",
+          "present": true
+        },
+        {
+          "name": "read",
+          "signature": "read(address,string)",
+          "selector": "0xccaa7afb",
+          "present": true
+        },
+        {
+          "name": "readRange",
+          "signature": "readRange(address,string,uint256,uint256)",
+          "selector": "0x15a4cae2",
+          "present": true
+        },
+        {
+          "name": "pathCount",
+          "signature": "pathCount(address)",
+          "selector": "0xb554782b",
+          "present": true
+        },
+        {
+          "name": "pathsRange",
+          "signature": "pathsRange(address,uint256,uint256)",
+          "selector": "0xb056072c",
+          "present": true
+        },
+        {
+          "name": "paths",
+          "signature": "paths(address)",
+          "selector": "0x599e4610",
+          "present": true
+        },
+        {
+          "name": "fallbackPath",
+          "signature": "fallbackPath(address)",
+          "selector": "0xa76c7713",
+          "present": true
+        },
+        {
+          "name": "isOpenedContainer",
+          "signature": "isOpenedContainer(address)",
+          "selector": "0x8951bab2",
+          "present": true
+        },
+        {
+          "name": "isLive",
+          "signature": "isLive(string,address)",
+          "selector": "0xd6b062cd",
+          "present": false
+        },
+        {
+          "name": "isContainerLive",
+          "signature": "isContainerLive(address)",
+          "selector": "0xdcca979e",
+          "present": false
+        },
+        {
+          "name": "paidUntil",
+          "signature": "paidUntil(bytes32,address)",
+          "selector": "0x2110540f",
+          "present": false
+        },
+        {
+          "name": "containerPaidUntil",
+          "signature": "containerPaidUntil(address)",
+          "selector": "0x9ebfd859",
+          "present": false
+        },
+        {
+          "name": "monthlyFee",
+          "signature": "monthlyFee()",
+          "selector": "0x8cfd3e40",
+          "present": false
+        },
+        {
+          "name": "chunkMax",
+          "signature": "CHUNK_MAX()",
+          "selector": "0x9a8a305f",
+          "present": true
+        },
+        {
+          "name": "putFile",
+          "signature": "putFile(address,string,string,bytes32,bytes)",
+          "selector": "0xfab2ed82",
+          "present": true
+        },
+        {
+          "name": "appendChunk",
+          "signature": "appendChunk(address,string,uint256,bytes)",
+          "selector": "0xe2b51347",
+          "present": true
+        },
+        {
+          "name": "removeFile",
+          "signature": "removeFile(address,string)",
+          "selector": "0x0a9c1871",
+          "present": true
+        },
+        {
+          "name": "setFallback",
+          "signature": "setFallback(address,string)",
+          "selector": "0x4dc21ad0",
+          "present": true
+        },
+        {
+          "name": "setOperator",
+          "signature": "setOperator(address,address,uint256)",
+          "selector": "0xc88cb026",
+          "present": true
+        }
+      ],
+      "opener": [
+        {
+          "name": "accountOf",
+          "signature": "accountOf(address,uint256)",
+          "selector": "0x0c1905e5",
+          "present": true
+        },
+        {
+          "name": "isOpened",
+          "signature": "isOpened(address,uint256)",
+          "selector": "0x8b508494",
+          "present": true
+        },
+        {
+          "name": "isDeployed",
+          "signature": "isDeployed(address,uint256)",
+          "selector": "0xf13906b8",
+          "present": true
+        },
+        {
+          "name": "open",
+          "signature": "open(address,uint256)",
+          "selector": "0x0a0e5c9d",
+          "present": true
+        },
+        {
+          "name": "fee",
+          "signature": "FEE()",
+          "selector": "0xc57981b5",
+          "present": true
+        }
+      ],
+      "factoryImpl": [
+        {
+          "name": "cpuCount",
+          "signature": "cpuCount()",
+          "selector": "0xa94da8a7",
+          "present": true
+        },
+        {
+          "name": "cpuAt",
+          "signature": "cpuAt(uint256)",
+          "selector": "0x4bc7cbbd",
+          "present": true
+        },
+        {
+          "name": "cpus",
+          "signature": "cpus(uint256)",
+          "selector": "0xd2c26963",
+          "present": true
+        },
+        {
+          "name": "isCPU",
+          "signature": "isCPU(address)",
+          "selector": "0x5f5a364f",
+          "present": true
+        }
+      ]
+    },
+    "notes": [
+      "factory.isSealed() is false: protocol contracts are still upgradeable (TapeOut X Layer is test-phase)."
+    ]
+  },
+  "implementations": [
+    {
+      "role": "factory",
+      "proxy": "0x1f09daefa827f02cbb40967cc91b259763760761",
+      "slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+      "implementation": "0x74956236Ab64eD143933040B4137E8A352e4d17b",
+      "allowlisted": true,
+      "expected": [
+        "0x74956236ab64ed143933040b4137e8a352e4d17b"
+      ],
+      "proxyCodeSizeBytes": 130
+    },
+    {
+      "role": "siteRegistry",
+      "proxy": "0xd6efb7adcc9c83dc4924ad56f6a8e4e969b9adb6",
+      "slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+      "implementation": "0xa85c4143d1D4A77f54b8e4ecC9E6D1418Afea45f",
+      "allowlisted": true,
+      "expected": [
+        "0xa85c4143d1d4a77f54b8e4ecc9e6d1418afea45f"
+      ],
+      "proxyCodeSizeBytes": 176
+    },
+    {
+      "role": "domainBinding",
+      "proxy": "0x68809fd2fb343aa57d0aeb7f33defe477c9666f9",
+      "slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+      "implementation": "0x5eBF29b80789e548907C707530C3C7607C4347Df",
+      "allowlisted": true,
+      "expected": [
+        "0x5ebf29b80789e548907c707530c3c7607c4347df"
+      ],
+      "proxyCodeSizeBytes": 176
+    }
+  ],
+  "code": [
+    {
+      "role": "factory",
+      "address": "0x1f09daefa827f02cbb40967cc91b259763760761",
+      "kind": "proxy",
+      "codeSizeBytes": 130,
+      "keccak256": "0x5cddc08137fc81eb8ba1d37902e77553152c2f639b6bf6f601ecb094e2cae5c8"
+    },
+    {
+      "role": "factoryImplementation",
+      "address": "0x74956236Ab64eD143933040B4137E8A352e4d17b",
+      "kind": "implementation",
+      "codeSizeBytes": 7671,
+      "keccak256": "0x7fb15e83f925e493ef6e84ee3b1021eed994966552add6011184a1fb3ad7fe81"
+    },
+    {
+      "role": "opener",
+      "address": "0x536add8f30f03b69f6fbf29d425a816a0dc50106",
+      "kind": "contract",
+      "codeSizeBytes": 2604,
+      "keccak256": "0xf0c334d8d72983af1c38694dac7a1c83348c0c000cbb987467d2aedee06999fd"
+    },
+    {
+      "role": "siteRegistry",
+      "address": "0xd6efb7adcc9c83dc4924ad56f6a8e4e969b9adb6",
+      "kind": "proxy",
+      "codeSizeBytes": 176,
+      "keccak256": "0x5e41d8905a1e7ccfc8c297c3a33d08d1712e4876f9c6eefc0e5991409dd38c1d"
+    },
+    {
+      "role": "siteRegistryImplementation",
+      "address": "0xa85c4143d1D4A77f54b8e4ecC9E6D1418Afea45f",
+      "kind": "implementation",
+      "codeSizeBytes": 14377,
+      "keccak256": "0xec8c29acef66eb1bf973d6e80202258830631b7b2849f75d04365c6f80443e6d"
+    },
+    {
+      "role": "domainBinding",
+      "address": "0x68809fd2fb343aa57d0aeb7f33defe477c9666f9",
+      "kind": "proxy",
+      "codeSizeBytes": 176,
+      "keccak256": "0x5e41d8905a1e7ccfc8c297c3a33d08d1712e4876f9c6eefc0e5991409dd38c1d"
+    },
+    {
+      "role": "domainBindingImplementation",
+      "address": "0x5eBF29b80789e548907C707530C3C7607C4347Df",
+      "kind": "implementation",
+      "codeSizeBytes": 9603,
+      "keccak256": "0x6cdc2f5fa922b4f73d3e37644b0fcfc6bf153279464581611818cd88ee27aa2d"
+    },
+    {
+      "role": "container",
+      "address": "0x25B20D3eA6b207506340eab2Eb0f45Edc800F6b3",
+      "kind": "contract",
+      "codeSizeBytes": 173,
+      "keccak256": "0x00dd8e3b7d87a7139b9e527cc849d4a269e6cb1e495883c07ae9c667060cc48c"
+    },
+    {
+      "role": "processor",
+      "address": "0x839bdD6fa7A66416A609A735e11DE5411B98574e",
+      "kind": "contract",
+      "codeSizeBytes": 295,
+      "keccak256": "0x57aa306fd0be97087da3534e03398f5ff4efd533b5be4e45a405ce86fa6717d5"
+    }
+  ],
+  "selectors": {
+    "recomputed": [
+      {
+        "name": "cpuCount",
+        "signature": "cpuCount()",
+        "selector": "0xa94da8a7",
+        "tapekitHardcoded": "0xa94da8a7"
+      },
+      {
+        "name": "cpuAt",
+        "signature": "cpuAt(uint256)",
+        "selector": "0x4bc7cbbd",
+        "tapekitHardcoded": "0x4bc7cbbd"
+      },
+      {
+        "name": "cpus",
+        "signature": "cpus(uint256)",
+        "selector": "0xd2c26963",
+        "tapekitHardcoded": null
+      },
+      {
+        "name": "isCPU",
+        "signature": "isCPU(address)",
+        "selector": "0x5f5a364f",
+        "tapekitHardcoded": "0x5f5a364f"
+      },
+      {
+        "name": "accountOf",
+        "signature": "accountOf(address,uint256)",
+        "selector": "0x0c1905e5",
+        "tapekitHardcoded": "0x0c1905e5"
+      },
+      {
+        "name": "isOpened",
+        "signature": "isOpened(address,uint256)",
+        "selector": "0x8b508494",
+        "tapekitHardcoded": "0x8b508494"
+      },
+      {
+        "name": "isDeployed",
+        "signature": "isDeployed(address,uint256)",
+        "selector": "0xf13906b8",
+        "tapekitHardcoded": null
+      },
+      {
+        "name": "open",
+        "signature": "open(address,uint256)",
+        "selector": "0x0a0e5c9d",
+        "tapekitHardcoded": null
+      },
+      {
+        "name": "token",
+        "signature": "token()",
+        "selector": "0xfc0c546a",
+        "tapekitHardcoded": "0xfc0c546a"
+      },
+      {
+        "name": "ownerOf",
+        "signature": "ownerOf(uint256)",
+        "selector": "0x6352211e",
+        "tapekitHardcoded": "0x6352211e"
+      },
+      {
+        "name": "name",
+        "signature": "name()",
+        "selector": "0x06fdde03",
+        "tapekitHardcoded": "0x06fdde03"
+      },
+      {
+        "name": "fileInfo",
+        "signature": "fileInfo(address,string)",
+        "selector": "0x6c609107",
+        "tapekitHardcoded": "0x6c609107"
+      },
+      {
+        "name": "read",
+        "signature": "read(address,string)",
+        "selector": "0xccaa7afb",
+        "tapekitHardcoded": "0xccaa7afb"
+      },
+      {
+        "name": "readRange",
+        "signature": "readRange(address,string,uint256,uint256)",
+        "selector": "0x15a4cae2",
+        "tapekitHardcoded": "0x15a4cae2"
+      },
+      {
+        "name": "pathCount",
+        "signature": "pathCount(address)",
+        "selector": "0xb554782b",
+        "tapekitHardcoded": "0xb554782b"
+      },
+      {
+        "name": "pathsRange",
+        "signature": "pathsRange(address,uint256,uint256)",
+        "selector": "0xb056072c",
+        "tapekitHardcoded": "0xb056072c"
+      },
+      {
+        "name": "paths",
+        "signature": "paths(address)",
+        "selector": "0x599e4610",
+        "tapekitHardcoded": null
+      },
+      {
+        "name": "fallbackPath",
+        "signature": "fallbackPath(address)",
+        "selector": "0xa76c7713",
+        "tapekitHardcoded": "0xa76c7713"
+      },
+      {
+        "name": "isOpenedContainer",
+        "signature": "isOpenedContainer(address)",
+        "selector": "0x8951bab2",
+        "tapekitHardcoded": null
+      },
+      {
+        "name": "isLive",
+        "signature": "isLive(string,address)",
+        "selector": "0xd6b062cd",
+        "tapekitHardcoded": "0xd6b062cd"
+      },
+      {
+        "name": "isContainerLive",
+        "signature": "isContainerLive(address)",
+        "selector": "0xdcca979e",
+        "tapekitHardcoded": "0xdcca979e"
+      },
+      {
+        "name": "paidUntil",
+        "signature": "paidUntil(bytes32,address)",
+        "selector": "0x2110540f",
+        "tapekitHardcoded": "0x2110540f"
+      },
+      {
+        "name": "containerPaidUntil",
+        "signature": "containerPaidUntil(address)",
+        "selector": "0x9ebfd859",
+        "tapekitHardcoded": "0x9ebfd859"
+      },
+      {
+        "name": "monthlyFee",
+        "signature": "monthlyFee()",
+        "selector": "0x8cfd3e40",
+        "tapekitHardcoded": "0x8cfd3e40"
+      },
+      {
+        "name": "chunkMax",
+        "signature": "CHUNK_MAX()",
+        "selector": "0x9a8a305f",
+        "tapekitHardcoded": null
+      },
+      {
+        "name": "putFile",
+        "signature": "putFile(address,string,string,bytes32,bytes)",
+        "selector": "0xfab2ed82",
+        "tapekitHardcoded": null
+      },
+      {
+        "name": "appendChunk",
+        "signature": "appendChunk(address,string,uint256,bytes)",
+        "selector": "0xe2b51347",
+        "tapekitHardcoded": null
+      },
+      {
+        "name": "removeFile",
+        "signature": "removeFile(address,string)",
+        "selector": "0x0a9c1871",
+        "tapekitHardcoded": null
+      },
+      {
+        "name": "setFallback",
+        "signature": "setFallback(address,string)",
+        "selector": "0x4dc21ad0",
+        "tapekitHardcoded": null
+      },
+      {
+        "name": "setOperator",
+        "signature": "setOperator(address,address,uint256)",
+        "selector": "0xc88cb026",
+        "tapekitHardcoded": null
+      }
+    ],
+    "tapekitHardcodedMatches": [
+      {
+        "name": "cpuCount",
+        "signature": "cpuCount()",
+        "hardcoded": "0xa94da8a7",
+        "recomputed": "0xa94da8a7",
+        "matches": true
+      },
+      {
+        "name": "cpuAt",
+        "signature": "cpuAt(uint256)",
+        "hardcoded": "0x4bc7cbbd",
+        "recomputed": "0x4bc7cbbd",
+        "matches": true
+      },
+      {
+        "name": "isCPU",
+        "signature": "isCPU(address)",
+        "hardcoded": "0x5f5a364f",
+        "recomputed": "0x5f5a364f",
+        "matches": true
+      },
+      {
+        "name": "accountOf",
+        "signature": "accountOf(address,uint256)",
+        "hardcoded": "0x0c1905e5",
+        "recomputed": "0x0c1905e5",
+        "matches": true
+      },
+      {
+        "name": "isOpened",
+        "signature": "isOpened(address,uint256)",
+        "hardcoded": "0x8b508494",
+        "recomputed": "0x8b508494",
+        "matches": true
+      },
+      {
+        "name": "token",
+        "signature": "token()",
+        "hardcoded": "0xfc0c546a",
+        "recomputed": "0xfc0c546a",
+        "matches": true
+      },
+      {
+        "name": "ownerOf",
+        "signature": "ownerOf(uint256)",
+        "hardcoded": "0x6352211e",
+        "recomputed": "0x6352211e",
+        "matches": true
+      },
+      {
+        "name": "name",
+        "signature": "name()",
+        "hardcoded": "0x06fdde03",
+        "recomputed": "0x06fdde03",
+        "matches": true
+      },
+      {
+        "name": "fileInfo",
+        "signature": "fileInfo(address,string)",
+        "hardcoded": "0x6c609107",
+        "recomputed": "0x6c609107",
+        "matches": true
+      },
+      {
+        "name": "read",
+        "signature": "read(address,string)",
+        "hardcoded": "0xccaa7afb",
+        "recomputed": "0xccaa7afb",
+        "matches": true
+      },
+      {
+        "name": "readRange",
+        "signature": "readRange(address,string,uint256,uint256)",
+        "hardcoded": "0x15a4cae2",
+        "recomputed": "0x15a4cae2",
+        "matches": true
+      },
+      {
+        "name": "pathCount",
+        "signature": "pathCount(address)",
+        "hardcoded": "0xb554782b",
+        "recomputed": "0xb554782b",
+        "matches": true
+      },
+      {
+        "name": "pathsRange",
+        "signature": "pathsRange(address,uint256,uint256)",
+        "hardcoded": "0xb056072c",
+        "recomputed": "0xb056072c",
+        "matches": true
+      },
+      {
+        "name": "fallbackPath",
+        "signature": "fallbackPath(address)",
+        "hardcoded": "0xa76c7713",
+        "recomputed": "0xa76c7713",
+        "matches": true
+      },
+      {
+        "name": "isLive",
+        "signature": "isLive(string,address)",
+        "hardcoded": "0xd6b062cd",
+        "recomputed": "0xd6b062cd",
+        "matches": true
+      },
+      {
+        "name": "paidUntil",
+        "signature": "paidUntil(bytes32,address)",
+        "hardcoded": "0x2110540f",
+        "recomputed": "0x2110540f",
+        "matches": true
+      },
+      {
+        "name": "monthlyFee",
+        "signature": "monthlyFee()",
+        "hardcoded": "0x8cfd3e40",
+        "recomputed": "0x8cfd3e40",
+        "matches": true
+      },
+      {
+        "name": "containerPaidUntil",
+        "signature": "containerPaidUntil(address)",
+        "hardcoded": "0x9ebfd859",
+        "recomputed": "0x9ebfd859",
+        "matches": true
+      },
+      {
+        "name": "isContainerLive",
+        "signature": "isContainerLive(address)",
+        "hardcoded": "0xdcca979e",
+        "recomputed": "0xdcca979e",
+        "matches": true
+      }
+    ],
+    "presence": {
+      "siteRegistryImplementation": [
+        {
+          "name": "fileInfo",
+          "signature": "fileInfo(address,string)",
+          "selector": "0x6c609107",
+          "present": true
+        },
+        {
+          "name": "read",
+          "signature": "read(address,string)",
+          "selector": "0xccaa7afb",
+          "present": true
+        },
+        {
+          "name": "readRange",
+          "signature": "readRange(address,string,uint256,uint256)",
+          "selector": "0x15a4cae2",
+          "present": true
+        },
+        {
+          "name": "pathCount",
+          "signature": "pathCount(address)",
+          "selector": "0xb554782b",
+          "present": true
+        },
+        {
+          "name": "pathsRange",
+          "signature": "pathsRange(address,uint256,uint256)",
+          "selector": "0xb056072c",
+          "present": true
+        },
+        {
+          "name": "paths",
+          "signature": "paths(address)",
+          "selector": "0x599e4610",
+          "present": true
+        },
+        {
+          "name": "fallbackPath",
+          "signature": "fallbackPath(address)",
+          "selector": "0xa76c7713",
+          "present": true
+        },
+        {
+          "name": "isOpenedContainer",
+          "signature": "isOpenedContainer(address)",
+          "selector": "0x8951bab2",
+          "present": true
+        },
+        {
+          "name": "chunkMax",
+          "signature": "CHUNK_MAX()",
+          "selector": "0x9a8a305f",
+          "present": true
+        },
+        {
+          "name": "putFile",
+          "signature": "putFile(address,string,string,bytes32,bytes)",
+          "selector": "0xfab2ed82",
+          "present": true
+        },
+        {
+          "name": "appendChunk",
+          "signature": "appendChunk(address,string,uint256,bytes)",
+          "selector": "0xe2b51347",
+          "present": true
+        },
+        {
+          "name": "removeFile",
+          "signature": "removeFile(address,string)",
+          "selector": "0x0a9c1871",
+          "present": true
+        },
+        {
+          "name": "setFallback",
+          "signature": "setFallback(address,string)",
+          "selector": "0x4dc21ad0",
+          "present": true
+        },
+        {
+          "name": "setOperator",
+          "signature": "setOperator(address,address,uint256)",
+          "selector": "0xc88cb026",
+          "present": true
+        }
+      ],
+      "factoryImplementation": [
+        {
+          "name": "cpuCount",
+          "signature": "cpuCount()",
+          "selector": "0xa94da8a7",
+          "present": true
+        },
+        {
+          "name": "cpuAt",
+          "signature": "cpuAt(uint256)",
+          "selector": "0x4bc7cbbd",
+          "present": true
+        },
+        {
+          "name": "cpus",
+          "signature": "cpus(uint256)",
+          "selector": "0xd2c26963",
+          "present": true
+        },
+        {
+          "name": "isCPU",
+          "signature": "isCPU(address)",
+          "selector": "0x5f5a364f",
+          "present": true
+        },
+        {
+          "name": "isSealed",
+          "signature": "isSealed()",
+          "selector": "0x631f9852",
+          "present": true
+        }
+      ],
+      "opener": [
+        {
+          "name": "accountOf",
+          "signature": "accountOf(address,uint256)",
+          "selector": "0x0c1905e5",
+          "present": true
+        },
+        {
+          "name": "isOpened",
+          "signature": "isOpened(address,uint256)",
+          "selector": "0x8b508494",
+          "present": true
+        },
+        {
+          "name": "isDeployed",
+          "signature": "isDeployed(address,uint256)",
+          "selector": "0xf13906b8",
+          "present": true
+        },
+        {
+          "name": "open",
+          "signature": "open(address,uint256)",
+          "selector": "0x0a0e5c9d",
+          "present": true
+        },
+        {
+          "name": "fee",
+          "signature": "FEE()",
+          "selector": "0xc57981b5",
+          "present": true
+        }
+      ],
+      "domainBindingImplementation": [
+        {
+          "name": "isLive",
+          "signature": "isLive(string,address)",
+          "selector": "0xd6b062cd",
+          "present": true
+        },
+        {
+          "name": "isContainerLive",
+          "signature": "isContainerLive(address)",
+          "selector": "0xdcca979e",
+          "present": true
+        },
+        {
+          "name": "paidUntil",
+          "signature": "paidUntil(bytes32,address)",
+          "selector": "0x2110540f",
+          "present": true
+        },
+        {
+          "name": "containerPaidUntil",
+          "signature": "containerPaidUntil(address)",
+          "selector": "0x9ebfd859",
+          "present": true
+        },
+        {
+          "name": "monthlyFee",
+          "signature": "monthlyFee()",
+          "selector": "0x8cfd3e40",
+          "present": true
+        }
+      ]
+    }
+  },
+  "readCalls": {
+    "factory": {
+      "cpuCount": "369",
+      "cpuAt0": "0x839bdD6fa7A66416A609A735e11DE5411B98574e",
+      "isCPU0": true,
+      "isSealed": false,
+      "deployFee": "6600000000000000",
+      "protocolFee": "660000000000000",
+      "owner": "0xB3D85b42A045c1A88D800CAD0F55d2566a4D3138"
+    },
+    "opener": {
+      "fee": "80000000000000000",
+      "accountOfProcessor2": "0x25B20D3eA6b207506340eab2Eb0f45Edc800F6b3",
+      "isOpenedProcessor2": true,
+      "isDeployedProcessor2": true
+    },
+    "container": {
+      "tokenRaw": "0x00000000000000000000000000000000000000000000000000000000000000c4000000000000000000000000839bdd6fa7a66416a609a735e11de5411b98574e0000000000000000000000000000000000000000000000000000000000000002",
+      "tokenCalldata": "0xfc0c546a",
+      "tokenDecoded": {
+        "chainId": "196",
+        "processor": "0x839bdD6fa7A66416A609A735e11DE5411B98574e",
+        "tokenId": "2"
+      },
+      "owner": "0x571d447f4f24688eC35Ccf07f1D6993655F6aF15"
+    },
+    "processor": {
+      "ownerOf2": "0x571d447f4f24688eC35Ccf07f1D6993655F6aF15",
+      "name": "OnlyTestXLayer",
+      "symbol": "OnlyTestXLayer",
+      "nextId": "103"
+    },
+    "siteRegistry": {
+      "fileInfoCalldata": "0x6c60910700000000000000000000000025b20d3ea6b207506340eab2eb0f45edc800f6b30000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000000a696e6465782e68746d6c00000000000000000000000000000000000000000000",
+      "fileInfoRaw": "0x000000000000000000000000000000000000000000000000000000000000697100000000000000000000000000000000000000000000000000000000000000a0e0f21c08c2ad09d3818d39c802153d33b6931311300d7419228d98da0a8300f0000000000000000000000000000000000000000000000000000000006aca052300000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000018746578742f68746d6c3b20636861727365743d7574662d380000000000000000",
+      "fileInfoDecoded": {
+        "size": 26993,
+        "contentType": "text/html; charset=utf-8",
+        "sha256": "0xe0f21c08c2ad09d3818d39c802153d33b6931311300d7419228d98da0a8300f0",
+        "updatedAt": 1791624483,
+        "chunkCount": "2"
+      },
+      "pathCount": "1",
+      "paths": [
+        "index.html"
+      ],
+      "fallbackPath": "index.html",
+      "isOpenedContainer": true,
+      "chunkMax": "24000",
+      "readRange0_16": {
+        "calldata": "0x15a4cae200000000000000000000000025b20d3ea6b207506340eab2eb0f45edc800f6b3000000000000000000000000000000000000000000000000000000000000008000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000a696e6465782e68746d6c00000000000000000000000000000000000000000000",
+        "raw": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000103c21646f63747970652068746d6c3e0a00000000000000000000000000000000",
+        "bytesHex": "0x3c21646f63747970652068746d6c3e0a"
+      },
+      "readRangeAtSize": {
+        "calldata": "0x15a4cae200000000000000000000000025b20d3ea6b207506340eab2eb0f45edc800f6b3000000000000000000000000000000000000000000000000000000000000008000000000000000000000000000000000000000000000000000000000000069710000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000a696e6465782e68746d6c00000000000000000000000000000000000000000000",
+        "raw": "0x00000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000000",
+        "bytesHex": "0x"
+      },
+      "read": {
+        "bytesLength": 26993,
+        "first16Hex": "0x3c21646f63747970652068746d6c3e0a",
+        "last16Hex": "0x3c2f626f64793e0a3c2f68746d6c3e0a",
+        "declaredSha256": "0xe0f21c08c2ad09d3818d39c802153d33b6931311300d7419228d98da0a8300f0",
+        "computedSha256": "0xe0f21c08c2ad09d3818d39c802153d33b6931311300d7419228d98da0a8300f0",
+        "sha256Matches": true
+      }
+    },
+    "domainBinding": {
+      "monthlyFee": "0",
+      "isContainerLive": true,
+      "containerPaidUntil": 2102926150,
+      "isLiveName": true,
+      "paidUntilName": 1822674611
+    }
+  },
+  "liveSite": {
+    "container": "0x25B20D3eA6b207506340eab2Eb0f45Edc800F6b3",
+    "path": "index.html",
+    "fileInfo": {
+      "size": 26993,
+      "contentType": "text/html; charset=utf-8",
+      "sha256": "0xe0f21c08c2ad09d3818d39c802153d33b6931311300d7419228d98da0a8300f0",
+      "updatedAt": 1791624483,
+      "chunkCount": "2"
+    },
+    "readSha256": "0xe0f21c08c2ad09d3818d39c802153d33b6931311300d7419228d98da0a8300f0",
+    "declaredSha256": "0xe0f21c08c2ad09d3818d39c802153d33b6931311300d7419228d98da0a8300f0",
+    "sha256Matches": true,
+    "capturedObservedSite": {
+      "size": 26993,
+      "sha256": "0xe0f21c08c2ad09d3818d39c802153d33b6931311300d7419228d98da0a8300f0",
+      "chunkCount": 2
+    },
+    "matchesCapturedObservation": true
+  },
+  "writeSimulations": {
+    "method": "eth_call against the pinned block from the current container holder and from a non-editor address; no transaction is signed or broadcast",
+    "containerHolder": "0x571d447f4f24688eC35Ccf07f1D6993655F6aF15",
+    "containerOwner": "0x571d447f4f24688eC35Ccf07f1D6993655F6aF15",
+    "chunkMax": 24000,
+    "chunkCount": 2,
+    "knownRevertSignatures": [
+      "NotOwner()",
+      "BadIndex()",
+      "NoSuchFile()",
+      "TooLarge()"
+    ],
+    "results": [
+      {
+        "name": "putFile",
+        "from": "non-editor",
+        "fromAddress": "0x000000000000000000000000000000000000bEEF",
+        "selector": "0xfab2ed82",
+        "expectation": "reject: onlyEditor",
+        "ok": false,
+        "raw": null,
+        "revertData": "0x30cd7471",
+        "decodedRevert": {
+          "signature": "NotOwner()",
+          "selector": "0x30cd7471"
+        },
+        "error": "RPC Request failed. URL: https://rpc.xlayer.tech Request body: {\"method\":\"eth_call\",\"params\":[{\"from\":\"0x000000000000000000000000000000000000bEEF\",\"to\":\"0xd6efb7adcc9c83dc4924ad56f6a8e4e969b9adb6\",\"data\":\"0xfab2ed8200000000000000000000000025b20d3ea6b207506340eab2eb0f45edc800f6b300000000000000000000000000000000000000000000000000000000000000a000000000000000000000000000000000000000000000000000000000000000e06e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d00000000000000000000000000000",
+        "note": "non-holder must be rejected before any write logic runs"
+      },
+      {
+        "name": "appendChunk",
+        "from": "non-editor",
+        "fromAddress": "0x000000000000000000000000000000000000bEEF",
+        "selector": "0xe2b51347",
+        "expectation": "reject: onlyEditor",
+        "ok": false,
+        "raw": null,
+        "revertData": "0x30cd7471",
+        "decodedRevert": {
+          "signature": "NotOwner()",
+          "selector": "0x30cd7471"
+        },
+        "error": "RPC Request failed. URL: https://rpc.xlayer.tech Request body: {\"method\":\"eth_call\",\"params\":[{\"from\":\"0x000000000000000000000000000000000000bEEF\",\"to\":\"0xd6efb7adcc9c83dc4924ad56f6a8e4e969b9adb6\",\"data\":\"0xe2b5134700000000000000000000000025b20d3ea6b207506340eab2eb0f45edc800f6b30000000000000000000000000000000000000000000000000000000000000080000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000c000000000000000000000000000000",
+        "note": "non-holder must be rejected"
+      },
+      {
+        "name": "removeFile",
+        "from": "non-editor",
+        "fromAddress": "0x000000000000000000000000000000000000bEEF",
+        "selector": "0x0a9c1871",
+        "expectation": "reject: onlyEditor",
+        "ok": false,
+        "raw": null,
+        "revertData": "0x30cd7471",
+        "decodedRevert": {
+          "signature": "NotOwner()",
+          "selector": "0x30cd7471"
+        },
+        "error": "RPC Request failed. URL: https://rpc.xlayer.tech Request body: {\"method\":\"eth_call\",\"params\":[{\"from\":\"0x000000000000000000000000000000000000bEEF\",\"to\":\"0xd6efb7adcc9c83dc4924ad56f6a8e4e969b9adb6\",\"data\":\"0x0a9c187100000000000000000000000025b20d3ea6b207506340eab2eb0f45edc800f6b30000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000001370726f62652f70302d30332d6162692e74787400000000000000000000000000\"},\"0x46367b8\"]} Details: exe",
+        "note": "non-holder must be rejected"
+      },
+      {
+        "name": "setFallback",
+        "from": "non-editor",
+        "fromAddress": "0x000000000000000000000000000000000000bEEF",
+        "selector": "0x4dc21ad0",
+        "expectation": "reject: onlyEditor",
+        "ok": false,
+        "raw": null,
+        "revertData": "0x30cd7471",
+        "decodedRevert": {
+          "signature": "NotOwner()",
+          "selector": "0x30cd7471"
+        },
+        "error": "RPC Request failed. URL: https://rpc.xlayer.tech Request body: {\"method\":\"eth_call\",\"params\":[{\"from\":\"0x000000000000000000000000000000000000bEEF\",\"to\":\"0xd6efb7adcc9c83dc4924ad56f6a8e4e969b9adb6\",\"data\":\"0x4dc21ad000000000000000000000000025b20d3ea6b207506340eab2eb0f45edc800f6b30000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000000a696e6465782e68746d6c00000000000000000000000000000000000000000000\"},\"0x46367b8\"]} Details: exe",
+        "note": "non-holder must be rejected"
+      },
+      {
+        "name": "setOperator",
+        "from": "non-editor",
+        "fromAddress": "0x000000000000000000000000000000000000bEEF",
+        "selector": "0xc88cb026",
+        "expectation": "reject: onlyEditor",
+        "ok": false,
+        "raw": null,
+        "revertData": "0x30cd7471",
+        "decodedRevert": {
+          "signature": "NotOwner()",
+          "selector": "0x30cd7471"
+        },
+        "error": "RPC Request failed. URL: https://rpc.xlayer.tech Request body: {\"method\":\"eth_call\",\"params\":[{\"from\":\"0x000000000000000000000000000000000000bEEF\",\"to\":\"0xd6efb7adcc9c83dc4924ad56f6a8e4e969b9adb6\",\"data\":\"0xc88cb02600000000000000000000000025b20d3ea6b207506340eab2eb0f45edc800f6b3000000000000000000000000000000000000000000000000000000000000beef0000000000000000000000000000000000000000000000000000000000000e10\"},\"0x46367b8\"]} Details: execution reverted Version: viem@2.57.7",
+        "note": "non-holder must be rejected"
+      },
+      {
+        "name": "putFile",
+        "from": "holder",
+        "fromAddress": "0x571d447f4f24688eC35Ccf07f1D6993655F6aF15",
+        "selector": "0xfab2ed82",
+        "expectation": "accept",
+        "ok": true,
+        "raw": "0x",
+        "revertData": null,
+        "decodedRevert": null,
+        "error": null,
+        "note": "chunk 0 of a 1-byte file on an unused probe path (probe/p0-03-abi.txt)"
+      },
+      {
+        "name": "putFile",
+        "from": "holder",
+        "fromAddress": "0x571d447f4f24688eC35Ccf07f1D6993655F6aF15",
+        "selector": "0xfab2ed82",
+        "expectation": "accept",
+        "ok": true,
+        "raw": "0x",
+        "revertData": null,
+        "decodedRevert": null,
+        "error": null,
+        "note": "exactly CHUNK_MAX=24000 bytes is accepted"
+      },
+      {
+        "name": "putFile",
+        "from": "holder",
+        "fromAddress": "0x571d447f4f24688eC35Ccf07f1D6993655F6aF15",
+        "selector": "0xfab2ed82",
+        "expectation": "reject: TooLarge",
+        "ok": false,
+        "raw": null,
+        "revertData": "0x218e0a07",
+        "decodedRevert": {
+          "signature": "TooLarge()",
+          "selector": "0x218e0a07"
+        },
+        "error": "RPC Request failed. URL: https://rpc.xlayer.tech Request body: {\"method\":\"eth_call\",\"params\":[{\"from\":\"0x571d447f4f24688eC35Ccf07f1D6993655F6aF15\",\"to\":\"0xd6efb7adcc9c83dc4924ad56f6a8e4e969b9adb6\",\"data\":\"0xfab2ed8200000000000000000000000025b20d3ea6b207506340eab2eb0f45edc800f6b300000000000000000000000000000000000000000000000000000000000000a000000000000000000000000000000000000000000000000000000000000000e0804db8fbe4c900697fea3a60d2bcd224ac8ace22bed4e69cf3ce38475e6ffed000000000000000000000000000000",
+        "note": "CHUNK_MAX+1=24001 bytes must be rejected"
+      },
+      {
+        "name": "appendChunk",
+        "from": "holder",
+        "fromAddress": "0x571d447f4f24688eC35Ccf07f1D6993655F6aF15",
+        "selector": "0xe2b51347",
+        "expectation": "accept",
+        "ok": true,
+        "raw": "0x",
+        "revertData": null,
+        "decodedRevert": null,
+        "error": null,
+        "note": "expectIndex=2 equals the on-chain chunkCount (correct next chunk)"
+      },
+      {
+        "name": "appendChunk",
+        "from": "holder",
+        "fromAddress": "0x571d447f4f24688eC35Ccf07f1D6993655F6aF15",
+        "selector": "0xe2b51347",
+        "expectation": "reject: BadIndex",
+        "ok": false,
+        "raw": null,
+        "revertData": "0xef3ff4ae",
+        "decodedRevert": {
+          "signature": "BadIndex()",
+          "selector": "0xef3ff4ae"
+        },
+        "error": "RPC Request failed. URL: https://rpc.xlayer.tech Request body: {\"method\":\"eth_call\",\"params\":[{\"from\":\"0x571d447f4f24688eC35Ccf07f1D6993655F6aF15\",\"to\":\"0xd6efb7adcc9c83dc4924ad56f6a8e4e969b9adb6\",\"data\":\"0xe2b5134700000000000000000000000025b20d3ea6b207506340eab2eb0f45edc800f6b30000000000000000000000000000000000000000000000000000000000000080000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000c000000000000000000000000000000",
+        "note": "a duplicate/stale expectIndex must be rejected (append idempotency guard)"
+      },
+      {
+        "name": "appendChunk",
+        "from": "holder",
+        "fromAddress": "0x571d447f4f24688eC35Ccf07f1D6993655F6aF15",
+        "selector": "0xe2b51347",
+        "expectation": "reject: NoSuchFile",
+        "ok": false,
+        "raw": null,
+        "revertData": "0x2a9df442",
+        "decodedRevert": {
+          "signature": "NoSuchFile()",
+          "selector": "0x2a9df442"
+        },
+        "error": "RPC Request failed. URL: https://rpc.xlayer.tech Request body: {\"method\":\"eth_call\",\"params\":[{\"from\":\"0x571d447f4f24688eC35Ccf07f1D6993655F6aF15\",\"to\":\"0xd6efb7adcc9c83dc4924ad56f6a8e4e969b9adb6\",\"data\":\"0xe2b5134700000000000000000000000025b20d3ea6b207506340eab2eb0f45edc800f6b30000000000000000000000000000000000000000000000000000000000000080000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000c000000000000000000000000000000",
+        "note": "appendChunk on a path with no chunk 0 must be rejected"
+      },
+      {
+        "name": "appendChunk",
+        "from": "holder",
+        "fromAddress": "0x571d447f4f24688eC35Ccf07f1D6993655F6aF15",
+        "selector": "0xe2b51347",
+        "expectation": "reject: TooLarge",
+        "ok": false,
+        "raw": null,
+        "revertData": "0x218e0a07",
+        "decodedRevert": {
+          "signature": "TooLarge()",
+          "selector": "0x218e0a07"
+        },
+        "error": "RPC Request failed. URL: https://rpc.xlayer.tech Request body: {\"method\":\"eth_call\",\"params\":[{\"from\":\"0x571d447f4f24688eC35Ccf07f1D6993655F6aF15\",\"to\":\"0xd6efb7adcc9c83dc4924ad56f6a8e4e969b9adb6\",\"data\":\"0xe2b5134700000000000000000000000025b20d3ea6b207506340eab2eb0f45edc800f6b30000000000000000000000000000000000000000000000000000000000000080000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000c000000000000000000000000000000",
+        "note": "CHUNK_MAX+1=24001 bytes must be rejected"
+      },
+      {
+        "name": "removeFile",
+        "from": "holder",
+        "fromAddress": "0x571d447f4f24688eC35Ccf07f1D6993655F6aF15",
+        "selector": "0x0a9c1871",
+        "expectation": "reject: NoSuchFile",
+        "ok": false,
+        "raw": null,
+        "revertData": "0x2a9df442",
+        "decodedRevert": {
+          "signature": "NoSuchFile()",
+          "selector": "0x2a9df442"
+        },
+        "error": "RPC Request failed. URL: https://rpc.xlayer.tech Request body: {\"method\":\"eth_call\",\"params\":[{\"from\":\"0x571d447f4f24688eC35Ccf07f1D6993655F6aF15\",\"to\":\"0xd6efb7adcc9c83dc4924ad56f6a8e4e969b9adb6\",\"data\":\"0x0a9c187100000000000000000000000025b20d3ea6b207506340eab2eb0f45edc800f6b30000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000001370726f62652f70302d30332d6162692e74787400000000000000000000000000\"},\"0x46367b8\"]} Details: exe",
+        "note": "removing a path that does not exist must be rejected"
+      },
+      {
+        "name": "setFallback",
+        "from": "holder",
+        "fromAddress": "0x571d447f4f24688eC35Ccf07f1D6993655F6aF15",
+        "selector": "0x4dc21ad0",
+        "expectation": "accept",
+        "ok": true,
+        "raw": "0x",
+        "revertData": null,
+        "decodedRevert": null,
+        "error": null,
+        "note": "holder can set the fallback path"
+      },
+      {
+        "name": "setOperator",
+        "from": "holder",
+        "fromAddress": "0x571d447f4f24688eC35Ccf07f1D6993655F6aF15",
+        "selector": "0xc88cb026",
+        "expectation": "accept",
+        "ok": true,
+        "raw": "0x",
+        "revertData": null,
+        "decodedRevert": null,
+        "error": null,
+        "note": "holder can authorize a timed operator"
+      },
+      {
+        "name": "putFile",
+        "from": "holder",
+        "fromAddress": "0x571d447f4f24688eC35Ccf07f1D6993655F6aF15",
+        "selector": "0xfab2ed82",
+        "expectation": "accept",
+        "ok": true,
+        "raw": "0x",
+        "revertData": null,
+        "decodedRevert": null,
+        "error": null,
+        "note": "on-chain code does NOT normalize or reject `..` in paths: canonicalization is a client duty"
+      },
+      {
+        "name": "unknown-selector-baseline",
+        "from": "non-editor",
+        "fromAddress": "0x000000000000000000000000000000000000bEEF",
+        "selector": "0xdeadbeef",
+        "expectation": "reject: empty fallback",
+        "ok": false,
+        "raw": null,
+        "revertData": null,
+        "decodedRevert": null,
+        "error": "RPC Request failed. URL: https://rpc.xlayer.tech Request body: {\"method\":\"eth_call\",\"params\":[{\"from\":\"0x000000000000000000000000000000000000bEEF\",\"to\":\"0xd6efb7adcc9c83dc4924ad56f6a8e4e969b9adb6\",\"data\":\"0xdeadbeef\"},\"0x46367b8\"]} Details: execution reverted Version: viem@2.57.7",
+        "note": "baseline: an unknown selector reverts without data, which distinguishes a recognized selector"
+      }
+    ],
+    "gasEstimates": [
+      {
+        "name": "putFile",
+        "fromAddress": "0x571d447f4f24688eC35Ccf07f1D6993655F6aF15",
+        "gas": "296698",
+        "error": null
+      },
+      {
+        "name": "appendChunk",
+        "fromAddress": "0x571d447f4f24688eC35Ccf07f1D6993655F6aF15",
+        "gas": "166903",
+        "error": null
+      },
+      {
+        "name": "setFallback",
+        "fromAddress": "0x571d447f4f24688eC35Ccf07f1D6993655F6aF15",
+        "gas": "96242",
+        "error": null
+      },
+      {
+        "name": "setOperator",
+        "fromAddress": "0x571d447f4f24688eC35Ccf07f1D6993655F6aF15",
+        "gas": "103601",
+        "error": null
+      }
+    ]
+  },
+  "crossCheck": {
+    "pinnedBlock": "73623480",
+    "requiredOperators": [
+      "okx",
+      "drpc"
+    ],
+    "status": "AGREED",
+    "endpoints": [
+      {
+        "url": "https://rpc.xlayer.tech",
+        "operator": "okx",
+        "head": "73623482",
+        "headError": null,
+        "factsRead": 27,
+        "factsFailed": 0,
+        "errors": []
+      },
+      {
+        "url": "https://xlayerrpc.okx.com",
+        "operator": "okx",
+        "head": "73623482",
+        "headError": null,
+        "factsRead": 27,
+        "factsFailed": 0,
+        "errors": []
+      },
+      {
+        "url": "https://xlayer.drpc.org",
+        "operator": "drpc",
+        "head": "73623482",
+        "headError": null,
+        "factsRead": 27,
+        "factsFailed": 0,
+        "errors": []
+      },
+      {
+        "url": "https://196.rpc.thirdweb.com",
+        "operator": "okx",
+        "head": "73623482",
+        "headError": null,
+        "factsRead": 27,
+        "factsFailed": 0,
+        "errors": []
+      }
+    ],
+    "facts": [
+      {
+        "id": "pinnedBlockHash",
+        "description": "block hash of the pinned block",
+        "observations": [
+          {
+            "url": "https://rpc.xlayer.tech",
+            "operator": "okx",
+            "value": "0x28ff5575e7f7aaab1535ff3380cc639eb7a7a1f6a683c5d1d5306846e15fbb6e",
+            "error": "not read"
+          },
+          {
+            "url": "https://xlayerrpc.okx.com",
+            "operator": "okx",
+            "value": "0x28ff5575e7f7aaab1535ff3380cc639eb7a7a1f6a683c5d1d5306846e15fbb6e",
+            "error": "not read"
+          },
+          {
+            "url": "https://xlayer.drpc.org",
+            "operator": "drpc",
+            "value": "0x28ff5575e7f7aaab1535ff3380cc639eb7a7a1f6a683c5d1d5306846e15fbb6e",
+            "error": "not read"
+          },
+          {
+            "url": "https://196.rpc.thirdweb.com",
+            "operator": "okx",
+            "value": "0x28ff5575e7f7aaab1535ff3380cc639eb7a7a1f6a683c5d1d5306846e15fbb6e",
+            "error": "not read"
+          }
+        ],
+        "operatorValues": [
+          {
+            "operator": "okx",
+            "values": [
+              "0x28ff5575e7f7aaab1535ff3380cc639eb7a7a1f6a683c5d1d5306846e15fbb6e"
+            ]
+          },
+          {
+            "operator": "drpc",
+            "values": [
+              "0x28ff5575e7f7aaab1535ff3380cc639eb7a7a1f6a683c5d1d5306846e15fbb6e"
+            ]
+          }
+        ],
+        "distinctValues": [
+          "0x28ff5575e7f7aaab1535ff3380cc639eb7a7a1f6a683c5d1d5306846e15fbb6e"
+        ],
+        "status": "AGREE"
+      },
+      {
+        "id": "chainId",
+        "description": "eth_chainId",
+        "observations": [
+          {
+            "url": "https://rpc.xlayer.tech",
+            "operator": "okx",
+            "value": "196",
+            "error": "not read"
+          },
+          {
+            "url": "https://xlayerrpc.okx.com",
+            "operator": "okx",
+            "value": "196",
+            "error": "not read"
+          },
+          {
+            "url": "https://xlayer.drpc.org",
+            "operator": "drpc",
+            "value": "196",
+            "error": "not read"
+          },
+          {
+            "url": "https://196.rpc.thirdweb.com",
+            "operator": "okx",
+            "value": "196",
+            "error": "not read"
+          }
+        ],
+        "operatorValues": [
+          {
+            "operator": "okx",
+            "values": [
+              "196"
+            ]
+          },
+          {
+            "operator": "drpc",
+            "values": [
+              "196"
+            ]
+          }
+        ],
+        "distinctValues": [
+          "196"
+        ],
+        "status": "AGREE"
+      },
+      {
+        "id": "implementation.factory",
+        "description": "ERC-1967 slot 0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc on the factory proxy",
+        "observations": [
+          {
+            "url": "https://rpc.xlayer.tech",
+            "operator": "okx",
+            "value": "0x74956236ab64ed143933040b4137e8a352e4d17b",
+            "error": "not read"
+          },
+          {
+            "url": "https://xlayerrpc.okx.com",
+            "operator": "okx",
+            "value": "0x74956236ab64ed143933040b4137e8a352e4d17b",
+            "error": "not read"
+          },
+          {
+            "url": "https://xlayer.drpc.org",
+            "operator": "drpc",
+            "value": "0x74956236ab64ed143933040b4137e8a352e4d17b",
+            "error": "not read"
+          },
+          {
+            "url": "https://196.rpc.thirdweb.com",
+            "operator": "okx",
+            "value": "0x74956236ab64ed143933040b4137e8a352e4d17b",
+            "error": "not read"
+          }
+        ],
+        "operatorValues": [
+          {
+            "operator": "okx",
+            "values": [
+              "0x74956236ab64ed143933040b4137e8a352e4d17b"
+            ]
+          },
+          {
+            "operator": "drpc",
+            "values": [
+              "0x74956236ab64ed143933040b4137e8a352e4d17b"
+            ]
+          }
+        ],
+        "distinctValues": [
+          "0x74956236ab64ed143933040b4137e8a352e4d17b"
+        ],
+        "status": "AGREE"
+      },
+      {
+        "id": "implementation.siteRegistry",
+        "description": "ERC-1967 slot 0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc on the SiteRegistry proxy",
+        "observations": [
+          {
+            "url": "https://rpc.xlayer.tech",
+            "operator": "okx",
+            "value": "0xa85c4143d1d4a77f54b8e4ecc9e6d1418afea45f",
+            "error": "not read"
+          },
+          {
+            "url": "https://xlayerrpc.okx.com",
+            "operator": "okx",
+            "value": "0xa85c4143d1d4a77f54b8e4ecc9e6d1418afea45f",
+            "error": "not read"
+          },
+          {
+            "url": "https://xlayer.drpc.org",
+            "operator": "drpc",
+            "value": "0xa85c4143d1d4a77f54b8e4ecc9e6d1418afea45f",
+            "error": "not read"
+          },
+          {
+            "url": "https://196.rpc.thirdweb.com",
+            "operator": "okx",
+            "value": "0xa85c4143d1d4a77f54b8e4ecc9e6d1418afea45f",
+            "error": "not read"
+          }
+        ],
+        "operatorValues": [
+          {
+            "operator": "okx",
+            "values": [
+              "0xa85c4143d1d4a77f54b8e4ecc9e6d1418afea45f"
+            ]
+          },
+          {
+            "operator": "drpc",
+            "values": [
+              "0xa85c4143d1d4a77f54b8e4ecc9e6d1418afea45f"
+            ]
+          }
+        ],
+        "distinctValues": [
+          "0xa85c4143d1d4a77f54b8e4ecc9e6d1418afea45f"
+        ],
+        "status": "AGREE"
+      },
+      {
+        "id": "implementation.domainBinding",
+        "description": "ERC-1967 slot 0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc on the DomainBinding proxy",
+        "observations": [
+          {
+            "url": "https://rpc.xlayer.tech",
+            "operator": "okx",
+            "value": "0x5ebf29b80789e548907c707530c3c7607c4347df",
+            "error": "not read"
+          },
+          {
+            "url": "https://xlayerrpc.okx.com",
+            "operator": "okx",
+            "value": "0x5ebf29b80789e548907c707530c3c7607c4347df",
+            "error": "not read"
+          },
+          {
+            "url": "https://xlayer.drpc.org",
+            "operator": "drpc",
+            "value": "0x5ebf29b80789e548907c707530c3c7607c4347df",
+            "error": "not read"
+          },
+          {
+            "url": "https://196.rpc.thirdweb.com",
+            "operator": "okx",
+            "value": "0x5ebf29b80789e548907c707530c3c7607c4347df",
+            "error": "not read"
+          }
+        ],
+        "operatorValues": [
+          {
+            "operator": "okx",
+            "values": [
+              "0x5ebf29b80789e548907c707530c3c7607c4347df"
+            ]
+          },
+          {
+            "operator": "drpc",
+            "values": [
+              "0x5ebf29b80789e548907c707530c3c7607c4347df"
+            ]
+          }
+        ],
+        "distinctValues": [
+          "0x5ebf29b80789e548907c707530c3c7607c4347df"
+        ],
+        "status": "AGREE"
+      },
+      {
+        "id": "codeKeccak.factoryImplementation",
+        "description": "keccak256(bytecode) of the factory implementation",
+        "observations": [
+          {
+            "url": "https://rpc.xlayer.tech",
+            "operator": "okx",
+            "value": "0x7fb15e83f925e493ef6e84ee3b1021eed994966552add6011184a1fb3ad7fe81",
+            "error": "not read"
+          },
+          {
+            "url": "https://xlayerrpc.okx.com",
+            "operator": "okx",
+            "value": "0x7fb15e83f925e493ef6e84ee3b1021eed994966552add6011184a1fb3ad7fe81",
+            "error": "not read"
+          },
+          {
+            "url": "https://xlayer.drpc.org",
+            "operator": "drpc",
+            "value": "0x7fb15e83f925e493ef6e84ee3b1021eed994966552add6011184a1fb3ad7fe81",
+            "error": "not read"
+          },
+          {
+            "url": "https://196.rpc.thirdweb.com",
+            "operator": "okx",
+            "value": "0x7fb15e83f925e493ef6e84ee3b1021eed994966552add6011184a1fb3ad7fe81",
+            "error": "not read"
+          }
+        ],
+        "operatorValues": [
+          {
+            "operator": "okx",
+            "values": [
+              "0x7fb15e83f925e493ef6e84ee3b1021eed994966552add6011184a1fb3ad7fe81"
+            ]
+          },
+          {
+            "operator": "drpc",
+            "values": [
+              "0x7fb15e83f925e493ef6e84ee3b1021eed994966552add6011184a1fb3ad7fe81"
+            ]
+          }
+        ],
+        "distinctValues": [
+          "0x7fb15e83f925e493ef6e84ee3b1021eed994966552add6011184a1fb3ad7fe81"
+        ],
+        "status": "AGREE"
+      },
+      {
+        "id": "codeKeccak.siteRegistryImplementation",
+        "description": "keccak256(bytecode) of the SiteRegistry implementation",
+        "observations": [
+          {
+            "url": "https://rpc.xlayer.tech",
+            "operator": "okx",
+            "value": "0xec8c29acef66eb1bf973d6e80202258830631b7b2849f75d04365c6f80443e6d",
+            "error": "not read"
+          },
+          {
+            "url": "https://xlayerrpc.okx.com",
+            "operator": "okx",
+            "value": "0xec8c29acef66eb1bf973d6e80202258830631b7b2849f75d04365c6f80443e6d",
+            "error": "not read"
+          },
+          {
+            "url": "https://xlayer.drpc.org",
+            "operator": "drpc",
+            "value": "0xec8c29acef66eb1bf973d6e80202258830631b7b2849f75d04365c6f80443e6d",
+            "error": "not read"
+          },
+          {
+            "url": "https://196.rpc.thirdweb.com",
+            "operator": "okx",
+            "value": "0xec8c29acef66eb1bf973d6e80202258830631b7b2849f75d04365c6f80443e6d",
+            "error": "not read"
+          }
+        ],
+        "operatorValues": [
+          {
+            "operator": "okx",
+            "values": [
+              "0xec8c29acef66eb1bf973d6e80202258830631b7b2849f75d04365c6f80443e6d"
+            ]
+          },
+          {
+            "operator": "drpc",
+            "values": [
+              "0xec8c29acef66eb1bf973d6e80202258830631b7b2849f75d04365c6f80443e6d"
+            ]
+          }
+        ],
+        "distinctValues": [
+          "0xec8c29acef66eb1bf973d6e80202258830631b7b2849f75d04365c6f80443e6d"
+        ],
+        "status": "AGREE"
+      },
+      {
+        "id": "codeKeccak.domainBindingImplementation",
+        "description": "keccak256(bytecode) of the DomainBinding implementation",
+        "observations": [
+          {
+            "url": "https://rpc.xlayer.tech",
+            "operator": "okx",
+            "value": "0x6cdc2f5fa922b4f73d3e37644b0fcfc6bf153279464581611818cd88ee27aa2d",
+            "error": "not read"
+          },
+          {
+            "url": "https://xlayerrpc.okx.com",
+            "operator": "okx",
+            "value": "0x6cdc2f5fa922b4f73d3e37644b0fcfc6bf153279464581611818cd88ee27aa2d",
+            "error": "not read"
+          },
+          {
+            "url": "https://xlayer.drpc.org",
+            "operator": "drpc",
+            "value": "0x6cdc2f5fa922b4f73d3e37644b0fcfc6bf153279464581611818cd88ee27aa2d",
+            "error": "not read"
+          },
+          {
+            "url": "https://196.rpc.thirdweb.com",
+            "operator": "okx",
+            "value": "0x6cdc2f5fa922b4f73d3e37644b0fcfc6bf153279464581611818cd88ee27aa2d",
+            "error": "not read"
+          }
+        ],
+        "operatorValues": [
+          {
+            "operator": "okx",
+            "values": [
+              "0x6cdc2f5fa922b4f73d3e37644b0fcfc6bf153279464581611818cd88ee27aa2d"
+            ]
+          },
+          {
+            "operator": "drpc",
+            "values": [
+              "0x6cdc2f5fa922b4f73d3e37644b0fcfc6bf153279464581611818cd88ee27aa2d"
+            ]
+          }
+        ],
+        "distinctValues": [
+          "0x6cdc2f5fa922b4f73d3e37644b0fcfc6bf153279464581611818cd88ee27aa2d"
+        ],
+        "status": "AGREE"
+      },
+      {
+        "id": "codeKeccak.opener",
+        "description": "keccak256(bytecode) of the (non-proxy) Opener",
+        "observations": [
+          {
+            "url": "https://rpc.xlayer.tech",
+            "operator": "okx",
+            "value": "0xf0c334d8d72983af1c38694dac7a1c83348c0c000cbb987467d2aedee06999fd",
+            "error": "not read"
+          },
+          {
+            "url": "https://xlayerrpc.okx.com",
+            "operator": "okx",
+            "value": "0xf0c334d8d72983af1c38694dac7a1c83348c0c000cbb987467d2aedee06999fd",
+            "error": "not read"
+          },
+          {
+            "url": "https://xlayer.drpc.org",
+            "operator": "drpc",
+            "value": "0xf0c334d8d72983af1c38694dac7a1c83348c0c000cbb987467d2aedee06999fd",
+            "error": "not read"
+          },
+          {
+            "url": "https://196.rpc.thirdweb.com",
+            "operator": "okx",
+            "value": "0xf0c334d8d72983af1c38694dac7a1c83348c0c000cbb987467d2aedee06999fd",
+            "error": "not read"
+          }
+        ],
+        "operatorValues": [
+          {
+            "operator": "okx",
+            "values": [
+              "0xf0c334d8d72983af1c38694dac7a1c83348c0c000cbb987467d2aedee06999fd"
+            ]
+          },
+          {
+            "operator": "drpc",
+            "values": [
+              "0xf0c334d8d72983af1c38694dac7a1c83348c0c000cbb987467d2aedee06999fd"
+            ]
+          }
+        ],
+        "distinctValues": [
+          "0xf0c334d8d72983af1c38694dac7a1c83348c0c000cbb987467d2aedee06999fd"
+        ],
+        "status": "AGREE"
+      },
+      {
+        "id": "factory.cpuCount",
+        "description": "factory.cpuCount()",
+        "observations": [
+          {
+            "url": "https://rpc.xlayer.tech",
+            "operator": "okx",
+            "value": "369",
+            "error": "not read"
+          },
+          {
+            "url": "https://xlayerrpc.okx.com",
+            "operator": "okx",
+            "value": "369",
+            "error": "not read"
+          },
+          {
+            "url": "https://xlayer.drpc.org",
+            "operator": "drpc",
+            "value": "369",
+            "error": "not read"
+          },
+          {
+            "url": "https://196.rpc.thirdweb.com",
+            "operator": "okx",
+            "value": "369",
+            "error": "not read"
+          }
+        ],
+        "operatorValues": [
+          {
+            "operator": "okx",
+            "values": [
+              "369"
+            ]
+          },
+          {
+            "operator": "drpc",
+            "values": [
+              "369"
+            ]
+          }
+        ],
+        "distinctValues": [
+          "369"
+        ],
+        "status": "AGREE"
+      },
+      {
+        "id": "factory.isSealed",
+        "description": "factory.isSealed()",
+        "observations": [
+          {
+            "url": "https://rpc.xlayer.tech",
+            "operator": "okx",
+            "value": "false",
+            "error": "not read"
+          },
+          {
+            "url": "https://xlayerrpc.okx.com",
+            "operator": "okx",
+            "value": "false",
+            "error": "not read"
+          },
+          {
+            "url": "https://xlayer.drpc.org",
+            "operator": "drpc",
+            "value": "false",
+            "error": "not read"
+          },
+          {
+            "url": "https://196.rpc.thirdweb.com",
+            "operator": "okx",
+            "value": "false",
+            "error": "not read"
+          }
+        ],
+        "operatorValues": [
+          {
+            "operator": "okx",
+            "values": [
+              "false"
+            ]
+          },
+          {
+            "operator": "drpc",
+            "values": [
+              "false"
+            ]
+          }
+        ],
+        "distinctValues": [
+          "false"
+        ],
+        "status": "AGREE"
+      },
+      {
+        "id": "factory.cpuAt0",
+        "description": "factory.cpuAt(0)",
+        "observations": [
+          {
+            "url": "https://rpc.xlayer.tech",
+            "operator": "okx",
+            "value": "0x839bdd6fa7a66416a609a735e11de5411b98574e",
+            "error": "not read"
+          },
+          {
+            "url": "https://xlayerrpc.okx.com",
+            "operator": "okx",
+            "value": "0x839bdd6fa7a66416a609a735e11de5411b98574e",
+            "error": "not read"
+          },
+          {
+            "url": "https://xlayer.drpc.org",
+            "operator": "drpc",
+            "value": "0x839bdd6fa7a66416a609a735e11de5411b98574e",
+            "error": "not read"
+          },
+          {
+            "url": "https://196.rpc.thirdweb.com",
+            "operator": "okx",
+            "value": "0x839bdd6fa7a66416a609a735e11de5411b98574e",
+            "error": "not read"
+          }
+        ],
+        "operatorValues": [
+          {
+            "operator": "okx",
+            "values": [
+              "0x839bdd6fa7a66416a609a735e11de5411b98574e"
+            ]
+          },
+          {
+            "operator": "drpc",
+            "values": [
+              "0x839bdd6fa7a66416a609a735e11de5411b98574e"
+            ]
+          }
+        ],
+        "distinctValues": [
+          "0x839bdd6fa7a66416a609a735e11de5411b98574e"
+        ],
+        "status": "AGREE"
+      },
+      {
+        "id": "opener.FEE",
+        "description": "opener.FEE()",
+        "observations": [
+          {
+            "url": "https://rpc.xlayer.tech",
+            "operator": "okx",
+            "value": "80000000000000000",
+            "error": "not read"
+          },
+          {
+            "url": "https://xlayerrpc.okx.com",
+            "operator": "okx",
+            "value": "80000000000000000",
+            "error": "not read"
+          },
+          {
+            "url": "https://xlayer.drpc.org",
+            "operator": "drpc",
+            "value": "80000000000000000",
+            "error": "not read"
+          },
+          {
+            "url": "https://196.rpc.thirdweb.com",
+            "operator": "okx",
+            "value": "80000000000000000",
+            "error": "not read"
+          }
+        ],
+        "operatorValues": [
+          {
+            "operator": "okx",
+            "values": [
+              "80000000000000000"
+            ]
+          },
+          {
+            "operator": "drpc",
+            "values": [
+              "80000000000000000"
+            ]
+          }
+        ],
+        "distinctValues": [
+          "80000000000000000"
+        ],
+        "status": "AGREE"
+      },
+      {
+        "id": "opener.accountOf(0,2)",
+        "description": "opener.accountOf(processor, 2)",
+        "observations": [
+          {
+            "url": "https://rpc.xlayer.tech",
+            "operator": "okx",
+            "value": "0x25b20d3ea6b207506340eab2eb0f45edc800f6b3",
+            "error": "not read"
+          },
+          {
+            "url": "https://xlayerrpc.okx.com",
+            "operator": "okx",
+            "value": "0x25b20d3ea6b207506340eab2eb0f45edc800f6b3",
+            "error": "not read"
+          },
+          {
+            "url": "https://xlayer.drpc.org",
+            "operator": "drpc",
+            "value": "0x25b20d3ea6b207506340eab2eb0f45edc800f6b3",
+            "error": "not read"
+          },
+          {
+            "url": "https://196.rpc.thirdweb.com",
+            "operator": "okx",
+            "value": "0x25b20d3ea6b207506340eab2eb0f45edc800f6b3",
+            "error": "not read"
+          }
+        ],
+        "operatorValues": [
+          {
+            "operator": "okx",
+            "values": [
+              "0x25b20d3ea6b207506340eab2eb0f45edc800f6b3"
+            ]
+          },
+          {
+            "operator": "drpc",
+            "values": [
+              "0x25b20d3ea6b207506340eab2eb0f45edc800f6b3"
+            ]
+          }
+        ],
+        "distinctValues": [
+          "0x25b20d3ea6b207506340eab2eb0f45edc800f6b3"
+        ],
+        "status": "AGREE"
+      },
+      {
+        "id": "opener.isOpened(0,2)",
+        "description": "opener.isOpened(processor, 2)",
+        "observations": [
+          {
+            "url": "https://rpc.xlayer.tech",
+            "operator": "okx",
+            "value": "true",
+            "error": "not read"
+          },
+          {
+            "url": "https://xlayerrpc.okx.com",
+            "operator": "okx",
+            "value": "true",
+            "error": "not read"
+          },
+          {
+            "url": "https://xlayer.drpc.org",
+            "operator": "drpc",
+            "value": "true",
+            "error": "not read"
+          },
+          {
+            "url": "https://196.rpc.thirdweb.com",
+            "operator": "okx",
+            "value": "true",
+            "error": "not read"
+          }
+        ],
+        "operatorValues": [
+          {
+            "operator": "okx",
+            "values": [
+              "true"
+            ]
+          },
+          {
+            "operator": "drpc",
+            "values": [
+              "true"
+            ]
+          }
+        ],
+        "distinctValues": [
+          "true"
+        ],
+        "status": "AGREE"
+      },
+      {
+        "id": "binding.monthlyFee",
+        "description": "DomainBinding.monthlyFee()",
+        "observations": [
+          {
+            "url": "https://rpc.xlayer.tech",
+            "operator": "okx",
+            "value": "0",
+            "error": "not read"
+          },
+          {
+            "url": "https://xlayerrpc.okx.com",
+            "operator": "okx",
+            "value": "0",
+            "error": "not read"
+          },
+          {
+            "url": "https://xlayer.drpc.org",
+            "operator": "drpc",
+            "value": "0",
+            "error": "not read"
+          },
+          {
+            "url": "https://196.rpc.thirdweb.com",
+            "operator": "okx",
+            "value": "0",
+            "error": "not read"
+          }
+        ],
+        "operatorValues": [
+          {
+            "operator": "okx",
+            "values": [
+              "0"
+            ]
+          },
+          {
+            "operator": "drpc",
+            "values": [
+              "0"
+            ]
+          }
+        ],
+        "distinctValues": [
+          "0"
+        ],
+        "status": "AGREE"
+      },
+      {
+        "id": "binding.isContainerLive",
+        "description": "DomainBinding.isContainerLive(0x25B20D3eA6b207506340eab2Eb0f45Edc800F6b3)",
+        "observations": [
+          {
+            "url": "https://rpc.xlayer.tech",
+            "operator": "okx",
+            "value": "true",
+            "error": "not read"
+          },
+          {
+            "url": "https://xlayerrpc.okx.com",
+            "operator": "okx",
+            "value": "true",
+            "error": "not read"
+          },
+          {
+            "url": "https://xlayer.drpc.org",
+            "operator": "drpc",
+            "value": "true",
+            "error": "not read"
+          },
+          {
+            "url": "https://196.rpc.thirdweb.com",
+            "operator": "okx",
+            "value": "true",
+            "error": "not read"
+          }
+        ],
+        "operatorValues": [
+          {
+            "operator": "okx",
+            "values": [
+              "true"
+            ]
+          },
+          {
+            "operator": "drpc",
+            "values": [
+              "true"
+            ]
+          }
+        ],
+        "distinctValues": [
+          "true"
+        ],
+        "status": "AGREE"
+      },
+      {
+        "id": "binding.containerPaidUntil",
+        "description": "DomainBinding.containerPaidUntil(0x25B20D3eA6b207506340eab2Eb0f45Edc800F6b3)",
+        "observations": [
+          {
+            "url": "https://rpc.xlayer.tech",
+            "operator": "okx",
+            "value": "2102926150",
+            "error": "not read"
+          },
+          {
+            "url": "https://xlayerrpc.okx.com",
+            "operator": "okx",
+            "value": "2102926150",
+            "error": "not read"
+          },
+          {
+            "url": "https://xlayer.drpc.org",
+            "operator": "drpc",
+            "value": "2102926150",
+            "error": "not read"
+          },
+          {
+            "url": "https://196.rpc.thirdweb.com",
+            "operator": "okx",
+            "value": "2102926150",
+            "error": "not read"
+          }
+        ],
+        "operatorValues": [
+          {
+            "operator": "okx",
+            "values": [
+              "2102926150"
+            ]
+          },
+          {
+            "operator": "drpc",
+            "values": [
+              "2102926150"
+            ]
+          }
+        ],
+        "distinctValues": [
+          "2102926150"
+        ],
+        "status": "AGREE"
+      },
+      {
+        "id": "binding.isLive(name,container)",
+        "description": "DomainBinding.isLive(\"2.2.0.tape\", 0x25B20D3eA6b207506340eab2Eb0f45Edc800F6b3)",
+        "observations": [
+          {
+            "url": "https://rpc.xlayer.tech",
+            "operator": "okx",
+            "value": "true",
+            "error": "not read"
+          },
+          {
+            "url": "https://xlayerrpc.okx.com",
+            "operator": "okx",
+            "value": "true",
+            "error": "not read"
+          },
+          {
+            "url": "https://xlayer.drpc.org",
+            "operator": "drpc",
+            "value": "true",
+            "error": "not read"
+          },
+          {
+            "url": "https://196.rpc.thirdweb.com",
+            "operator": "okx",
+            "value": "true",
+            "error": "not read"
+          }
+        ],
+        "operatorValues": [
+          {
+            "operator": "okx",
+            "values": [
+              "true"
+            ]
+          },
+          {
+            "operator": "drpc",
+            "values": [
+              "true"
+            ]
+          }
+        ],
+        "distinctValues": [
+          "true"
+        ],
+        "status": "AGREE"
+      },
+      {
+        "id": "registry.fileInfoRaw",
+        "description": "raw eth_call return of fileInfo(0x25B20D3eA6b207506340eab2Eb0f45Edc800F6b3, \"index.html\")",
+        "observations": [
+          {
+            "url": "https://rpc.xlayer.tech",
+            "operator": "okx",
+            "value": "0x000000000000000000000000000000000000000000000000000000000000697100000000000000000000000000000000000000000000000000000000000000a0e0f21c08c2ad09d3818d39c802153d33b6931311300d7419228d98da0a8300f0000000000000000000000000000000000000000000000000000000006aca052300000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000018746578742f68746d6c3b20636861727365743d7574662d380000000000000000",
+            "error": "not read"
+          },
+          {
+            "url": "https://xlayerrpc.okx.com",
+            "operator": "okx",
+            "value": "0x000000000000000000000000000000000000000000000000000000000000697100000000000000000000000000000000000000000000000000000000000000a0e0f21c08c2ad09d3818d39c802153d33b6931311300d7419228d98da0a8300f0000000000000000000000000000000000000000000000000000000006aca052300000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000018746578742f68746d6c3b20636861727365743d7574662d380000000000000000",
+            "error": "not read"
+          },
+          {
+            "url": "https://xlayer.drpc.org",
+            "operator": "drpc",
+            "value": "0x000000000000000000000000000000000000000000000000000000000000697100000000000000000000000000000000000000000000000000000000000000a0e0f21c08c2ad09d3818d39c802153d33b6931311300d7419228d98da0a8300f0000000000000000000000000000000000000000000000000000000006aca052300000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000018746578742f68746d6c3b20636861727365743d7574662d380000000000000000",
+            "error": "not read"
+          },
+          {
+            "url": "https://196.rpc.thirdweb.com",
+            "operator": "okx",
+            "value": "0x000000000000000000000000000000000000000000000000000000000000697100000000000000000000000000000000000000000000000000000000000000a0e0f21c08c2ad09d3818d39c802153d33b6931311300d7419228d98da0a8300f0000000000000000000000000000000000000000000000000000000006aca052300000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000018746578742f68746d6c3b20636861727365743d7574662d380000000000000000",
+            "error": "not read"
+          }
+        ],
+        "operatorValues": [
+          {
+            "operator": "okx",
+            "values": [
+              "0x000000000000000000000000000000000000000000000000000000000000697100000000000000000000000000000000000000000000000000000000000000a0e0f21c08c2ad09d3818d39c802153d33b6931311300d7419228d98da0a8300f0000000000000000000000000000000000000000000000000000000006aca052300000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000018746578742f68746d6c3b20636861727365743d7574662d380000000000000000"
+            ]
+          },
+          {
+            "operator": "drpc",
+            "values": [
+              "0x000000000000000000000000000000000000000000000000000000000000697100000000000000000000000000000000000000000000000000000000000000a0e0f21c08c2ad09d3818d39c802153d33b6931311300d7419228d98da0a8300f0000000000000000000000000000000000000000000000000000000006aca052300000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000018746578742f68746d6c3b20636861727365743d7574662d380000000000000000"
+            ]
+          }
+        ],
+        "distinctValues": [
+          "0x000000000000000000000000000000000000000000000000000000000000697100000000000000000000000000000000000000000000000000000000000000a0e0f21c08c2ad09d3818d39c802153d33b6931311300d7419228d98da0a8300f0000000000000000000000000000000000000000000000000000000006aca052300000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000018746578742f68746d6c3b20636861727365743d7574662d380000000000000000"
+        ],
+        "status": "AGREE"
+      },
+      {
+        "id": "registry.pathCount",
+        "description": "SiteRegistry.pathCount(0x25B20D3eA6b207506340eab2Eb0f45Edc800F6b3)",
+        "observations": [
+          {
+            "url": "https://rpc.xlayer.tech",
+            "operator": "okx",
+            "value": "1",
+            "error": "not read"
+          },
+          {
+            "url": "https://xlayerrpc.okx.com",
+            "operator": "okx",
+            "value": "1",
+            "error": "not read"
+          },
+          {
+            "url": "https://xlayer.drpc.org",
+            "operator": "drpc",
+            "value": "1",
+            "error": "not read"
+          },
+          {
+            "url": "https://196.rpc.thirdweb.com",
+            "operator": "okx",
+            "value": "1",
+            "error": "not read"
+          }
+        ],
+        "operatorValues": [
+          {
+            "operator": "okx",
+            "values": [
+              "1"
+            ]
+          },
+          {
+            "operator": "drpc",
+            "values": [
+              "1"
+            ]
+          }
+        ],
+        "distinctValues": [
+          "1"
+        ],
+        "status": "AGREE"
+      },
+      {
+        "id": "registry.fallbackPath",
+        "description": "SiteRegistry.fallbackPath(0x25B20D3eA6b207506340eab2Eb0f45Edc800F6b3)",
+        "observations": [
+          {
+            "url": "https://rpc.xlayer.tech",
+            "operator": "okx",
+            "value": "index.html",
+            "error": "not read"
+          },
+          {
+            "url": "https://xlayerrpc.okx.com",
+            "operator": "okx",
+            "value": "index.html",
+            "error": "not read"
+          },
+          {
+            "url": "https://xlayer.drpc.org",
+            "operator": "drpc",
+            "value": "index.html",
+            "error": "not read"
+          },
+          {
+            "url": "https://196.rpc.thirdweb.com",
+            "operator": "okx",
+            "value": "index.html",
+            "error": "not read"
+          }
+        ],
+        "operatorValues": [
+          {
+            "operator": "okx",
+            "values": [
+              "index.html"
+            ]
+          },
+          {
+            "operator": "drpc",
+            "values": [
+              "index.html"
+            ]
+          }
+        ],
+        "distinctValues": [
+          "index.html"
+        ],
+        "status": "AGREE"
+      },
+      {
+        "id": "registry.isOpenedContainer",
+        "description": "SiteRegistry.isOpenedContainer(0x25B20D3eA6b207506340eab2Eb0f45Edc800F6b3)",
+        "observations": [
+          {
+            "url": "https://rpc.xlayer.tech",
+            "operator": "okx",
+            "value": "true",
+            "error": "not read"
+          },
+          {
+            "url": "https://xlayerrpc.okx.com",
+            "operator": "okx",
+            "value": "true",
+            "error": "not read"
+          },
+          {
+            "url": "https://xlayer.drpc.org",
+            "operator": "drpc",
+            "value": "true",
+            "error": "not read"
+          },
+          {
+            "url": "https://196.rpc.thirdweb.com",
+            "operator": "okx",
+            "value": "true",
+            "error": "not read"
+          }
+        ],
+        "operatorValues": [
+          {
+            "operator": "okx",
+            "values": [
+              "true"
+            ]
+          },
+          {
+            "operator": "drpc",
+            "values": [
+              "true"
+            ]
+          }
+        ],
+        "distinctValues": [
+          "true"
+        ],
+        "status": "AGREE"
+      },
+      {
+        "id": "registry.fileBytesSha256",
+        "description": "SHA-256 of read(0x25B20D3eA6b207506340eab2Eb0f45Edc800F6b3, \"index.html\") bytes",
+        "observations": [
+          {
+            "url": "https://rpc.xlayer.tech",
+            "operator": "okx",
+            "value": "0xe0f21c08c2ad09d3818d39c802153d33b6931311300d7419228d98da0a8300f0",
+            "error": "not read"
+          },
+          {
+            "url": "https://xlayerrpc.okx.com",
+            "operator": "okx",
+            "value": "0xe0f21c08c2ad09d3818d39c802153d33b6931311300d7419228d98da0a8300f0",
+            "error": "not read"
+          },
+          {
+            "url": "https://xlayer.drpc.org",
+            "operator": "drpc",
+            "value": "0xe0f21c08c2ad09d3818d39c802153d33b6931311300d7419228d98da0a8300f0",
+            "error": "not read"
+          },
+          {
+            "url": "https://196.rpc.thirdweb.com",
+            "operator": "okx",
+            "value": "0xe0f21c08c2ad09d3818d39c802153d33b6931311300d7419228d98da0a8300f0",
+            "error": "not read"
+          }
+        ],
+        "operatorValues": [
+          {
+            "operator": "okx",
+            "values": [
+              "0xe0f21c08c2ad09d3818d39c802153d33b6931311300d7419228d98da0a8300f0"
+            ]
+          },
+          {
+            "operator": "drpc",
+            "values": [
+              "0xe0f21c08c2ad09d3818d39c802153d33b6931311300d7419228d98da0a8300f0"
+            ]
+          }
+        ],
+        "distinctValues": [
+          "0xe0f21c08c2ad09d3818d39c802153d33b6931311300d7419228d98da0a8300f0"
+        ],
+        "status": "AGREE"
+      },
+      {
+        "id": "container.tokenRaw",
+        "description": "raw eth_call return of container.token()",
+        "observations": [
+          {
+            "url": "https://rpc.xlayer.tech",
+            "operator": "okx",
+            "value": "0x00000000000000000000000000000000000000000000000000000000000000c4000000000000000000000000839bdd6fa7a66416a609a735e11de5411b98574e0000000000000000000000000000000000000000000000000000000000000002",
+            "error": "not read"
+          },
+          {
+            "url": "https://xlayerrpc.okx.com",
+            "operator": "okx",
+            "value": "0x00000000000000000000000000000000000000000000000000000000000000c4000000000000000000000000839bdd6fa7a66416a609a735e11de5411b98574e0000000000000000000000000000000000000000000000000000000000000002",
+            "error": "not read"
+          },
+          {
+            "url": "https://xlayer.drpc.org",
+            "operator": "drpc",
+            "value": "0x00000000000000000000000000000000000000000000000000000000000000c4000000000000000000000000839bdd6fa7a66416a609a735e11de5411b98574e0000000000000000000000000000000000000000000000000000000000000002",
+            "error": "not read"
+          },
+          {
+            "url": "https://196.rpc.thirdweb.com",
+            "operator": "okx",
+            "value": "0x00000000000000000000000000000000000000000000000000000000000000c4000000000000000000000000839bdd6fa7a66416a609a735e11de5411b98574e0000000000000000000000000000000000000000000000000000000000000002",
+            "error": "not read"
+          }
+        ],
+        "operatorValues": [
+          {
+            "operator": "okx",
+            "values": [
+              "0x00000000000000000000000000000000000000000000000000000000000000c4000000000000000000000000839bdd6fa7a66416a609a735e11de5411b98574e0000000000000000000000000000000000000000000000000000000000000002"
+            ]
+          },
+          {
+            "operator": "drpc",
+            "values": [
+              "0x00000000000000000000000000000000000000000000000000000000000000c4000000000000000000000000839bdd6fa7a66416a609a735e11de5411b98574e0000000000000000000000000000000000000000000000000000000000000002"
+            ]
+          }
+        ],
+        "distinctValues": [
+          "0x00000000000000000000000000000000000000000000000000000000000000c4000000000000000000000000839bdd6fa7a66416a609a735e11de5411b98574e0000000000000000000000000000000000000000000000000000000000000002"
+        ],
+        "status": "AGREE"
+      },
+      {
+        "id": "container.owner",
+        "description": "container.owner()",
+        "observations": [
+          {
+            "url": "https://rpc.xlayer.tech",
+            "operator": "okx",
+            "value": "0x571d447f4f24688ec35ccf07f1d6993655f6af15",
+            "error": "not read"
+          },
+          {
+            "url": "https://xlayerrpc.okx.com",
+            "operator": "okx",
+            "value": "0x571d447f4f24688ec35ccf07f1d6993655f6af15",
+            "error": "not read"
+          },
+          {
+            "url": "https://xlayer.drpc.org",
+            "operator": "drpc",
+            "value": "0x571d447f4f24688ec35ccf07f1d6993655f6af15",
+            "error": "not read"
+          },
+          {
+            "url": "https://196.rpc.thirdweb.com",
+            "operator": "okx",
+            "value": "0x571d447f4f24688ec35ccf07f1d6993655f6af15",
+            "error": "not read"
+          }
+        ],
+        "operatorValues": [
+          {
+            "operator": "okx",
+            "values": [
+              "0x571d447f4f24688ec35ccf07f1d6993655f6af15"
+            ]
+          },
+          {
+            "operator": "drpc",
+            "values": [
+              "0x571d447f4f24688ec35ccf07f1d6993655f6af15"
+            ]
+          }
+        ],
+        "distinctValues": [
+          "0x571d447f4f24688ec35ccf07f1d6993655f6af15"
+        ],
+        "status": "AGREE"
+      },
+      {
+        "id": "processor.ownerOf2",
+        "description": "processor.ownerOf(2)",
+        "observations": [
+          {
+            "url": "https://rpc.xlayer.tech",
+            "operator": "okx",
+            "value": "0x571d447f4f24688ec35ccf07f1d6993655f6af15",
+            "error": "not read"
+          },
+          {
+            "url": "https://xlayerrpc.okx.com",
+            "operator": "okx",
+            "value": "0x571d447f4f24688ec35ccf07f1d6993655f6af15",
+            "error": "not read"
+          },
+          {
+            "url": "https://xlayer.drpc.org",
+            "operator": "drpc",
+            "value": "0x571d447f4f24688ec35ccf07f1d6993655f6af15",
+            "error": "not read"
+          },
+          {
+            "url": "https://196.rpc.thirdweb.com",
+            "operator": "okx",
+            "value": "0x571d447f4f24688ec35ccf07f1d6993655f6af15",
+            "error": "not read"
+          }
+        ],
+        "operatorValues": [
+          {
+            "operator": "okx",
+            "values": [
+              "0x571d447f4f24688ec35ccf07f1d6993655f6af15"
+            ]
+          },
+          {
+            "operator": "drpc",
+            "values": [
+              "0x571d447f4f24688ec35ccf07f1d6993655f6af15"
+            ]
+          }
+        ],
+        "distinctValues": [
+          "0x571d447f4f24688ec35ccf07f1d6993655f6af15"
+        ],
+        "status": "AGREE"
+      }
+    ]
+  },
+  "limitations": [
+    "Reads are a consistent snapshot at one pinned block, not a finality guarantee: X Layer's sequencer publishes `latest` before `safe`/`finalized`, so a reorg above the pin is still possible.",
+    "chainProbe.fees.gasPriceWei comes from eth_gasPrice, which is not pinned to the block; the other fee values are eth_call results at the pinned block.",
+    "Selector presence is a byte-substring search of PUSH4 constants: it is necessary but not sufficient evidence of dispatch. Live eth_call return values and revert payloads provide the semantic evidence.",
+    "Revert-error names (NotOwner, BadIndex, NoSuchFile, TooLarge) were recovered by recomputing keccak256 over candidate signatures and matching the observed 4-byte values; no published X Layer ABI was available for these custom errors.",
+    "On-chain SiteRegistry does not enforce SHA-256/size consistency and does not canonicalize `..` in paths: those checks are the client's responsibility (TapeCI verifier).",
+    "The implementation allowlist is TapeKit's published pin, not an independent audit; a compromised allowlist would be accepted.",
+    "thirdweb (196.rpc.thirdweb.com) is counted as operator `okx` by TapeKit config; it is a cross-check of the OKX operator, never a second independent vote.",
+    "Public RPC endpoints are rate-limited and may fail transiently; failures are recorded per fact so a missing endpoint cannot silently shrink the quorum."
+  ],
+  "unverified": [
+    "Actual state mutation, gas consumption and transaction receipts for putFile/appendChunk/removeFile/setFallback/setOperator: requires P0-04/P0-05 Anvil-fork transactions and, for mainnet, P0-07 explicit authorization.",
+    "Transaction-level ABI compatibility (event ordering, storage layout, upgrade storage gaps) is not observable through eth_call.",
+    "Whether every current X Layer SiteRegistry implementation path (upgrade/revert branches) matches SPEC v0.2: the write ABI is not in the normative SPEC, which is BNB-first.",
+    "Long-term stability of the pinned block evidence: the JSON records one snapshot and must be re-run after any implementation upgrade."
+  ]
+}

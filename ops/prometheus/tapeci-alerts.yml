@@ -1,0 +1,61 @@
+groups:
+  - name: tapeci-audit
+    rules:
+      - alert: TapeCiAuditScopeResolveFailures
+        expr: increase(tapeci_audit_scope_resolve_failures_total[5m]) > 0
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "TapeCI audit scope resolver is failing"
+          description: "New audit rows may lack project/organization scope; check API logs for audit_scope_resolve_failed."
+      - alert: TapeCiAuditBackfillUnresolved
+        expr: tapeci_audit_backfill_unresolved > 0
+        for: 15m
+        labels:
+          severity: warning
+        annotations:
+          summary: "TapeCI audit backfill cannot resolve rows with a path"
+          description: "Rows with a concrete path still resolve to no project/organization; inspect historical projects/deployments."
+      - alert: TapeCiAuditBackfillStale
+        expr: time() - tapeci_audit_backfill_last_run_timestamp_seconds > 7200
+        for: 15m
+        labels:
+          severity: warning
+        annotations:
+          summary: "TapeCI audit backfill has not run for 2 hours"
+          description: "Check the tapeci-audit-backfill timer/cron job and its logs."
+  - name: tapeci-platform
+    rules:
+      - alert: TapeCiApiDown
+        expr: up{job="tapeci-api"} == 0
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "TapeCI API is down"
+          description: "The /metrics scrape target for the API has been unreachable for 2 minutes."
+      - alert: TapeCiWorkerDown
+        expr: up{job="tapeci-worker"} == 0
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "TapeCI worker is down"
+          description: "The worker health endpoint has been unreachable for 2 minutes."
+      - alert: TapeCiHttp5xx
+        expr: sum(rate(tapeci_api_http_requests_total{status=~"5.."}[5m])) / clamp_min(sum(rate(tapeci_api_http_requests_total[5m])), 0.001) > 0.05
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "TapeCI API 5xx ratio above 5%"
+          description: "Inspect API logs/request ids; audit writes are best-effort and should not fail requests."
+      - alert: TapeCiWorkerJobFailures
+        expr: increase(tapeci_worker_job_failures_total[15m]) > 0
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "TapeCI worker jobs are failing"
+          description: "At least one plan/deploy/verify job failed in the last 15 minutes; check deployment state and error code."

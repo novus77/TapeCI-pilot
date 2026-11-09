@@ -1,0 +1,122 @@
+/* A01–A07: Be UI-inspired interaction patterns, adapted to TapeCI's CSS tokens. */
+.release-progress-panel.panel { display: block; padding: 20px 24px; }
+.release-progress-panel > .panel-head { margin: 0 0 18px; padding: 0; border: 0; background: transparent; }
+.release-progress-panel > .panel-head h2 { font-size: 13px; font-weight: 550; color: var(--muted); }
+.release-progress { display: grid; gap: 16px; }
+.progress-context { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+.progress-context strong { font-size: 14px; font-weight: 550; color: var(--text); }
+.progress-context > span { font-size: 11px; color: var(--muted); }
+.release-progress .milestones { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; padding: 0; margin: 0; list-style: none; }
+.release-progress .milestone { display: grid; grid-template-rows: auto 1fr; gap: 10px; min-width: 0; padding: 0; background: transparent; border: 0; border-radius: 0; box-shadow: none; opacity: 1; }
+.release-progress .milestone::before, .release-progress .milestone::after { content: none; }
+.milestone-track { display: flex; align-items: center; gap: 10px; padding-right: 10px; height: 28px; }
+.release-progress .milestone-dot { width: 26px; height: 26px; flex: 0 0 26px; font-size: 11px; border: 1px solid var(--border); background: var(--bg); color: var(--muted); box-shadow: none; }
+.release-progress .is-done .milestone-dot { border-color: var(--positive); background: var(--panel); color: var(--positive); }
+.release-progress .is-current .milestone-dot { border-color: var(--accent); background: var(--accent); color: var(--bg); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 12%, transparent); }
+.milestone-connector { height: 1px; background: var(--border); flex: 1; }
+.release-progress .is-done:not(.is-current) .milestone-connector { background: color-mix(in srgb, var(--positive) 55%, var(--border)); }
+.release-progress .milestone:last-child .milestone-connector { visibility: hidden; }
+.release-progress .milestone-label { font-size: 13px; font-weight: 500; background: transparent; padding: 0; margin: 0 8px 3px 0; color: var(--muted); }
+.release-progress .is-done .milestone-label { color: var(--text); }
+.release-progress .is-current .milestone-label { color: var(--accent); }
+.milestone-state { font-size: 11px; color: var(--muted); }
+.release-progress .is-done .milestone-state { color: var(--positive); }
+
+/* Native disclosures retain summary keyboard behavior and progressively animate height. */
+.shell details.disclosure { display: block; border: 1px solid var(--border); background: transparent; border-radius: 6px; padding: 0; font-size: 12px; color: var(--muted); }
+.shell details.disclosure > summary { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 42px; padding: 11px 14px; list-style: none; font-weight: 500; color: var(--text); cursor: pointer; }
+.shell details.disclosure > summary::-webkit-details-marker { display: none; }
+.disclosure > summary > svg { flex-shrink: 0; color: var(--muted); transition: transform .18s ease; }
+.disclosure[open] > summary > svg { transform: rotate(180deg); }
+.disclosure-content { padding: 0 14px 14px; }
+.shell details.disclosure[open] > summary { margin: 0; }
+.disclosure .plain-list { margin: 0; padding-left: 18px; line-height: 1.7; }
+.shell details.lifecycle-definitions { border: 0; border-top: 1px solid var(--border); border-radius: 0; }
+.shell details.lifecycle-definitions > summary { min-height: 34px; padding: 12px 0 0; color: var(--muted); }
+.lifecycle-definitions .disclosure-content { padding: 18px 0 0; }
+.milestone-definitions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 24px; margin: 0; }
+.milestone-definitions dt { font-size: 12px; font-weight: 550; color: var(--text); margin-bottom: 5px; }
+.milestone-definitions dd, .milestone-evidence { margin: 0; font-size: 12px; line-height: 1.65; color: var(--muted); }
+.milestone-evidence { margin-top: 20px; }
+@supports (interpolate-size: allow-keywords) {
+  .disclosure { interpolate-size: allow-keywords; }
+  .disclosure::details-content { block-size: 0; opacity: 0; overflow: clip; transition: block-size .2s ease, opacity .15s ease, content-visibility .2s allow-discrete; }
+  .disclosure[open]::details-content { block-size: auto; opacity: 1; }
+}
+
+/* The review payload and original action controls form one decision surface. */
+.deployment-workspace { grid-template-columns: minmax(0, 1fr) 340px; }
+.approval-card.panel { display: block; padding: 22px; border-radius: 8px; overflow: visible; }
+.approval-card > .panel-head { display: grid; gap: 8px; padding: 0 0 18px; background: transparent; border-bottom: 1px solid var(--border); margin: 0 0 18px; }
+.approval-card > .panel-head h2 { font-size: 15px; color: var(--text); }
+.approval-state { font-size: 11px; color: var(--accent); }
+.approval-review { margin-bottom: 20px; }
+.review-repository { font-size: 13px; font-weight: 550; color: var(--text); overflow-wrap: anywhere; margin: 0 0 16px; }
+.review-facts { display: grid; gap: 11px; margin: 0; }
+.review-facts > div { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; min-width: 0; }
+.review-facts dt { font-size: 11px; color: var(--muted); flex-shrink: 0; }
+.review-facts dd { font-size: 12px; text-align: right; min-width: 0; margin: 0; overflow-wrap: anywhere; }
+.review-facts dd code { font-size: 11px; }
+.review-facts .copy-value { gap: 4px; }
+.review-costs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 18px 0 0; padding: 16px 0; border-block: 1px solid var(--border); }
+.review-costs dt { font-size: 11px; color: var(--muted); margin-bottom: 6px; }
+.review-costs dd { font-size: 15px; font-family: var(--mono); font-weight: 550; color: var(--text); margin: 0; overflow-wrap: anywhere; }
+.approval-card .action-list { gap: 20px; margin-block: 20px; }
+.approval-card .action-item { padding: 0; border: 0; background: transparent; border-radius: 0; gap: 14px; }
+.approval-card .action-copy h3 { margin: 0 0 8px; font-size: 13px; }
+.approval-card .action-reason { font-size: 12px; line-height: 1.65; }
+.approval-card .action-item > .button { min-height: 42px; border-radius: 5px; }
+.approval-card .action-eligibility { margin-top: 20px; }
+.approval-card > .notice { margin: 14px 0; }
+
+/* Route links keep native history; the indicator supplies only visual continuity. */
+.shell .review-tabs { display: flex; flex-wrap: nowrap; gap: 24px; overflow-x: auto; border: 0; border-bottom: 1px solid var(--border); background: transparent; border-radius: 0; padding: 0; }
+.shell .review-tabs a { position: relative; display: inline-flex; align-items: center; min-height: 44px; padding: 12px 1px; border: 0; border-radius: 0; white-space: nowrap; text-decoration: none; color: var(--muted); font-size: 12px; }
+.shell .review-tabs a[aria-current="page"] { background: transparent; color: var(--text); }
+.tab-indicator { position: absolute; height: 2px; border-radius: 2px 2px 0 0; background: var(--accent); bottom: 0; left: 0; right: 0; pointer-events: none; }
+
+/* Stable text and subtle feedback rather than pulsing whole surfaces. */
+.badge-content { display: inline-flex; align-items: center; gap: 6px; min-width: 0; }
+.shell .badge, .shell .status-chip { border-radius: 5px; font-size: 11px; padding: 4px 7px; line-height: 1.3; font-weight: 500; gap: 0; box-shadow: none; }
+.shell .badge-symbol { font-size: 10px; }
+.feedback-button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; transition: background-color .15s ease, border-color .15s ease, color .15s ease, transform .12s ease; }
+.feedback-button:not(:disabled):active { transform: translateY(1px); }
+.button-label { display: inline-flex; align-items: center; justify-content: center; gap: inherit; }
+.button-spinner { width: 12px; height: 12px; flex-shrink: 0; border: 1.5px solid currentColor; border-right-color: transparent; border-radius: 50%; animation: feedback-spin .8s linear infinite; }
+@keyframes feedback-spin { to { transform: rotate(360deg); } }
+.feedback-button[aria-busy="true"] { cursor: progress; }
+.feedback-button.copy-button { min-height: 24px; min-width: 24px; padding: 3px; }
+
+/* Alerts keep all risk copy and announcement semantics. */
+.shell .notice { display: flex; align-items: flex-start; gap: 10px; padding: 14px 16px; border: 1px solid var(--border); border-left-width: 3px; border-radius: 6px; box-shadow: none; background: var(--panel); }
+.shell .notice-info { border-left-color: var(--accent); background: color-mix(in srgb, var(--accent) 5%, var(--panel)); }
+.shell .notice-warning { border-left-color: var(--warning); background: color-mix(in srgb, var(--warning) 5%, var(--panel)); }
+.shell .notice-critical { border-left-color: var(--negative); background: color-mix(in srgb, var(--negative) 5%, var(--panel)); }
+.shell .notice-success { border-left-color: var(--positive); background: color-mix(in srgb, var(--positive) 5%, var(--panel)); }
+.shell .notice-symbol { display: inline-flex; width: 18px; height: 20px; flex: 0 0 18px; border: 0; border-radius: 0; background: transparent; color: inherit; margin: 0; padding: 0; }
+.shell .notice-content { min-width: 0; flex: 1; }
+.shell .notice-title { display: flex; align-items: baseline; flex-wrap: wrap; gap: 7px; color: var(--text); font-size: 12px; line-height: 1.6; font-weight: 550; margin: 0; }
+.shell .notice-severity { background: transparent; border: 0; padding: 0; color: var(--muted); font-size: 10px; font-weight: 450; }
+.shell .notice-body { font-size: 12px; color: var(--muted); line-height: 1.65; margin-top: 5px; }
+.shell .notice-body p { margin-block: 0 6px; }
+.shell .notice-body p:last-child { margin-bottom: 0; }
+@media (max-width: 1180px) { .deployment-workspace { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 640px) {
+  .release-progress-panel.panel { padding: 18px 16px; }
+  .release-progress { gap: 18px; }
+  .progress-context { display: grid; gap: 6px; }
+  .progress-context strong { font-size: 13px; }
+  .release-progress .milestone-label { font-size: 12px; }
+  .milestone-track { gap: 7px; padding-right: 7px; }
+  .milestone-state { font-size: 10px; }
+  .milestone-definitions { grid-template-columns: minmax(0, 1fr); }
+  .approval-card.panel { padding: 20px; }
+  .shell .review-tabs { gap: 22px; }
+  .shell details.disclosure > summary { min-height: 44px; }
+  .shell details.lifecycle-definitions > summary { min-height: 40px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .disclosure::details-content, .disclosure > summary > svg, .feedback-button { transition: none; }
+  .button-spinner { animation: none; }
+  .feedback-button:not(:disabled):active { transform: none; }
+}

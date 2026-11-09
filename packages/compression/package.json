@@ -1,0 +1,20 @@
+{
+  "name": "@tapeci/compression",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./browser": "./src/browser-entry.ts"
+  },
+  "scripts": {
+    "analyze": "node --import tsx src/cli.ts",
+    "test": "vitest run --root ../.. tests/unit/compression.test.ts tests/unit/compression-cli.test.ts tests/unit/compression-browser.test.ts tests/unit/compression-tapekit.test.ts tests/unit/compressed-release.test.ts",
+    "preview": "node --import tsx src/preview-cli.ts",
+    "test:browser": "playwright test --config playwright.config.ts"
+  },
+  "dependencies": {
+    "@tapeci/shared": "workspace:*",
+    "@tapeci/validator": "workspace:*"
+  }
+}

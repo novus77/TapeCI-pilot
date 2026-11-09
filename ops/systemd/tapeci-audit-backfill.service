@@ -1,0 +1,13 @@
+[Unit]
+Description=TapeCI audit scope backfill
+After=network-online.target postgresql.service
+Wants=network-online.target
+
+[Service]
+# TAPECI_TEXTFILE_DIR on the host must point at /var/lib/tapeout/textfile
+# (compose mounts ${TAPECI_TEXTFILE_DIR:-../.tapeci/textfile} into node-exporter).
+Type=oneshot
+User=tapeci
+WorkingDirectory=/opt/tapeci
+EnvironmentFile=/etc/tapeci/tapeci.env
+ExecStart=/usr/bin/env bash -lc 'pnpm audit:backfill -- --apply --fail-on-unresolved --textfile /var/lib/tapeout/textfile/tapeci-audit-backfill.prom'

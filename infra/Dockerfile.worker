@@ -1,0 +1,101 @@
+# syntax=docker/dockerfile:1
+#
+# TapeCI worker image (BullMQ plan/deploy/verify; apps/api/src/worker.ts).
+#
+# Build from the repository root:
+#   docker build -f infra/Dockerfile.worker -t tapeci-worker .
+#
+# The worker is a long-running job consumer, but it does expose a small
+# health/metrics HTTP server on TAPECI_WORKER_PORT (default 8788):
+#   GET /healthz  liveness (no dependencies)
+#   GET /readyz   readiness (Postgres + Redis + BullMQ counts; 503 when not ready)
+#   GET /metrics  Prometheus text exposition
+# No secret is baked in; the operator key arrives from the environment/Secret.
+FROM node:22-bookworm-slim AS deps
+
+ENV PNPM_HOME=/pnpm \
+    COREPACK_HOME=/pnpm/corepack \
+    COREPACK_ENABLE_DOWNLOAD_PROMPT=0
+RUN corepack enable && corepack prepare pnpm@9.15.4 --activate
+
+WORKDIR /app
+
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml .npmrc ./
+COPY apps/api/package.json apps/api/
+COPY packages/artifact/package.json packages/artifact/
+COPY packages/chain/package.json packages/chain/
+COPY packages/cli/package.json packages/cli/
+COPY packages/config/package.json packages/config/
+COPY packages/database/package.json packages/database/
+COPY packages/deployer/package.json packages/deployer/
+COPY packages/github/package.json packages/github/
+COPY packages/queue/package.json packages/queue/
+COPY packages/release/package.json packages/release/
+COPY packages/shared/package.json packages/shared/
+COPY packages/validator/package.json packages/validator/
+COPY packages/verifier/package.json packages/verifier/
+
+RUN corepack pnpm install --frozen-lockfile \
+      --filter "@tapeci/api..." \
+      --filter tapeci \
+ && corepack pnpm store prune
+
+FROM node:22-bookworm-slim AS runtime
+
+# Bind the health server on all interfaces inside the container; compose publishes
+# the port on loopback only and k8s exposes it through a ClusterIP Service. Keep
+# TAPECI_WORKER_HOST at 127.0.0.1 only for bare-metal installs.
+ENV NODE_ENV=production \
+    TAPECI_WORKER_HOST=0.0.0.0 \
+    TAPECI_WORKER_PORT=8788 \
+    TAPECI_JOURNAL_DIR=/app/.tapeci/journal
+
+WORKDIR /app
+
+COPY --from=deps --chown=node:node /app/node_modules ./node_modules
+COPY --from=deps --chown=node:node /app/package.json ./package.json
+COPY --from=deps --chown=node:node /app/pnpm-lock.yaml ./pnpm-lock.yaml
+COPY --from=deps --chown=node:node /app/pnpm-workspace.yaml ./pnpm-workspace.yaml
+
+COPY --chown=node:node apps/api/package.json apps/api/
+COPY --chown=node:node apps/api/src apps/api/src
+COPY --chown=node:node packages/artifact/package.json packages/artifact/
+COPY --chown=node:node packages/artifact/src packages/artifact/src
+COPY --chown=node:node packages/chain/package.json packages/chain/
+COPY --chown=node:node packages/chain/src packages/chain/src
+COPY --chown=node:node packages/config/package.json packages/config/
+COPY --chown=node:node packages/config/src packages/config/src
+COPY --chown=node:node packages/database/package.json packages/database/
+COPY --chown=node:node packages/database/src packages/database/src
+COPY --chown=node:node packages/database/migrations packages/database/migrations
+COPY --chown=node:node packages/deployer/package.json packages/deployer/
+COPY --chown=node:node packages/deployer/src packages/deployer/src
+COPY --chown=node:node packages/github/package.json packages/github/
+COPY --chown=node:node packages/github/src packages/github/src
+COPY --chown=node:node packages/queue/package.json packages/queue/
+COPY --chown=node:node packages/queue/src packages/queue/src
+COPY --chown=node:node packages/release/package.json packages/release/
+COPY --chown=node:node packages/release/src packages/release/src
+COPY --chown=node:node packages/shared/package.json packages/shared/
+COPY --chown=node:node packages/shared/src packages/shared/src
+COPY --chown=node:node packages/validator/package.json packages/validator/
+COPY --chown=node:node packages/validator/src packages/validator/src
+COPY --chown=node:node packages/verifier/package.json packages/verifier/
+COPY --chown=node:node packages/verifier/src packages/verifier/src
+
+# The release journal is written by the worker; compose/k8s mount a persistent
+# volume here and the directory must be writable by the runtime user.
+RUN mkdir -p /app/.tapeci/journal /app/.tapeci/objects \
+ && chown -R node:node /app/.tapeci
+
+USER node
+
+# Health/metrics only; the worker serves no public API surface.
+EXPOSE 8788
+
+# /healthz is dependency-free on purpose: a Redis outage must take the worker out
+# of rotation (readiness), not restart-loop it (liveness).
+HEALTHCHECK --interval=15s --timeout=3s --start-period=30s --retries=5 \
+  CMD node -e "fetch('http://127.0.0.1:8788/healthz').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"
+
+CMD ["node", "node_modules/tsx/dist/cli.mjs", "apps/api/src/worker.ts"]

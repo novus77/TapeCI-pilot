@@ -1,0 +1,15 @@
+{
+  "name": "@tapeci/verifier",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@tapeci/chain": "workspace:*",
+    "@tapeci/config": "workspace:*",
+    "@tapeci/shared": "workspace:*",
+    "viem": "^2.57.0"
+  }
+}

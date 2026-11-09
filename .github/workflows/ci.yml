@@ -1,0 +1,117 @@
+# TapeCI static CI (P1-01).
+#
+# Scope: deterministic, offline checks only. No chain endpoint is contacted, no
+# Foundry/Anvil is installed, and no secrets are used. The network-dependent suite
+# lives in `network.yml` and is deliberately not run for pull requests (PRD §4.2).
+#
+# Workflow-level permissions are read-only; `pull_request` from a fork cannot gain
+# write access or repository secrets (PRD §4.2, red lines in AGENTS.md).
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  static:
+    name: typecheck / lint / unit (Node 22)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+        with:
+          # The CI job never pushes; do not leave the GITHUB_TOKEN in .git/config.
+          persist-credentials: false
+
+      - name: Set up pnpm
+        # Version is pinned to the workspace `packageManager` field (pnpm 9.15.4).
+        uses: pnpm/action-setup@v6
+        with:
+          version: 9.15.4
+          run_install: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies (frozen lockfile)
+        run: pnpm install --frozen-lockfile
+
+      - name: Typecheck (TypeScript strict)
+        run: pnpm typecheck
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Unit tests (offline)
+        run: pnpm test:unit
+
+  p2-integration:
+    name: P2 integration (Postgres + Redis)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: tapeci
+          POSTGRES_PASSWORD: tapeci
+          POSTGRES_DB: tapeci
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U tapeci -d tapeci"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 20
+      redis:
+        image: redis:7-alpine
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 20
+    env:
+      DATABASE_URL: postgres://tapeci:tapeci@127.0.0.1:5432/tapeci
+      TAPECI_TEST_DATABASE_URL: postgres://tapeci:tapeci@127.0.0.1:5432/tapeci
+      TAPECI_ADMIN_DATABASE_URL: postgres://tapeci:tapeci@127.0.0.1:5432/postgres
+      REDIS_URL: redis://127.0.0.1:6379
+      TAPECI_API_PORT: "8787"
+      TAPECI_DEV_AUTH: "1"
+      SESSION_SIGNING_SECRET: ci-only-session-secret-123456
+      NEXT_TELEMETRY_DISABLED: "1"
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v6
+        with:
+          version: 9.15.4
+          run_install: false
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: pnpm
+      - name: Install dependencies (frozen lockfile)
+        run: pnpm install --frozen-lockfile
+      - name: P2 database/API/GitHub/queue tests
+        run: pnpm exec vitest run tests/p2
+      - name: Web console production build
+        run: pnpm --filter @tapeci/web build
+      - name: Console E2E + axe accessibility gate
+        run: pnpm test:e2e

@@ -1,0 +1,22 @@
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: api
+  namespace: tapeci
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: tapeci-api
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: web
+  namespace: tapeci
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: tapeci-web

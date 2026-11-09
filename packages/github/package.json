@@ -1,0 +1,17 @@
+{
+  "name": "@tapeci/github",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.1152.0",
+    "@tapeci/database": "workspace:*",
+    "@tapeci/shared": "workspace:*",
+    "@tapeci/validator": "workspace:*",
+    "jose": "^6.2.12",
+    "tar": "^7.5.22"
+  }
+}

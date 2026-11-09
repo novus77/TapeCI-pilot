@@ -1,0 +1,612 @@
+{
+  "kind": "tapeci.fork.authorization.v1",
+  "generatedBy": "tests/fork/authorization.test.ts",
+  "generatedAt": "2026-10-28T02:37:57.927Z",
+  "fork": {
+    "sourceUrl": "https://rpc.xlayer.tech",
+    "sourceHeadAtStart": 74386014,
+    "requestedForkBlock": 74385964,
+    "forkBlockNumber": 74385964,
+    "forkBlockHash": "0x4f86d95224162c06ecce4779e31856f05246d9d63613d07972353359be1eb9ea",
+    "forkBlockTimestamp": 1793155000,
+    "forkBlockTimeIso": "2026-10-28T02:36:40.000Z",
+    "chainId": 196,
+    "anvilVersion": "anvil Version: 1.7.1",
+    "host": "127.0.0.1",
+    "port": 57770
+  },
+  "chain": {
+    "chainId": 196,
+    "factory": "0x1f09daefa827f02cbb40967cc91b259763760761",
+    "opener": "0x536add8f30f03b69f6fbf29d425a816a0dc50106",
+    "siteRegistry": "0xd6efb7adcc9c83dc4924ad56f6a8e4e969b9adb6",
+    "processorIndex": 0,
+    "processor": "0x839bdD6fa7A66416A609A735e11DE5411B98574e"
+  },
+  "fixture": {
+    "openerEoa": "0x1000000000000000000000000000000000000001",
+    "fundingWei": "100000000000000000000",
+    "tokensScanned": 3,
+    "tokenId": "3",
+    "wasOpenedAtForkBlock": false,
+    "ownerAtForkBlock": "0x571d447f4f24688eC35Ccf07f1D6993655F6aF15",
+    "container": "0x5f71fE4573757dA6aaDaebFBed0cc2e3A0C12628",
+    "openFeeWei": "80000000000000000"
+  },
+  "create": {
+    "openTx": {
+      "txHash": "0xb1f623751a88a76faa01f14213e8e17bc9d36f45143ec67ff3db6e6943fc2326",
+      "status": "success",
+      "blockNumber": 74385965,
+      "gasUsed": "169734"
+    },
+    "accountOf": "0x5f71fE4573757dA6aaDaebFBed0cc2e3A0C12628",
+    "isOpened": true,
+    "ownerOf": "0x571d447f4f24688eC35Ccf07f1D6993655F6aF15",
+    "containerOwner": "0x571d447f4f24688eC35Ccf07f1D6993655F6aF15",
+    "containerToken": {
+      "chainId": 196,
+      "processor": "0x839bdD6fa7A66416A609A735e11DE5411B98574e",
+      "tokenId": "3"
+    },
+    "containerCodeSize": 173,
+    "registryIsOpenedContainer": true
+  },
+  "operator": {
+    "address": "0x1000000000000000000000000000000000000002",
+    "grantTtlSeconds": "120",
+    "grantUntilTimestamp": 1793155137,
+    "grantedAtBlockTimestamp": 1793155017,
+    "observedTtlSeconds": 120,
+    "grantTx": {
+      "txHash": "0x94efe6c18099ba6e62d286bcccceeff44e61ab802a218d7dfdb0eeabf17c8d29",
+      "status": "success",
+      "blockNumber": 74385968,
+      "gasUsed": "135827"
+    },
+    "revocationTtlSeconds": "0",
+    "revocationUntilTimestamp": 1793155021,
+    "revocationTx": {
+      "txHash": "0x75787394b94c5411e1c9c623de5e04ca0e6d14feaf5b180bffdcd90ba93a5110",
+      "status": "success",
+      "blockNumber": 74385971,
+      "gasUsed": "98815"
+    },
+    "regrantTtlSeconds": "120",
+    "regrantUntilTimestamp": 1793155144,
+    "regrantTx": {
+      "txHash": "0x4fbed6fad58e99819471f22103758c6cddde75aac220dfb9b3537ff015b1a735",
+      "status": "success",
+      "blockNumber": 74385974,
+      "gasUsed": "98827"
+    }
+  },
+  "writes": {
+    "ownerPutFile": {
+      "path": "p0-04/owner.txt",
+      "size": 42,
+      "sha256": "0xdbb60f93076df34e42c37cb68433d42605a4d866c7cfa52e9132a8b4695c2533",
+      "chunkCount": 1,
+      "tx": {
+        "txHash": "0xe02a373e09a20d50d214c82fecd4149454e74d34bab4b7cadf1a9b1f26d25f1f",
+        "status": "success",
+        "blockNumber": 74385966,
+        "gasUsed": "315676"
+      },
+      "readBackSize": 42,
+      "readBackSha256": "0xdbb60f93076df34e42c37cb68433d42605a4d866c7cfa52e9132a8b4695c2533",
+      "matched": true
+    },
+    "operatorPutFileDuringTtl": {
+      "path": "p0-04/operator-live.txt",
+      "size": 48,
+      "sha256": "0x76e864b35544879396551c52b01d0806ce13b381d60a25f365db8cf0226fd38d",
+      "chunkCount": 1,
+      "tx": {
+        "txHash": "0xb2505181a41e510db7c0598bbcb9f63166b54a412a140371be87c3ccc8e42bec",
+        "status": "success",
+        "blockNumber": 74385969,
+        "gasUsed": "310654"
+      },
+      "readBackSize": 48,
+      "readBackSha256": "0x76e864b35544879396551c52b01d0806ce13b381d60a25f365db8cf0226fd38d",
+      "matched": true
+    },
+    "ownerPutFileAfterOperatorExpiry": {
+      "path": "p0-04/owner-after-expiry.txt",
+      "size": 62,
+      "sha256": "0xd749f0fb90b7bedff191f6b3ecb16c7f7ec09b6d58b30cd585768a8a0e0e92f2",
+      "chunkCount": 1,
+      "tx": {
+        "txHash": "0xbd651c151a5f49e7f7ccc004750789bc3bad256f55a10e260c0509d49dc0cf88",
+        "status": "success",
+        "blockNumber": 74385977,
+        "gasUsed": "302974"
+      },
+      "readBackSize": 62,
+      "readBackSha256": "0xd749f0fb90b7bedff191f6b3ecb16c7f7ec09b6d58b30cd585768a8a0e0e92f2",
+      "matched": true
+    }
+  },
+  "rejections": {
+    "randomEoaBeforeOperator": {
+      "case": "random funded EOA putFile before any operator is set",
+      "functionName": "putFile",
+      "signer": "0x1000000000000000000000000000000000000003",
+      "to": "0xd6efb7adcc9c83dc4924ad56f6a8e4e969b9adb6",
+      "argumentsSummary": {
+        "path": "p0-04/random-a.txt",
+        "contentType": "text/plain",
+        "dataBytes": 5
+      },
+      "calldataBytes": 356,
+      "ethCall": {
+        "reverted": true,
+        "rawData": "0x30cd7471",
+        "selector": "0x30cd7471",
+        "knownErrorName": "NotOwner()",
+        "rpcCode": 3,
+        "message": "eth_call failed: 3 execution reverted: custom error 0x30cd7471"
+      },
+      "transaction": {
+        "accepted": true,
+        "txHash": "0x6a1968a39019f5c6384b24f42577a050a2f2be7def1d40bb3218d62752bbac42",
+        "receiptStatus": "reverted",
+        "blockNumber": 74385967,
+        "gasUsed": "61574",
+        "sendError": null
+      },
+      "stateBefore": {
+        "blockNumber": 74385966,
+        "pathCount": 1,
+        "files": {
+          "p0-04/owner.txt": {
+            "exists": true,
+            "size": 42,
+            "chunkCount": 1
+          },
+          "p0-04/random-a.txt": {
+            "exists": false,
+            "size": 0,
+            "chunkCount": 0
+          }
+        }
+      },
+      "stateAfter": {
+        "blockNumber": 74385967,
+        "pathCount": 1,
+        "files": {
+          "p0-04/owner.txt": {
+            "exists": true,
+            "size": 42,
+            "chunkCount": 1
+          },
+          "p0-04/random-a.txt": {
+            "exists": false,
+            "size": 0,
+            "chunkCount": 0
+          }
+        }
+      },
+      "stateUnchanged": true
+    },
+    "randomEoaAfterOperatorSet": {
+      "case": "random funded EOA putFile while an unrelated operator is live",
+      "functionName": "putFile",
+      "signer": "0x1000000000000000000000000000000000000004",
+      "to": "0xd6efb7adcc9c83dc4924ad56f6a8e4e969b9adb6",
+      "argumentsSummary": {
+        "path": "p0-04/random-b.txt",
+        "contentType": "text/plain",
+        "dataBytes": 11
+      },
+      "calldataBytes": 356,
+      "ethCall": {
+        "reverted": true,
+        "rawData": "0x30cd7471",
+        "selector": "0x30cd7471",
+        "knownErrorName": "NotOwner()",
+        "rpcCode": 3,
+        "message": "eth_call failed: 3 execution reverted: custom error 0x30cd7471"
+      },
+      "transaction": {
+        "accepted": true,
+        "txHash": "0xa6367c7b07c917b1785a2d8869d623b8fad641a4e95ac99150d968c20f424746",
+        "receiptStatus": "reverted",
+        "blockNumber": 74385970,
+        "gasUsed": "61790",
+        "sendError": null
+      },
+      "stateBefore": {
+        "blockNumber": 74385969,
+        "pathCount": 2,
+        "files": {
+          "p0-04/owner.txt": {
+            "exists": true,
+            "size": 42,
+            "chunkCount": 1
+          },
+          "p0-04/operator-live.txt": {
+            "exists": true,
+            "size": 48,
+            "chunkCount": 1
+          },
+          "p0-04/random-b.txt": {
+            "exists": false,
+            "size": 0,
+            "chunkCount": 0
+          }
+        }
+      },
+      "stateAfter": {
+        "blockNumber": 74385970,
+        "pathCount": 2,
+        "files": {
+          "p0-04/owner.txt": {
+            "exists": true,
+            "size": 42,
+            "chunkCount": 1
+          },
+          "p0-04/operator-live.txt": {
+            "exists": true,
+            "size": 48,
+            "chunkCount": 1
+          },
+          "p0-04/random-b.txt": {
+            "exists": false,
+            "size": 0,
+            "chunkCount": 0
+          }
+        }
+      },
+      "stateUnchanged": true
+    },
+    "operatorAfterRevocation": {
+      "case": "operator writes after setOperator(container, op, 0) revoked it",
+      "functionName": "putFile",
+      "signer": "0x1000000000000000000000000000000000000002",
+      "to": "0xd6efb7adcc9c83dc4924ad56f6a8e4e969b9adb6",
+      "argumentsSummary": {
+        "path": "p0-04/operator-revoked.txt",
+        "dataBytes": 32
+      },
+      "calldataBytes": 356,
+      "ethCall": {
+        "reverted": true,
+        "rawData": "0x30cd7471",
+        "selector": "0x30cd7471",
+        "knownErrorName": "NotOwner()",
+        "rpcCode": 3,
+        "message": "eth_call failed: 3 execution reverted: custom error 0x30cd7471"
+      },
+      "transaction": {
+        "accepted": true,
+        "txHash": "0x0ed70192f9816793aecc0969c2218f06b5de57119da126702e5e58aac8200a0e",
+        "receiptStatus": "reverted",
+        "blockNumber": 74385973,
+        "gasUsed": "64271",
+        "sendError": null
+      },
+      "stateBefore": {
+        "blockNumber": 74385971,
+        "pathCount": 2,
+        "files": {
+          "p0-04/owner.txt": {
+            "exists": true,
+            "size": 42,
+            "chunkCount": 1
+          },
+          "p0-04/operator-live.txt": {
+            "exists": true,
+            "size": 48,
+            "chunkCount": 1
+          },
+          "p0-04/operator-revoked.txt": {
+            "exists": false,
+            "size": 0,
+            "chunkCount": 0
+          }
+        }
+      },
+      "stateAfter": {
+        "blockNumber": 74385973,
+        "pathCount": 2,
+        "files": {
+          "p0-04/owner.txt": {
+            "exists": true,
+            "size": 42,
+            "chunkCount": 1
+          },
+          "p0-04/operator-live.txt": {
+            "exists": true,
+            "size": 48,
+            "chunkCount": 1
+          },
+          "p0-04/operator-revoked.txt": {
+            "exists": false,
+            "size": 0,
+            "chunkCount": 0
+          }
+        }
+      },
+      "stateUnchanged": true
+    },
+    "operatorAfterTtlExpiry": {
+      "case": "operator writes after its TTL expired (evm_increaseTime past until)",
+      "functionName": "putFile",
+      "signer": "0x1000000000000000000000000000000000000002",
+      "to": "0xd6efb7adcc9c83dc4924ad56f6a8e4e969b9adb6",
+      "argumentsSummary": {
+        "path": "p0-04/operator-expired.txt",
+        "dataBytes": 32
+      },
+      "calldataBytes": 356,
+      "ethCall": {
+        "reverted": true,
+        "rawData": "0x30cd7471",
+        "selector": "0x30cd7471",
+        "knownErrorName": "NotOwner()",
+        "rpcCode": 3,
+        "message": "eth_call failed: 3 execution reverted: custom error 0x30cd7471"
+      },
+      "transaction": {
+        "accepted": true,
+        "txHash": "0x34aefe14f73e87779c3c3285fed941426df9e6feeeae357724943ec3280959ab",
+        "receiptStatus": "reverted",
+        "blockNumber": 74385976,
+        "gasUsed": "64271",
+        "sendError": null
+      },
+      "stateBefore": {
+        "blockNumber": 74385974,
+        "pathCount": 2,
+        "files": {
+          "p0-04/owner.txt": {
+            "exists": true,
+            "size": 42,
+            "chunkCount": 1
+          },
+          "p0-04/operator-live.txt": {
+            "exists": true,
+            "size": 48,
+            "chunkCount": 1
+          },
+          "p0-04/operator-expired.txt": {
+            "exists": false,
+            "size": 0,
+            "chunkCount": 0
+          }
+        }
+      },
+      "stateAfter": {
+        "blockNumber": 74385976,
+        "pathCount": 2,
+        "files": {
+          "p0-04/owner.txt": {
+            "exists": true,
+            "size": 42,
+            "chunkCount": 1
+          },
+          "p0-04/operator-live.txt": {
+            "exists": true,
+            "size": 48,
+            "chunkCount": 1
+          },
+          "p0-04/operator-expired.txt": {
+            "exists": false,
+            "size": 0,
+            "chunkCount": 0
+          }
+        }
+      },
+      "stateUnchanged": true
+    }
+  },
+  "authorizationModel": {
+    "sharedRevertSelector": "0x30cd7471",
+    "knownErrorName": "NotOwner()",
+    "note": "Write authorization is enforced by the deployed SiteRegistry (onlyEditor): the current circuit holder and a non-expired operator set via setOperator may write. Every rejected attempt was captured twice: eth_call revert bytes + a broadcast transaction mined with status 'reverted', and the registry snapshot was unchanged. The custom error is not part of the transcribed read ABI; the selector is recorded verbatim and 0x30cd7471 is listed by 4byte.directory as NotOwner().",
+    "finalPathCount": 3,
+    "expectedPathCount": 3,
+    "finalPaths": [
+      "p0-04/owner.txt",
+      "p0-04/operator-live.txt",
+      "p0-04/owner-after-expiry.txt"
+    ]
+  },
+  "checks": [
+    {
+      "id": "AUTH-01",
+      "description": "opener.open(circuits, tokenId) creates a deployed container and succeeds on chain",
+      "expected": {
+        "status": "success",
+        "opened": true,
+        "codeSizeGreaterThanZero": true
+      },
+      "actual": {
+        "status": "success",
+        "opened": true,
+        "codeSizeGreaterThanZero": true
+      },
+      "pass": true
+    },
+    {
+      "id": "AUTH-02",
+      "description": "accountOf(circuits, tokenId) and ownerOf(tokenId) match the derived container / holder",
+      "expected": {
+        "accountOf": "0x5f71fE4573757dA6aaDaebFBed0cc2e3A0C12628",
+        "ownerOf": "0x571d447f4f24688eC35Ccf07f1D6993655F6aF15",
+        "registryIsOpenedContainer": true
+      },
+      "actual": {
+        "accountOf": "0x5f71fE4573757dA6aaDaebFBed0cc2e3A0C12628",
+        "ownerOf": "0x571d447f4f24688eC35Ccf07f1D6993655F6aF15",
+        "registryIsOpenedContainer": true
+      },
+      "pass": true
+    },
+    {
+      "id": "AUTH-03",
+      "description": "container.token() == (196, processor, tokenId) and container.owner() == current circuit holder",
+      "expected": {
+        "chainId": 196,
+        "processor": "0x839bdD6fa7A66416A609A735e11DE5411B98574e",
+        "tokenId": "3",
+        "owner": "0x571d447f4f24688eC35Ccf07f1D6993655F6aF15"
+      },
+      "actual": {
+        "chainId": 196,
+        "processor": "0x839bdD6fa7A66416A609A735e11DE5411B98574e",
+        "tokenId": "3",
+        "owner": "0x571d447f4f24688eC35Ccf07f1D6993655F6aF15"
+      },
+      "pass": true
+    },
+    {
+      "id": "AUTH-04",
+      "description": "current holder putFile succeeds and the bytes read back match the raw SHA-256",
+      "expected": {
+        "status": "success",
+        "size": 42,
+        "matched": true,
+        "chunkCount": 1
+      },
+      "actual": {
+        "status": "success",
+        "size": 42,
+        "matched": true,
+        "chunkCount": 1
+      },
+      "pass": true
+    },
+    {
+      "id": "AUTH-05",
+      "description": "a funded EOA that is neither holder nor operator is rejected on chain and writes nothing",
+      "expected": {
+        "reverted": true,
+        "transactionStatus": "reverted",
+        "stateUnchanged": true,
+        "hasRevertSelector": true
+      },
+      "actual": {
+        "reverted": true,
+        "transactionStatus": "reverted",
+        "stateUnchanged": true,
+        "hasRevertSelector": true
+      },
+      "pass": true
+    },
+    {
+      "id": "AUTH-06",
+      "description": "setOperator(container, op, ttl) emits OperatorSet with until = block.timestamp + ttl (TTL in seconds)",
+      "expected": {
+        "operator": "0x1000000000000000000000000000000000000002",
+        "ttlSeconds": "120",
+        "untilEqualsBlockTimestampPlusTtl": true
+      },
+      "actual": {
+        "operator": "0x1000000000000000000000000000000000000002",
+        "ttlSeconds": "120",
+        "untilEqualsBlockTimestampPlusTtl": true
+      },
+      "pass": true
+    },
+    {
+      "id": "AUTH-07",
+      "description": "a delegated operator can putFile while its TTL is live",
+      "expected": {
+        "status": "success",
+        "size": 48,
+        "matched": true
+      },
+      "actual": {
+        "status": "success",
+        "size": 48,
+        "matched": true
+      },
+      "pass": true
+    },
+    {
+      "id": "AUTH-08",
+      "description": "setting one operator does not authorize any other address",
+      "expected": {
+        "reverted": true,
+        "transactionStatus": "reverted",
+        "stateUnchanged": true
+      },
+      "actual": {
+        "reverted": true,
+        "transactionStatus": "reverted",
+        "stateUnchanged": true
+      },
+      "pass": true
+    },
+    {
+      "id": "AUTH-09",
+      "description": "a revoked operator is rejected (revocation set until <= current block timestamp)",
+      "expected": {
+        "revoked": true,
+        "currentTimestampAfterUntil": true,
+        "reverted": true,
+        "transactionStatus": "reverted",
+        "stateUnchanged": true
+      },
+      "actual": {
+        "revoked": true,
+        "currentTimestampAfterUntil": true,
+        "reverted": true,
+        "transactionStatus": "reverted",
+        "stateUnchanged": true
+      },
+      "pass": true
+    },
+    {
+      "id": "AUTH-10",
+      "description": "after the operator TTL expires the operator is rejected and writes nothing",
+      "expected": {
+        "expired": true,
+        "reverted": true,
+        "transactionStatus": "reverted",
+        "stateUnchanged": true
+      },
+      "actual": {
+        "expired": true,
+        "reverted": true,
+        "transactionStatus": "reverted",
+        "stateUnchanged": true
+      },
+      "pass": true
+    },
+    {
+      "id": "AUTH-11",
+      "description": "the circuit holder can still write after the operator TTL expired",
+      "expected": {
+        "status": "success",
+        "matched": true
+      },
+      "actual": {
+        "status": "success",
+        "matched": true
+      },
+      "pass": true
+    },
+    {
+      "id": "AUTH-12",
+      "description": "only the holder/operator writes are stored; every rejected path is absent",
+      "expected": {
+        "pathCount": 3,
+        "rejectedPathsAbsent": true
+      },
+      "actual": {
+        "pathCount": 3,
+        "rejectedPathsAbsent": true
+      },
+      "pass": true
+    }
+  ],
+  "result": {
+    "pass": true,
+    "checks": 12,
+    "failures": []
+  }
+}

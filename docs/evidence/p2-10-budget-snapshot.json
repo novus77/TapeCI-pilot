@@ -1,0 +1,93 @@
+{
+  "schemaVersion": "tapeci.p2-10-budget.v1",
+  "observedAt": "2026-10-19T10:57:47.215Z",
+  "chainId": 196,
+  "gasModel": {
+    "putFileBaseGas": "310000",
+    "appendChunkBaseGas": "180000",
+    "codeDepositGasPerByte": "200",
+    "calldataGasPerByte": "16",
+    "defaultMarginBps": 2000
+  },
+  "marginBps": 2000,
+  "observations": [
+    {
+      "operator": "okx",
+      "url": "https://rpc.xlayer.tech",
+      "blockNumber": "73638431",
+      "gasPriceWei": "20000001",
+      "gasPriceGwei": 0.020000001
+    },
+    {
+      "operator": "drpc",
+      "url": "https://xlayer.drpc.org",
+      "blockNumber": "73638430",
+      "gasPriceWei": "21000000",
+      "gasPriceGwei": 0.021
+    }
+  ],
+  "minGasPriceWei": "20000001",
+  "entryGas": "420592",
+  "rollbackCostWei": "8411840420592",
+  "rollbackCapWei": "10094208504711",
+  "profiles": [
+    {
+      "name": "canary: 2 files / 40 KB",
+      "files": 2,
+      "bytes": 40096,
+      "chunks": 3,
+      "estimatedGas": "9460736",
+      "estimatedCostWei": "189214729460736",
+      "estimatedCostOkb": 0.000189214729460736,
+      "recommendedCapWei": "227057675352884",
+      "recommendedCapOkb": 0.000227057675352884,
+      "envelopeIncludingRetryAndRollbackWei": "701361443068074",
+      "envelopeOkb": 0.000701361443068074
+    },
+    {
+      "name": "small site: 5 files / 120 KB",
+      "files": 5,
+      "bytes": 119512,
+      "chunks": 9,
+      "estimatedGas": "28084592",
+      "estimatedCostWei": "561691868084592",
+      "estimatedCostOkb": 0.000561691868084592,
+      "recommendedCapWei": "674030241701511",
+      "recommendedCapOkb": 0.000674030241701511,
+      "envelopeIncludingRetryAndRollbackWei": "2042279142113955",
+      "envelopeOkb": 0.002042279142113955
+    },
+    {
+      "name": "medium site: 20 files / 2 MB",
+      "files": 20,
+      "bytes": 1995512,
+      "chunks": 96,
+      "estimatedGas": "450910592",
+      "estimatedCostWei": "9018212290910592",
+      "estimatedCostOkb": 0.009018212290910592,
+      "recommendedCapWei": "10821854749092711",
+      "recommendedCapOkb": 0.010821854749092712,
+      "envelopeIncludingRetryAndRollbackWei": "32485752664287555",
+      "envelopeOkb": 0.032485752664287555
+    },
+    {
+      "name": "large site: 100 files / 8 MB",
+      "files": 100,
+      "bytes": 8316512,
+      "chunks": 397,
+      "estimatedGas": "1880826592",
+      "estimatedCostWei": "37616533720826592",
+      "estimatedCostOkb": 0.03761653372082659,
+      "recommendedCapWei": "45139840464991911",
+      "recommendedCapOkb": 0.045139840464991914,
+      "envelopeIncludingRetryAndRollbackWei": "135439709811985155",
+      "envelopeOkb": 0.13543970981198517
+    }
+  ],
+  "assumptions": [
+    "all files are written (empty container / new release paths)",
+    "one putFile per file and one appendChunk per 24,000-byte chunk after chunk 0",
+    "no gas price spike; cap is estimated cost + 20%",
+    "envelope = 3 x release cap (BullMQ default attempts) + 2 x rollback entry cap"
+  ]
+}

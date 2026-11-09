@@ -1,0 +1,29 @@
+{
+  "schema": "tapeci.evidence.token-zero.v1",
+  "observedAt": "2026-10-27T19:20:00.000Z",
+  "issue": "P0-04",
+  "question": "Is `containers_token_id_check (token_id >= 1)` correct, or does X Layer actually mint a tokenId 0?",
+  "answer": "The constraint is correct. X Layer's circuit NFTs start at tokenId 1; `ownerOf(0)` reverts.",
+  "method": {
+    "rpc": "https://rpc.xlayer.tech",
+    "factory": "XLAYER_MAINNET.factory",
+    "calls": [
+      "factory.cpuAt(0)",
+      "processor.ownerOf(0)",
+      "processor.ownerOf(1)"
+    ],
+    "command": "node .corepack/v1/pnpm/9.15.4/bin/pnpm.cjs exec tsx (inline)"
+  },
+  "measurement": {
+    "token0": "reverted (ERC721 nonexistent token)",
+    "token1": "owner 0x571d447f4f24688eC35Ccf07f1D6993655F6aF15"
+  },
+  "conclusion": [
+    "The DB constraint stays as it is; it encodes a real chain fact rather than an arbitrary floor.",
+    "The public read path still accepts tokenId \"0\" as an input value (SPEC §6/§7.1 say the query must tolerate it) and answers with the chain's own `not_found`, which is honest: the API can be asked about token 0, and the chain says it does not exist.",
+    "No migration is needed, so the earlier note that this was 'a separate serial migration task' was wrong and is corrected here."
+  ],
+  "notProven": [
+    "Only processor 0 was probed. A different processor could in principle use a different id range; the global constraint remains the safe reading because the ERC721 standard reserves no id, but this was not swept across all processors."
+  ]
+}

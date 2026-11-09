@@ -1,0 +1,54 @@
+{
+  "kind": "tapeci.p2-10.rollback-drill.v1",
+  "generatedAt": "2026-10-25T02:38:00Z",
+  "container": "0xc0b4900262d0bc13f2c67c0fc4cf92c04e0ab814",
+  "rc": {
+    "deploymentId": "26ad9375-7e70-49dc-b57d-e13010fa107a",
+    "state": "LIVE",
+    "commitSha": "d695898f000f96fe3c336bfeca87271268192aae",
+    "transactions": [
+      {
+        "hash": "0x68c2d58516ec0cc7a1c253a8b7ff2aa7eb3930997b31664224025b74353291f9",
+        "block": "74096152",
+        "gasUsed": "356161",
+        "nonce": "4"
+      },
+      {
+        "hash": "0x87c83b12f3a6af678005b9c870b634085d05961391517a86733c1f629d285936",
+        "block": "74096155",
+        "gasUsed": "228842",
+        "nonce": "5"
+      }
+    ]
+  },
+  "rollback": {
+    "deploymentId": "4b719710-1150-4b40-80ec-40c72d221c18",
+    "state": "LIVE",
+    "triggerKind": "rollback",
+    "transactions": [
+      {
+        "hash": "0x9f61ae6ebd385f254a8e53dc5acc9dd479accd83de7c1ef6775fa0aa7623699e",
+        "block": "74096780",
+        "gasUsed": "190358",
+        "nonce": "6"
+      }
+    ],
+    "targetReleaseId": "r-147c0d8533c8-0ad76bec",
+    "verification": {
+      "status": "VERIFIED",
+      "pinnedBlockNumber": 74096788,
+      "files": [
+        {
+          "path": "index.html",
+          "matched": true
+        },
+        {
+          "path": "releases/r-147c0d8533c8-0ad76bec/assets/app.js",
+          "matched": true
+        }
+      ]
+    }
+  },
+  "result": "rollback to canary release r-147c0d8533c8-0ad76bec; on-chain index.html restored to 142B canary hash 0x5679...3be1; dual-RPC VERIFIED at block 74096788",
+  "note": "Rollback tx 0x9f61...699e (nonce 6, block 74096780) was recovered from the chain and persisted after fixing the missing rollback transaction record."
+}

@@ -1,0 +1,59 @@
+# Docker build context for infra/Dockerfile.{api,worker,web}.
+#
+# The context is the repository root so the pnpm workspace manifests and the
+# package sources are available. Keep this list aggressive: anything matched here
+# never leaves the host, so it can never be baked into an image or slow a build.
+
+# --- secrets / local environment -------------------------------------------
+.env
+.env.*
+!.env.example
+.tapeci
+infra/env.prod
+infra/*.env.prod
+*.pem
+*.key
+
+# --- dependencies / caches --------------------------------------------------
+# These are large local caches (several GB in a working checkout). They are
+# re-created inside the image by `pnpm install`; shipping them only inflates the
+# build context and can leak host state into the image.
+node_modules
+**/node_modules
+.pnpm-store
+.pnpm-cache
+.npm-cache
+.corepack
+**/.turbo
+**/coverage
+
+# --- build output -----------------------------------------------------------
+dist
+**/dist
+.next
+**/.next
+**/*.tsbuildinfo
+
+# --- tests / fixtures / evidence -------------------------------------------
+tests
+**/test-results
+**/test-results-live
+**/playwright-report
+apps/web/e2e
+apps/web/e2e-live
+docs/evidence
+
+# --- VCS / editor / OS ------------------------------------------------------
+.git
+.github
+superpowers
+.superpowers
+.vscode
+.idea
+.DS_Store
+
+# --- docs / misc ------------------------------------------------------------
+*.log
+artifacts
+logs
+TapeCI_PRD_Technical_Design.md

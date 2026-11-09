@@ -1,0 +1,25 @@
+{
+  "name": "@tapeci/queue",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@tapeci/shared": "workspace:*",
+    "@tapeci/database": "workspace:*",
+    "@tapeci/chain": "workspace:*",
+    "@tapeci/config": "workspace:*",
+    "@tapeci/deployer": "workspace:*",
+    "@tapeci/verifier": "workspace:*",
+    "@tapeci/release": "workspace:*",
+    "bullmq": "^6.3.17",
+    "ioredis": "^6.0.0",
+    "viem": "^2.57.0",
+    "pg": "^8.23.1"
+  },
+  "devDependencies": {
+    "@types/pg": "^8.23.1"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schema": "tapeci.real-integration.preflight.v1",
+  "schemaVersion": 1,
+  "observedAt": "2026-10-26T01:21:53.813Z",
+  "readOnly": true,
+  "writeActionsPerformed": false,
+  "status": "READY",
+  "expected": {
+    "chainId": 196,
+    "container": "0xC0B4900262d0bC13F2C67C0Fc4CF92c04E0aB814",
+    "owner": "0x25063c2210a0BCcCE3e15d250573179483275f22",
+    "signer": "0x25063c2210a0BCcCE3e15d250573179483275f22",
+    "budgetCapWei": "1000000000000000"
+  },
+  "operators": [
+    {
+      "operator": "okx",
+      "rpcHost": "rpc.xlayer.tech",
+      "chainId": 196,
+      "head": "74208674",
+      "pinnedBlock": "74208660",
+      "blockHash": "0x8c8b9f0f52ca5800d2cf7fd48d7e5011d620ed9b310bc96814c650d85f036a2b",
+      "gasPriceWei": "20000001",
+      "signerBalanceWei": "40360737619036881",
+      "owner": "0x25063c2210a0BCcCE3e15d250573179483275f22",
+      "opened": true,
+      "error": null
+    },
+    {
+      "operator": "drpc",
+      "rpcHost": "xlayer.drpc.org",
+      "chainId": 196,
+      "head": "74208662",
+      "pinnedBlock": "74208660",
+      "blockHash": "0x8c8b9f0f52ca5800d2cf7fd48d7e5011d620ed9b310bc96814c650d85f036a2b",
+      "gasPriceWei": "21000000",
+      "signerBalanceWei": "40360737619036881",
+      "owner": "0x25063c2210a0BCcCE3e15d250573179483275f22",
+      "opened": true,
+      "error": null
+    }
+  ],
+  "blockers": []
+}

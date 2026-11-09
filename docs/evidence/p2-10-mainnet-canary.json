@@ -1,0 +1,74 @@
+{
+  "kind": "tapeci.p2-10.mainnet-canary.v1",
+  "generatedAt": "2026-10-25T01:29:00Z",
+  "network": {
+    "chainId": 196,
+    "name": "X Layer"
+  },
+  "budget": {
+    "tier": "A",
+    "authorizedCapWei": "2000000000000000",
+    "approvalCapWei": "15807936000000",
+    "estimatedCostWei": "13173280000000"
+  },
+  "container": {
+    "address": "0xc0b4900262d0bc13f2c67c0fc4cf92c04e0ab814",
+    "owner": "0x25063c2210a0bccce3e15d250573179483275f22",
+    "operator": "0x6c723d1dc3861c0897848b79e231caa2c57622eb"
+  },
+  "deployment": {
+    "id": "ff5dfbf1-25e5-4881-8e5e-2e30ece931fb",
+    "state": "LIVE",
+    "commitSha": "147c0d8533c82c3f9ac5922a44122f5ce77080f7",
+    "manifestSha256": "0x79c38836299c38afdfc11be4406acb17bb83633964bfb769540c2dbc68846f58"
+  },
+  "transactions": [
+    {
+      "hash": "0xca3aface1b3155aac8bb6d1a5cbc962a5ce2b5c82a94bd6f97da2f0a8d406b35",
+      "block": "74093808",
+      "gasUsed": "353629",
+      "gasPriceWei": "20000001",
+      "feeWei": "7072580353629",
+      "status": "success"
+    },
+    {
+      "hash": "0xe2e54ada36423abac9a5c8a0b73d08d83d3de5cea838a64bf7321a6b0bd6503f",
+      "block": "74093811",
+      "gasUsed": "190358",
+      "gasPriceWei": "20000001",
+      "feeWei": "3807160190358",
+      "status": "success"
+    }
+  ],
+  "actualFeeWei": "10879740543987",
+  "verification": {
+    "status": "VERIFIED",
+    "releaseMatch": true,
+    "pinnedBlockNumber": 74093811,
+    "files": [
+      {
+        "path": "index.html",
+        "matched": true,
+        "size": 142
+      },
+      {
+        "path": "releases/r-147c0d8533c8-0ad76bec/assets/app.js",
+        "matched": true,
+        "size": 37
+      }
+    ],
+    "journal": {
+      "issues": [],
+      "checked": true,
+      "complete": true,
+      "deploymentId": "dep-147c0d8533c8-af5bee85",
+      "totalGasUsed": "543987",
+      "transactionsOk": true,
+      "entryWrittenLast": true,
+      "transactionCount": 2,
+      "allMinedBeforePin": true,
+      "verifiedFilesMatch": true
+    }
+  },
+  "note": "Real X Layer mainnet canary. Two putFile transactions; LIVE only after two-operator read-back at pinned block 74093811. Artifact seeded locally (OIDC runner not used for this canary)."
+}

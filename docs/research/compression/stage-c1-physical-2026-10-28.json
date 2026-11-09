@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "tapeci.compressed-physical-study.v1",
+  "date": "2026-10-28",
+  "fixtureContext": true,
+  "networkAccessPerformed": false,
+  "mainnetWritesPerformed": false,
+  "sourceArtifactDigest": "0xe2f9a4660b603c71b87a403c6e8a26e5ae69851493e4d6992b7f2a0e9b59b7e7",
+  "physicalArtifactDigest": "0x027a24accf7191db00faa79a65eddb612a54124af7af4419abdcd8e03bb2fc99",
+  "releaseManifestHash": "0x3bf7fe65d31bb7bb2689e9ff047d49d77f025a00b2bb0624f50255d409086aa4",
+  "releaseId": "r-9f9d8f1bae33-027a24ac",
+  "sourceBytes": 362383,
+  "physicalBytes": 110326,
+  "entryBytes": 435,
+  "manifest": {
+    "schemaVersion": "tapeci.release.v1",
+    "chainId": 196,
+    "siteRegistry": "0xd6efb7adcc9c83dc4924ad56f6a8e4e969b9adb6",
+    "container": "0x1111111111111111111111111111111111111111",
+    "repositoryId": 1,
+    "commitSha": "9f9d8f1bae33183e498527d1e2fdffbe44ed916f",
+    "releaseId": "r-9f9d8f1bae33-027a24ac",
+    "entryPath": "index.html",
+    "fallbackPath": "index.html",
+    "files": [
+      {
+        "path": "index.html",
+        "sourcePath": "index.html",
+        "size": 435,
+        "sha256": "0x6b4ab8dabd0245a7876a1f8a74275f19068492c91c4e266173f41aba49149479",
+        "contentType": "text/html; charset=utf-8",
+        "chunks": 1
+      },
+      {
+        "path": "objects/09d53e8db1eb7ff797dfede06b932f10eb0d6bf8762ae8a0aeb97a94a82aaaf0.gz",
+        "sourcePath": "objects/09d53e8db1eb7ff797dfede06b932f10eb0d6bf8762ae8a0aeb97a94a82aaaf0.gz",
+        "size": 3975,
+        "sha256": "0x09d53e8db1eb7ff797dfede06b932f10eb0d6bf8762ae8a0aeb97a94a82aaaf0",
+        "contentType": "application/octet-stream",
+        "chunks": 1
+      },
+      {
+        "path": "objects/304d08ea46e7284a7f2cb00cd46bacff0a2a61b88b3b774fdd76c2fe1f952502.gz",
+        "sourcePath": "objects/304d08ea46e7284a7f2cb00cd46bacff0a2a61b88b3b774fdd76c2fe1f952502.gz",
+        "size": 102118,
+        "sha256": "0x304d08ea46e7284a7f2cb00cd46bacff0a2a61b88b3b774fdd76c2fe1f952502",
+        "contentType": "application/octet-stream",
+        "chunks": 5
+      },
+      {
+        "path": "objects/788edd6150d134e492c161322ce727cbe86416ba61b8e132f332bd0772c804a5.gz",
+        "sourcePath": "objects/788edd6150d134e492c161322ce727cbe86416ba61b8e132f332bd0772c804a5.gz",
+        "size": 1485,
+        "sha256": "0x788edd6150d134e492c161322ce727cbe86416ba61b8e132f332bd0772c804a5",
+        "contentType": "application/octet-stream",
+        "chunks": 1
+      },
+      {
+        "path": "tapeci-packs/c6b4a8a4d77a2b7cf8593475c68067c462e9ade679b9f7690f3632229123efa5.json",
+        "sourcePath": "tapeci-packs/c6b4a8a4d77a2b7cf8593475c68067c462e9ade679b9f7690f3632229123efa5.json",
+        "size": 2313,
+        "sha256": "0xc6b4a8a4d77a2b7cf8593475c68067c462e9ade679b9f7690f3632229123efa5",
+        "contentType": "application/json",
+        "chunks": 1
+      }
+    ]
+  }
+}

@@ -1,0 +1,64 @@
+name: Docker image build
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "infra/**"
+      - "apps/api/**"
+      - "apps/web/**"
+      - "packages/**"
+      - "pnpm-lock.yaml"
+      - "package.json"
+      - "pnpm-workspace.yaml"
+      - ".github/workflows/docker-build.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  api-image:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build -f infra/Dockerfile.api -t tapeci-api:ci .
+      - name: Image is non-root and has tsx
+        run: |
+          test "$(docker run --rm tapeci-api:ci id -u)" = "1000"
+          docker run --rm tapeci-api:ci node_modules/.bin/tsx --version
+
+  worker-image:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build -f infra/Dockerfile.worker -t tapeci-worker:ci .
+      - name: Image is non-root and has the worker entrypoint
+        run: |
+          test "$(docker run --rm tapeci-worker:ci id -u)" = "1000"
+          docker run --rm tapeci-worker:ci test -f apps/api/src/worker.ts
+
+  web-image:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build web image with a public API URL baked in
+        run: |
+          docker build -f infra/Dockerfile.web \
+            --build-arg NEXT_PUBLIC_API_URL=http://127.0.0.1:8787 \
+            -t tapeci-web:ci .
+      - name: Start the web container and serve /login
+        run: |
+          test "$(docker run --rm tapeci-web:ci id -u)" = "1000"
+          docker run -d --name tapeci-web-ci -p 13000:3000 tapeci-web:ci
+          for attempt in $(seq 1 30); do
+            if curl -fsS http://127.0.0.1:13000/login >/dev/null; then exit 0; fi
+            sleep 2
+          done
+          docker logs tapeci-web-ci
+          exit 1
+      - name: Stop the web container
+        if: always()
+        run: docker rm -f tapeci-web-ci || true

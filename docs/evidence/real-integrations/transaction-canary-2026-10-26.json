@@ -1,0 +1,59 @@
+{
+  "schema": "tapeci.real-integration.transaction.v1",
+  "schemaVersion": 1,
+  "observedAt": "2026-10-26T01:25:40.199Z",
+  "readOnly": true,
+  "writeActionsPerformed": false,
+  "status": "VERIFIED",
+  "expected": {
+    "chainId": 196,
+    "hash": "0xe2e54ada36423abac9a5c8a0b73d08d83d3de5cea838a64bf7321a6b0bd6503f",
+    "from": "0x6c723d1Dc3861C0897848b79e231caA2c57622eb",
+    "to": "0xd6EFb7adCc9c83dC4924Ad56f6a8E4e969b9ADB6",
+    "maxFeeWei": "20000000000000",
+    "minConfirmations": 12
+  },
+  "operators": [
+    {
+      "operator": "okx",
+      "rpcHost": "rpc.xlayer.tech",
+      "chainId": 196,
+      "latestBlock": "74208903",
+      "blockNumber": "74093811",
+      "blockHash": "0xd2adafc4c2394e271c0d3a31c2c92429fe8f947b14b571a4c5feb5a3fc0f6df0",
+      "receiptStatus": "success",
+      "gasUsed": "190358",
+      "effectiveGasPriceWei": "20000001",
+      "feeWei": "3807160190358",
+      "error": null
+    },
+    {
+      "operator": "drpc",
+      "rpcHost": "xlayer.drpc.org",
+      "chainId": 196,
+      "latestBlock": "74208899",
+      "blockNumber": "74093811",
+      "blockHash": "0xd2adafc4c2394e271c0d3a31c2c92429fe8f947b14b571a4c5feb5a3fc0f6df0",
+      "receiptStatus": "success",
+      "gasUsed": "190358",
+      "effectiveGasPriceWei": "20000001",
+      "feeWei": "3807160190358",
+      "error": null
+    }
+  ],
+  "receipt": {
+    "blockNumber": "74093811",
+    "blockHash": "0xd2adafc4c2394e271c0d3a31c2c92429fe8f947b14b571a4c5feb5a3fc0f6df0",
+    "confirmations": 115089,
+    "gasUsed": "190358",
+    "effectiveGasPriceWei": "20000001",
+    "feeWei": "3807160190358"
+  },
+  "balance": {
+    "beforeWei": "38977058878852944",
+    "afterWei": "38973251718662586",
+    "debitWei": "3807160190358",
+    "expectedDebitWei": "3807160190358"
+  },
+  "blockers": []
+}

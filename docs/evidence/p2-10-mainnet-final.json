@@ -1,0 +1,51 @@
+{
+  "kind": "tapeci.p2-10.mainnet-final.v1",
+  "generatedAt": "2026-10-25T18:55:00Z",
+  "network": { "chainId": 196, "name": "X Layer" },
+  "container": {
+    "address": "0xc0b4900262d0bc13f2c67c0fc4cf92c04e0ab814",
+    "owner": "0x25063c2210a0bccce3e15d250573179483275f22",
+    "operator": "0x6c723d1dc3861c0897848b79e231caa2c57622eb",
+    "processor": "0x68f65046fdeab90d8db376c27b5e6ae159d240cc",
+    "tokenId": "10",
+    "processorIndex": 4
+  },
+  "domain": {
+    "name": "10.2.4.tape",
+    "url": "https://10-2-4.tapekit.org/",
+    "isLive": true,
+    "isContainerLive": true,
+    "paidUntil": "2026-11-24T09:38:10.000Z",
+    "bindTx": "0x613438ce187b87cd018eaec2a776e0a09adf032bcbb19da99e9f1e24cca190b2",
+    "bindBlock": 74152054,
+    "bindGasUsed": 185126,
+    "bindFeeOKB": "0.000003702520185126",
+    "monthlyFeeWei": "0"
+  },
+  "releases": [
+    { "deploymentId": "1fe90d88-10bf-42d9-b10a-4a96442fd46b", "artifact": "how-to-Pi docs, Docsify (lite)", "files": 24, "transactions": 30, "state": "LIVE", "note": "runtime markdown loading failed at the gateway (404)" },
+    { "deploymentId": "19f05531-edc9-49e3-ac5c-e829ac8c8382", "artifact": "pre-rendered static site", "files": 21, "transactions": 21, "state": "LIVE", "note": "content rendered, styling missing on sub-pages" },
+    { "deploymentId": "7be7444c-eb36-4d64-93fd-cf285314f898", "artifact": "static site, markdown renderer fixed", "files": 21, "transactions": 21, "state": "LIVE", "note": "content correct, sub-page CSS path wrong" },
+    { "deploymentId": "17d33c2a-81c8-4579-afe0-3c28934356e0", "artifact": "static site, relative paths fixed", "files": 21, "transactions": 21, "state": "LIVE", "final": true }
+  ],
+  "verification": {
+    "finalDeployment": "17d33c2a-81c8-4579-afe0-3c28934356e0",
+    "status": "VERIFIED",
+    "gateway": {
+      "title": "How-To-Pi · How-To-Pi",
+      "sidebarLinks": 18,
+      "subPageStyled": true,
+      "noJsErrors": true
+    }
+  },
+  "productFixes": [
+    "enqueue removes a finished job so execute/resume cannot silently no-op",
+    "resume reuses the approved plan instead of re-planning half-written state",
+    "receipt confirmation falls back to the second RPC operator",
+    "deterministic tar mode; pin at second-highest head; wait for every operator",
+    "approval cap clamped to the project policy ceiling",
+    "domain binding end to end (chain ABI, API, UI, CLI)",
+    "root path mode for multi-page and runtime-loading sites"
+  ],
+  "note": "All writes are real X Layer mainnet transactions. Totals: 4 releases + 1 domain bind, roughly 0.0039 OKB."
+}

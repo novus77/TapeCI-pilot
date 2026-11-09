@@ -1,0 +1,28 @@
+{
+  "name": "@tapeci/api",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@tapeci/chain": "workspace:*",
+    "@tapeci/config": "workspace:*",
+    "@tapeci/database": "workspace:*",
+    "@tapeci/deployer": "workspace:*",
+    "@tapeci/github": "workspace:*",
+    "@tapeci/queue": "workspace:*",
+    "@tapeci/release": "workspace:*",
+    "@tapeci/shared": "workspace:*",
+    "@tapeci/tapekit": "workspace:*",
+    "@tapeci/verifier": "workspace:*",
+    "drizzle-orm": "^0.45.4",
+    "fastify": "^5.12.7",
+    "nodemailer": "^10.1.7",
+    "viem": "^2.57.0",
+    "@tapeci/compression": "workspace:*",
+    "@tapeci/validator": "workspace:*",
+    "tar": "^7.5.22"
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "schemaVersion": "tapeci.compression-fork.v1",
+  "scope": "isolated-anvil-fork",
+  "mainnetWritesPerformed": false,
+  "independentRpcVerified": false,
+  "sourceHost": "rpc.xlayer.tech",
+  "forkBlock": "74402830",
+  "forkBlockHash": "0x8633612c56ef24802e4b0d790893a65a0ea9d7cee2d77a823365bdc58bf587e7",
+  "writeTarget": "http://127.0.0.1:56075",
+  "container": "0x5f71fE4573757dA6aaDaebFBed0cc2e3A0C12628",
+  "preparedKey": "sha256/d852a273e727fa82509fdd2b9b34ce390c14cb837c89703316f82109bcfbf75f.tar",
+  "manifestSha256": "0x33c995dc757110ddb7aaab8578ebf6148aa57d0279bb072c6f94df0f1ae40a4d",
+  "interruptedAfterTransactions": 2,
+  "repeatNewTransactions": 0,
+  "rollbackVerified": true,
+  "comparison": {
+    "quoteType": "model-estimate",
+    "original": {
+      "physicalFiles": 3,
+      "writeFiles": 3,
+      "reusedFiles": 0,
+      "plannedBytes": 85091,
+      "plannedChunks": 5,
+      "estimatedNetworkCostWei": "345711021755880",
+      "networkRecommendedCapWei": "414853226107056",
+      "serviceFeeWei": "0",
+      "totalEstimatedCostWei": "345711021755880"
+    },
+    "compressed": {
+      "physicalFiles": 3,
+      "writeFiles": 3,
+      "reusedFiles": 0,
+      "plannedBytes": 67024,
+      "plannedChunks": 5,
+      "estimatedNetworkCostWei": "277121739742320",
+      "networkRecommendedCapWei": "332546087690784",
+      "serviceFeeWei": "0",
+      "totalEstimatedCostWei": "277121739742320"
+    },
+    "modelCheaper": "compressed",
+    "automaticSelection": "original",
+    "automaticSelectionReason": "production-simulation-and-gateway-qualification-required"
+  },
+  "receipts": [
+    {
+      "hash": "0xe05f0dd927a1a31a47935960116d2ceca9b69c53b77178bfd651f3a44b7a7d41",
+      "gasUsed": "5576122",
+      "effectiveGasPrice": "1015382425",
+      "feeWei": "5661896278455850"
+    },
+    {
+      "hash": "0x06a2bb8dadcedd4f1b161ea22ddc3b6656cc0ed974061933128a214139fbae5c",
+      "gasUsed": "5366873",
+      "effectiveGasPrice": "1013561735",
+      "feeWei": "5439657109404655"
+    },
+    {
+      "hash": "0x26518b7ee6ff59b2ebd818444bd16fe7d621e035914ecf26b65790c0568a507b",
+      "gasUsed": "3909396",
+      "effectiveGasPrice": "1011953166",
+      "feeWei": "3956125659347736"
+    },
+    {
+      "hash": "0xea55e9d49c06e4879cc7723d58ff03c832fbb98996b83297bb8ad7d979554e0c",
+      "gasUsed": "641434",
+      "effectiveGasPrice": "1010514651",
+      "feeWei": "648178454649534"
+    },
+    {
+      "hash": "0xaad9f8084a8f36fcb838c50588541bf3cd7dbff9b8fa8189bcb360dbac8dd175",
+      "gasUsed": "383984",
+      "effectiveGasPrice": "1009208349",
+      "feeWei": "387519858682416"
+    },
+    {
+      "hash": "0xa0bb65d37ab3ce5bd8cf637e43db3d6e987a870d661c2e08fbc65a78cfcfc224",
+      "gasUsed": "5559022",
+      "effectiveGasPrice": "1008061515",
+      "feeWei": "5603836139238330"
+    },
+    {
+      "hash": "0x975964cec57baa257c45fd492348d9d05a28c4fee79a63b25817989ff546876e",
+      "gasUsed": "5366873",
+      "effectiveGasPrice": "1007107176",
+      "feeWei": "5405016310980648"
+    },
+    {
+      "hash": "0x86da4c16f33578b7f7f42e6c1ba747eec2e0bc2fd5a75281ef447484959ba188",
+      "gasUsed": "3909396",
+      "effectiveGasPrice": "1006264188",
+      "feeWei": "3933885191510448"
+    },
+    {
+      "hash": "0x1fe909d79e735a919eb0f9c133298751a2db53b694ef30954d889217d23a5eb0",
+      "gasUsed": "641434",
+      "effectiveGasPrice": "1005510319",
+      "feeWei": "644968505957446"
+    },
+    {
+      "hash": "0x5103ad79b7be019dd728f671c6b88385ad07dc85c660a12f87b5caa3ee870003",
+      "gasUsed": "243310",
+      "effectiveGasPrice": "1004825737",
+      "feeWei": "244484150069470"
+    },
+    {
+      "hash": "0x2e5d7e8492f903f6c95247a0bfdd2fda33b0898178c8cae475b77589231d4ecc",
+      "gasUsed": "243310",
+      "effectiveGasPrice": "1004223918",
+      "feeWei": "244337721488580"
+    }
+  ]
+}

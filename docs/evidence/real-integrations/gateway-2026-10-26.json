@@ -1,0 +1,65 @@
+{
+  "schema": "tapeci.real-integration.gateway.v1",
+  "schemaVersion": 1,
+  "observedAt": "2026-10-26T01:23:07.202Z",
+  "readOnly": true,
+  "writeActionsPerformed": false,
+  "status": "VERIFIED",
+  "expected": {
+    "chainId": 196,
+    "domain": "10.2.4.tape",
+    "container": "0xC0B4900262d0bC13F2C67C0Fc4CF92c04E0aB814",
+    "url": "https://10-2-4.tapekit.org/",
+    "expectedContentSha256": "0x3cae50fd41819c41851cc8fe28d07d2f3c686298571194857033ac1d61da1941"
+  },
+  "chain": [
+    {
+      "operator": "okx",
+      "rpcHost": "rpc.xlayer.tech",
+      "chainId": 196,
+      "pinnedBlock": "74208747",
+      "blockHash": "0x0afa3c56027c19f5ace49619be818c0b8763c8918be15cfb58c695962f11b660",
+      "isLive": true,
+      "isContainerLive": true,
+      "paidUntil": "2026-11-24T09:38:10.000Z",
+      "error": null
+    },
+    {
+      "operator": "drpc",
+      "rpcHost": "xlayer.drpc.org",
+      "chainId": 196,
+      "pinnedBlock": "74208747",
+      "blockHash": "0x0afa3c56027c19f5ace49619be818c0b8763c8918be15cfb58c695962f11b660",
+      "isLive": true,
+      "isContainerLive": true,
+      "paidUntil": "2026-11-24T09:38:10.000Z",
+      "error": null
+    }
+  ],
+  "dns": {
+    "a": [
+      "104.21.71.52",
+      "172.67.143.110"
+    ],
+    "aaaa": [],
+    "cname": [],
+    "errors": []
+  },
+  "tls": {
+    "strictAuthorized": true,
+    "hostMatches": true,
+    "validFrom": "2026-09-13T17:50:26.000Z",
+    "validTo": "2026-12-12T17:50:25.000Z",
+    "subject": "CN=tapekit.org",
+    "issuer": "C=US, O=Let's Encrypt, CN=YE1",
+    "error": null
+  },
+  "http": {
+    "status": 200,
+    "finalUrl": "https://10-2-4.tapekit.org/",
+    "contentType": "text/html",
+    "contentSha256": "0x3cae50fd41819c41851cc8fe28d07d2f3c686298571194857033ac1d61da1941",
+    "error": null
+  },
+  "blockers": []
+}

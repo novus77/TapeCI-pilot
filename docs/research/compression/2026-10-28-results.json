@@ -1,0 +1,194 @@
+{
+  "createdAt": "2026-10-28T02:59:02.745Z",
+  "node": "v24.11.1",
+  "root": "/Users/a77/Documents/ChatGPT/okx tapeout 黑客松/web/dist",
+  "method": "Experimental deterministic index+binary payload; no production loader, chain simulation, base64 embedding or fees included. CSS-only change is synthetic, not a rebuild. Codec-level independent/group comparisons only.",
+  "baseline": {
+    "totalBytes": 370793,
+    "objects": 5,
+    "chunks": 19,
+    "files": [
+      {
+        "path": "assets/ccip-NE1Yao_5.js",
+        "bytes": 2835,
+        "sha256": "d3fb816f9c1a69fc6d8dc6a0ef1e464a7f5f29e38cf8a26a44a9fe79f4d51ab5"
+      },
+      {
+        "path": "assets/index-DTBOaMKe.css",
+        "bytes": 12782,
+        "sha256": "7db9ff3d974278c306ed1c7a3a17d1bef3283757c2ce68d32a8a8ab40e06e663"
+      },
+      {
+        "path": "assets/index-ub6JmGal.js",
+        "bytes": 345066,
+        "sha256": "7695814d35fc036d2461ef85017027b003c53d6787788ff4d222385593119b65"
+      },
+      {
+        "path": "favicon.svg",
+        "bytes": 9522,
+        "sha256": "61bc9a161de58248288e6905425d7180f0624c2865007b97d763fdac12043a66"
+      },
+      {
+        "path": "index.html",
+        "bytes": 588,
+        "sha256": "a12f946feffeb914a5e89adc18f69da9a67183a4f2c3c7044482bdddc39c5b4d"
+      }
+    ]
+  },
+  "results": [
+    {
+      "name": "gzip individual",
+      "codec": "gzip",
+      "layout": "individual",
+      "totalBytes": 110004,
+      "chunks": 9,
+      "objects": 5,
+      "elapsedMs": 7,
+      "units": [
+        {
+          "name": "assets/ccip-NE1Yao_5.js",
+          "bytes": 1304,
+          "hash": "04e1067bd835b14d1083b3a1c6f728fb2c00b8e1b9f775fc37ecfc4da5677353"
+        },
+        {
+          "name": "assets/index-DTBOaMKe.css",
+          "bytes": 3634,
+          "hash": "df99a9569171cf31f847de81d316632bb4817ffb435712b8b0f5043438dba4d0"
+        },
+        {
+          "name": "assets/index-ub6JmGal.js",
+          "bytes": 103216,
+          "hash": "d52b59fd719b15d3b697ff2cc2c0b75855d6c8b61d0a76eb8468d0f49412420c"
+        },
+        {
+          "name": "favicon.svg",
+          "bytes": 1485,
+          "hash": "788edd6150d134e492c161322ce727cbe86416ba61b8e132f332bd0772c804a5"
+        },
+        {
+          "name": "index.html",
+          "bytes": 365,
+          "hash": "3bc987b093d58be2955af5a509e51de23ce4aba7cfbc7502a49badf769003a9a"
+        }
+      ],
+      "reductionPct": 70.33
+    },
+    {
+      "name": "gzip whole",
+      "codec": "gzip",
+      "layout": "whole",
+      "totalBytes": 110385,
+      "chunks": 5,
+      "objects": 1,
+      "elapsedMs": 5,
+      "units": [
+        {
+          "name": "whole",
+          "bytes": 110385,
+          "hash": "33b21a6176470b746400ee0f8037a61a5a845a192e76141d37bad386a5ae93d6"
+        }
+      ],
+      "reductionPct": 70.23
+    },
+    {
+      "name": "gzip grouped",
+      "codec": "gzip",
+      "layout": "grouped",
+      "totalBytes": 110282,
+      "chunks": 7,
+      "objects": 3,
+      "elapsedMs": 6,
+      "units": [
+        {
+          "name": "media",
+          "bytes": 1586,
+          "hash": "0c8b8c35ce6df8e146e7ea2f37fa35d0f77d0c73de0970c78b281ad8a63fd250"
+        },
+        {
+          "name": "scripts",
+          "bytes": 104551,
+          "hash": "49c831a9cd151024913f30f5a3179df1d9770a15eee5db66017a09c99b3d013f"
+        },
+        {
+          "name": "shell",
+          "bytes": 4145,
+          "hash": "33143d56d47e3977d573adb503f7e71e0365ab1772110ed4ab703cd431e7afb9"
+        }
+      ],
+      "reductionPct": 70.26
+    },
+    {
+      "name": "brotli whole",
+      "codec": "brotli",
+      "layout": "whole",
+      "totalBytes": 88241,
+      "chunks": 4,
+      "objects": 1,
+      "elapsedMs": 390,
+      "units": [
+        {
+          "name": "whole",
+          "bytes": 88241,
+          "hash": "ed64c2734978c6045e74ea5f9e0ad19e1013bfa33322c1052ea12a53ccfca7b0"
+        }
+      ],
+      "reductionPct": 76.2
+    },
+    {
+      "name": "brotli grouped",
+      "codec": "brotli",
+      "layout": "grouped",
+      "totalBytes": 88422,
+      "chunks": 6,
+      "objects": 3,
+      "elapsedMs": 371,
+      "units": [
+        {
+          "name": "media",
+          "bytes": 1333,
+          "hash": "be7df4f8b60134a4d4c8284380cb763270f1bfc2240646c7ff98c9a74456a7f5"
+        },
+        {
+          "name": "scripts",
+          "bytes": 83568,
+          "hash": "175f0aacabeefcd5338e7642083854823fcf4e981b17393b17010109fd02ade2"
+        },
+        {
+          "name": "shell",
+          "bytes": 3521,
+          "hash": "cf8757046e5746748ef4faa969b2a61f161769035356d3d118666d0cd3e00bd8"
+        }
+      ],
+      "reductionPct": 76.15
+    }
+  ],
+  "incremental": [
+    {
+      "name": "gzip individual",
+      "changedPayloadBytes": 3676,
+      "changedObjects": 1
+    },
+    {
+      "name": "gzip whole",
+      "changedPayloadBytes": 110430,
+      "changedObjects": 1
+    },
+    {
+      "name": "gzip grouped",
+      "changedPayloadBytes": 4185,
+      "changedObjects": 1
+    },
+    {
+      "name": "brotli whole",
+      "changedPayloadBytes": 88423,
+      "changedObjects": 1
+    },
+    {
+      "name": "brotli grouped",
+      "changedPayloadBytes": 3569,
+      "changedObjects": 1
+    }
+  ],
+  "roundtripVerified": true,
+  "repeatOutputVerified": true
+}

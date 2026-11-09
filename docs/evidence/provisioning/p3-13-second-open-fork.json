@@ -1,0 +1,33 @@
+{
+  "schema": "tapeci.evidence.second-open.v1",
+  "observedAt": "2026-10-27T18:00:00.000Z",
+  "issue": "P3-13",
+  "question": "Does a second `open` on an already-opened circuit charge FEE() again?",
+  "answer": "No. The second call reverts and costs only gas (~0.000056 OKB). It does not take the 0.08 OKB opener fee a second time.",
+  "method": {
+    "environment": "Anvil 1.7.1 fork of X Layer 196",
+    "pinnedBlock": 74329771,
+    "processor": "0x839bdD6fa7A66416A609A735e11DE5411B98574e",
+    "tokenId": "1",
+    "feeWei": "80000000000000000",
+    "how": "Impersonated the circuit holder on the fork (anvil_impersonateAccount + anvil_setBalance), sent the real opener.open(processor, tokenId) call with value = FEE(), mined a block, and read the receipt plus the holder's balance delta.",
+    "test": "tests/fork/second-open.test.ts",
+    "command": "PATH=\"$HOME/.foundry/bin:$PATH\" node .corepack/v1/pnpm/9.15.4/bin/pnpm.cjs exec vitest run tests/fork/second-open.test.ts"
+  },
+  "measurement": {
+    "secondOpenStatus": "0x0 (reverted)",
+    "secondOpenGasUsed": "55163",
+    "holderBalanceDeltaWei": "56135685152101",
+    "chargedFeeAgain": false
+  },
+  "consequence": [
+    "A repeat open is not a double-charge vector on chain, so the DB single-live-intent index is defence in depth rather than the only protection.",
+    "It is still not free: a user who retries pays gas each time, so the UI must not invite a retry while a send is unresolved.",
+    "The revert reason is opaque from this measurement; the product must not promise a specific error message for a repeat open."
+  ],
+  "notProven": [
+    "No mainnet transaction was sent; this is a local fork of one pinned block.",
+    "Behaviour after a state change on the circuit (transfer, or a protocol upgrade) is unmeasured.",
+    "The exact revert selector is unknown because the receipt carries no revert data."
+  ]
+}

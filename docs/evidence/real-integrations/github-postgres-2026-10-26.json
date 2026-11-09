@@ -1,0 +1,43 @@
+{
+  "schema": "tapeci.real-integration.github-postgres.v1",
+  "observedAt": "2026-10-26T03:05:00.000Z",
+  "readOnly": false,
+  "writeActionsPerformed": "Inserted one test webhook delivery and the deployment it created; no GitHub configuration was changed.",
+  "githubApp": {
+    "appId": 5383055,
+    "slug": "tapeci-local-12e350",
+    "owner": "novus77",
+    "jwtAlg": "RS256",
+    "jwtPrinted": false,
+    "installationsVisible": 1,
+    "installationId": 173094654,
+    "note": "Verified with a locally signed app JWT against GET /app and GET /app/installations."
+  },
+  "webhook": {
+    "endpoint": "POST /v1/github/webhook",
+    "signature": "X-Hub-Signature-256 = HMAC-SHA256(raw body, GITHUB_WEBHOOK_SECRET), computed in-process",
+    "deliveryId": "ca5c5049-e18b-40ba-9755-cc200828f129",
+    "firstDelivery": { "status": 202, "duplicate": false, "accepted": true, "deploymentId": "aae36140-f41f-4b9d-8e6e-b2b98ea20d24" },
+    "replaySameDelivery": { "status": 200, "duplicate": true, "accepted": true, "deploymentId": "aae36140-f41f-4b9d-8e6e-b2b98ea20d24" },
+    "invalidSignature": { "status": 401, "code": "INVALID_WEBHOOK_SIGNATURE" },
+    "malformedPayload": { "status": 422, "code": "INVALID_PAYLOAD", "note": "Observed first: a payload without repository.owner.login and after is rejected, which is the correct fail-closed behaviour." }
+  },
+  "postgres": {
+    "database": "postgres://tapeci:***@127.0.0.1:55432/tapeci",
+    "deliveryRowsForDeliveryId": 1,
+    "deploymentRowsForCommit": 1,
+    "deploymentState": "RECEIVED",
+    "auditEvents": 45,
+    "idempotencyProven": true
+  },
+  "durability": {
+    "method": "Counted rows, killed the API process, restarted it with the same env, counted again.",
+    "before": { "deliveries": 6, "deployments": 23, "auditEvents": 45, "targetState": "RECEIVED" },
+    "after": { "deliveries": 6, "deployments": 23, "auditEvents": 45, "targetState": "RECEIVED" },
+    "identical": true,
+    "apiReadAfterRestart": { "id": "aae36140-f41f-4b9d-8e6e-b2b98ea20d24", "state": "RECEIVED", "commitPrefix": "44d8b6389ac6" },
+    "note": "Postgres itself was not restarted in this run; the earlier harness already did an isolated stop/start drill."
+  },
+  "status": "VERIFIED",
+  "secrets": "No app key, webhook secret, OAuth secret or session value appears in this file; the secret was read in-process only."
+}

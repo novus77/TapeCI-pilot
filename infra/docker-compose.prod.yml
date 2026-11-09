@@ -1,0 +1,233 @@
+# Production baseline: Postgres/Redis/MinIO + API/worker/web + Prometheus/Grafana.
+#
+#   cp infra/env.prod.example infra/env.prod    # fill in real values, never commit
+#   docker compose --env-file infra/env.prod -f infra/docker-compose.prod.yml up -d
+#
+# ALWAYS pass --env-file. Compose interpolation (`${VAR:-default}` below) reads
+# the shell environment plus the file given by --env-file; it does NOT read a
+# service's `env_file:`. Because `environment:` wins over `env_file:` at run time,
+# values placed only in infra/env.prod would be silently overridden by the
+# defaults here — a wrong DATABASE_URL or S3 endpoint with no error at all.
+#
+# `docker compose -f infra/docker-compose.prod.yml config` must also succeed with
+# NO variables set, so this file uses defaults instead of `:?` markers. Required
+# secrets are enforced at run time by the services themselves: the API refuses to
+# boot without DATABASE_URL and a >=16 character SESSION_SIGNING_SECRET.
+name: tapeci-prod
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-tapeci}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-change-me}
+      POSTGRES_DB: ${POSTGRES_DB:-tapeci}
+    volumes:
+      - tapeci-postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-tapeci} -d ${POSTGRES_DB:-tapeci}"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - tapeci-redis:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  minio-perms:
+    image: pgsty/minio:RELEASE.2026-08-04T00-00-00Z@sha256:b6bfe7239bfc83fb90d31612d9704d86039dd714f7904b3f1ad68f211e602372
+    user: "0:0"
+    entrypoint: ["/bin/sh", "-c", "chown -R 1000:1000 /data"]
+    volumes:
+      - tapeci-minio:/data
+    restart: "no"
+
+  minio:
+    image: pgsty/minio:RELEASE.2026-08-04T00-00-00Z@sha256:b6bfe7239bfc83fb90d31612d9704d86039dd714f7904b3f1ad68f211e602372
+    restart: unless-stopped
+    command: ["server", "/data", "--console-address", ":9001"]
+    environment:
+      MINIO_ROOT_USER: ${S3_ACCESS_KEY_ID:-tapeci}
+      MINIO_ROOT_PASSWORD: ${S3_SECRET_ACCESS_KEY:-change-me}
+      MC_HOST_local: http://${S3_ACCESS_KEY_ID:-tapeci}:${S3_SECRET_ACCESS_KEY:-change-me}@localhost:9000
+    volumes:
+      - tapeci-minio:/data
+    ports:
+      - "127.0.0.1:9000:9000"
+      - "127.0.0.1:9001:9001"
+    depends_on:
+      minio-perms: { condition: service_completed_successfully }
+    healthcheck:
+      test: ["CMD", "mc", "ready", "local"]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+
+  minio-init:
+    build:
+      context: ..
+      dockerfile: infra/Dockerfile.api
+    env_file:
+      - path: ${TAPECI_ENV_FILE:-env.prod}
+        required: false
+    entrypoint: ["node", "node_modules/tsx/dist/cli.mjs", "scripts/p2/ensure-bucket.ts"]
+    depends_on:
+      minio: { condition: service_healthy }
+    restart: "no"
+
+  api:
+    build:
+      context: ..
+      dockerfile: infra/Dockerfile.api
+    restart: unless-stopped
+    env_file:
+      - path: ${TAPECI_ENV_FILE:-env.prod}
+        required: false
+    environment:
+      DATABASE_URL: ${DATABASE_URL:-postgres://tapeci:${POSTGRES_PASSWORD:-change-me}@postgres:5432/tapeci}
+      REDIS_URL: ${REDIS_URL:-redis://redis:6379}
+      TAPECI_API_HOST: 0.0.0.0
+      # Object store. Without these the API silently falls back to
+      # TAPECI_OBJECT_STORE=local (a container-local directory), so artifacts
+      # written by the API would be unreadable by the worker.
+      TAPECI_OBJECT_STORE: ${TAPECI_OBJECT_STORE:-s3}
+      S3_ENDPOINT: ${S3_ENDPOINT:-http://minio:9000}
+      S3_BUCKET: ${S3_BUCKET:-tapeci-artifacts}
+      S3_ACCESS_KEY_ID: ${S3_ACCESS_KEY_ID:-tapeci}
+      S3_SECRET_ACCESS_KEY: ${S3_SECRET_ACCESS_KEY:-change-me}
+      S3_PREFIX: ${S3_PREFIX:-tapeci}
+      S3_REGION: ${S3_REGION:-auto}
+      S3_FORCE_PATH_STYLE: ${S3_FORCE_PATH_STYLE:-true}
+    ports:
+      - "127.0.0.1:8787:8787"
+    volumes:
+      # Journal/local-store fallback must survive a restart.
+      - tapeci-api-state:/app/.tapeci
+    depends_on:
+      postgres: { condition: service_healthy }
+      redis: { condition: service_healthy }
+      minio: { condition: service_healthy }
+      minio-init: { condition: service_completed_successfully }
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:8787/readyz').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 15s
+      timeout: 3s
+      retries: 10
+      start_period: 20s
+
+  worker:
+    build:
+      context: ..
+      dockerfile: infra/Dockerfile.worker
+    restart: unless-stopped
+    env_file:
+      - path: ${TAPECI_ENV_FILE:-env.prod}
+        required: false
+    environment:
+      DATABASE_URL: ${DATABASE_URL:-postgres://tapeci:${POSTGRES_PASSWORD:-change-me}@postgres:5432/tapeci}
+      REDIS_URL: ${REDIS_URL:-redis://redis:6379}
+      TAPECI_WORKER_HOST: 0.0.0.0
+      TAPECI_WORKER_PORT: 8788
+      # The worker reads the artifact the API wrote: the object store config must
+      # match the API's exactly or plan/deploy fails with OBJECT_STORE_NOT_FOUND.
+      TAPECI_OBJECT_STORE: ${TAPECI_OBJECT_STORE:-s3}
+      S3_ENDPOINT: ${S3_ENDPOINT:-http://minio:9000}
+      S3_BUCKET: ${S3_BUCKET:-tapeci-artifacts}
+      S3_ACCESS_KEY_ID: ${S3_ACCESS_KEY_ID:-tapeci}
+      S3_SECRET_ACCESS_KEY: ${S3_SECRET_ACCESS_KEY:-change-me}
+      S3_PREFIX: ${S3_PREFIX:-tapeci}
+      S3_REGION: ${S3_REGION:-auto}
+      S3_FORCE_PATH_STYLE: ${S3_FORCE_PATH_STYLE:-true}
+    ports:
+      - "127.0.0.1:8788:8788"
+    volumes:
+      # The release journal is the crash-recovery record for an in-flight chain
+      # write; it must survive a container restart.
+      - tapeci-worker-state:/app/.tapeci
+    depends_on:
+      postgres: { condition: service_healthy }
+      redis: { condition: service_healthy }
+      minio-init: { condition: service_completed_successfully }
+    # /readyz also checks queue counts; /healthz is the dependency-free liveness
+    # probe, so the container is not restart-looped by a Redis outage.
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:8788/readyz').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 15s
+      timeout: 3s
+      retries: 10
+      start_period: 30s
+    # Longer than the longest deploy job so BullMQ can finish an in-flight write.
+    stop_grace_period: 120s
+
+  web:
+    build:
+      context: ..
+      dockerfile: infra/Dockerfile.web
+      args:
+        NEXT_PUBLIC_API_URL: ${TAPECI_PUBLIC_API_URL:-http://127.0.0.1:8787}
+        NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID: ${NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID:-}
+    restart: unless-stopped
+    environment:
+      TAPECI_API_URL: http://api:8787
+      TAPECI_WEB_URL: ${TAPECI_WEB_URL:-http://127.0.0.1:3000}
+      NEXT_PUBLIC_API_URL: ${TAPECI_PUBLIC_API_URL:-http://127.0.0.1:8787}
+    ports:
+      - "127.0.0.1:3000:3000"
+    depends_on:
+      api: { condition: service_healthy }
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3000/login').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 15s
+      timeout: 3s
+      retries: 10
+
+  node-exporter:
+    image: prom/node-exporter:v1.8.2
+    restart: unless-stopped
+    command: ["--collector.textfile.directory=/textfile"]
+    volumes:
+      - ${TAPECI_TEXTFILE_DIR:-../.tapeci/textfile}:/textfile:ro
+    ports:
+      - "127.0.0.1:9100:9100"
+
+  prometheus:
+    image: prom/prometheus:v2.55.1
+    restart: unless-stopped
+    volumes:
+      - ../ops/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ../ops/prometheus/tapeci-alerts.yml:/etc/prometheus/tapeci-alerts.yml:ro
+      - tapeci-prometheus:/prometheus
+    ports:
+      - "127.0.0.1:9090:9090"
+
+  grafana:
+    image: grafana/grafana:11.3.1
+    restart: unless-stopped
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_ADMIN_PASSWORD:-change-me}
+      GF_USERS_ALLOW_SIGN_UP: "false"
+    volumes:
+      - ../ops/grafana/provisioning:/etc/grafana/provisioning:ro
+      - ../ops/grafana/tapeci-dashboard.json:/var/lib/grafana/dashboards/tapeci.json:ro
+      - tapeci-grafana:/var/lib/grafana
+    ports:
+      - "127.0.0.1:3001:3000"
+    depends_on:
+      - prometheus
+
+volumes:
+  tapeci-postgres:
+  tapeci-redis:
+  tapeci-minio:
+  tapeci-api-state:
+  tapeci-worker-state:
+  tapeci-prometheus:
+  tapeci-grafana:

@@ -1,0 +1,27 @@
+{
+  "schema": "tapeci.real-integration.signature.v1",
+  "observedAt": "2026-10-26T03:10:00.000Z",
+  "readOnly": true,
+  "writeActionsPerformed": false,
+  "what": "The EIP-712 approval that authorized the real mainnet release was produced by the owner's wallet. This re-derives the typed data from stored values and recovers the signer independently of the API.",
+  "deploymentId": "17d33c2a-81c8-4579-afe0-3c28934356e0",
+  "domain": { "name": "TapeCI", "version": "1", "chainId": 196, "verifyingContract": "0x68809fd2fb343aa57d0aeb7f33defe477c9666f9" },
+  "primaryType": "Approval",
+  "message": {
+    "deploymentId": "17d33c2a-81c8-4579-afe0-3c28934356e0",
+    "manifestHash": "0x9e7d8029d45b3eb09c3ed73069852751b04b3dc924c2b11683847f4b8d454a10",
+    "container": "0xC0B4900262d0Bc13F2C67C0Fc4CF92c04E0aB814",
+    "costCapWei": "1290779136000000",
+    "nonce": "8207d50a-1624-4ae9-af1f-54b29471742a",
+    "expiresAt": "1792926259"
+  },
+  "signature": { "bytes": 65, "algorithm": "secp256k1 ECDSA (EIP-712)" },
+  "recovery": {
+    "storedSigner": "0x25063c2210a0BCcCE3e15d250573179483275f22",
+    "recoveredAddress": "0x25063c2210a0BCcCE3e15d250573179483275f22",
+    "matches": true
+  },
+  "signerRole": "container owner (holder of circuit #10 on processor 4)",
+  "status": "VERIFIED",
+  "note": "This signature was accepted by the API and the resulting deployment executed 21 real mainnet writes, so the signature is proven both cryptographically and by consequence."
+}

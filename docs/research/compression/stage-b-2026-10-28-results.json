@@ -1,0 +1,390 @@
+{
+  "schema": "tapeci.compression-browser-evidence.v1",
+  "date": "2026-10-28",
+  "scope": "isolated-loopback-prototype",
+  "externalWritesPerformed": false,
+  "productionGatewayVerified": false,
+  "mainnetCompressionVerified": false,
+  "realBuild": {
+    "repository": "/Users/a77/Documents/ChatGPT/okx tapeout \u9ed1\u5ba2\u677e",
+    "commit": "9f9d8f1bae33183e498527d1e2fdffbe44ed916f",
+    "externalNetworkBlocked": true,
+    "coverage": "initial static UI and root-relative hashed resources; no wallet/API/transaction claims"
+  },
+  "stats": {
+    "startTime": "2026-10-28T05:25:55.939Z",
+    "duration": 56419.933999999994,
+    "expected": 18,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "tests": [
+    {
+      "name": "loads original paths, CSS/font, image, fetch, lazy import, Worker and WASM under CSP",
+      "project": "chromium",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 2694
+        }
+      ],
+      "annotations": [
+        {
+          "type": "browser-version",
+          "description": "156.0.8078.73"
+        },
+        {
+          "type": "runtime-bytes",
+          "description": "9066"
+        }
+      ]
+    },
+    {
+      "name": "refreshes deep SPA routes and does not convert missing assets to HTML",
+      "project": "chromium",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 1423
+        }
+      ],
+      "annotations": [
+        {
+          "type": "browser-version",
+          "description": "156.0.8078.73"
+        },
+        {
+          "type": "runtime-bytes",
+          "description": "9066"
+        }
+      ]
+    },
+    {
+      "name": "rejects corruptObject without running application code",
+      "project": "chromium",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 1087
+        }
+      ],
+      "annotations": [
+        {
+          "type": "browser-version",
+          "description": "156.0.8078.73"
+        },
+        {
+          "type": "runtime-bytes",
+          "description": "9066"
+        }
+      ]
+    },
+    {
+      "name": "rejects wrongPin without running application code",
+      "project": "chromium",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 787
+        }
+      ],
+      "annotations": [
+        {
+          "type": "browser-version",
+          "description": "156.0.8078.73"
+        },
+        {
+          "type": "runtime-bytes",
+          "description": "9066"
+        }
+      ]
+    },
+    {
+      "name": "loads a whole gzip object with shared resources",
+      "project": "chromium",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 1007
+        }
+      ],
+      "annotations": [
+        {
+          "type": "browser-version",
+          "description": "156.0.8078.73"
+        },
+        {
+          "type": "runtime-bytes",
+          "description": "9066"
+        }
+      ]
+    },
+    {
+      "name": "renders the CircuitGuard Vite build with root-relative hashed assets",
+      "project": "chromium",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 1349
+        }
+      ],
+      "annotations": [
+        {
+          "type": "browser-version",
+          "description": "156.0.8078.73"
+        }
+      ]
+    },
+    {
+      "name": "loads original paths, CSS/font, image, fetch, lazy import, Worker and WASM under CSP",
+      "project": "firefox",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 4390
+        }
+      ],
+      "annotations": [
+        {
+          "type": "browser-version",
+          "description": "157.0"
+        },
+        {
+          "type": "runtime-bytes",
+          "description": "9066"
+        }
+      ]
+    },
+    {
+      "name": "refreshes deep SPA routes and does not convert missing assets to HTML",
+      "project": "firefox",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 2257
+        }
+      ],
+      "annotations": [
+        {
+          "type": "browser-version",
+          "description": "157.0"
+        },
+        {
+          "type": "runtime-bytes",
+          "description": "9066"
+        }
+      ]
+    },
+    {
+      "name": "rejects corruptObject without running application code",
+      "project": "firefox",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 897
+        }
+      ],
+      "annotations": [
+        {
+          "type": "browser-version",
+          "description": "157.0"
+        },
+        {
+          "type": "runtime-bytes",
+          "description": "9066"
+        }
+      ]
+    },
+    {
+      "name": "rejects wrongPin without running application code",
+      "project": "firefox",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 3537
+        }
+      ],
+      "annotations": [
+        {
+          "type": "browser-version",
+          "description": "157.0"
+        },
+        {
+          "type": "runtime-bytes",
+          "description": "9066"
+        }
+      ]
+    },
+    {
+      "name": "loads a whole gzip object with shared resources",
+      "project": "firefox",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 8057
+        }
+      ],
+      "annotations": [
+        {
+          "type": "browser-version",
+          "description": "157.0"
+        },
+        {
+          "type": "runtime-bytes",
+          "description": "9066"
+        }
+      ]
+    },
+    {
+      "name": "renders the CircuitGuard Vite build with root-relative hashed assets",
+      "project": "firefox",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 2547
+        }
+      ],
+      "annotations": [
+        {
+          "type": "browser-version",
+          "description": "157.0"
+        }
+      ]
+    },
+    {
+      "name": "loads original paths, CSS/font, image, fetch, lazy import, Worker and WASM under CSP",
+      "project": "webkit",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 3640
+        }
+      ],
+      "annotations": [
+        {
+          "type": "browser-version",
+          "description": "27.2"
+        },
+        {
+          "type": "runtime-bytes",
+          "description": "9066"
+        }
+      ]
+    },
+    {
+      "name": "refreshes deep SPA routes and does not convert missing assets to HTML",
+      "project": "webkit",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 610
+        }
+      ],
+      "annotations": [
+        {
+          "type": "browser-version",
+          "description": "27.2"
+        },
+        {
+          "type": "runtime-bytes",
+          "description": "9066"
+        }
+      ]
+    },
+    {
+      "name": "rejects corruptObject without running application code",
+      "project": "webkit",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 385
+        }
+      ],
+      "annotations": [
+        {
+          "type": "browser-version",
+          "description": "27.2"
+        },
+        {
+          "type": "runtime-bytes",
+          "description": "9066"
+        }
+      ]
+    },
+    {
+      "name": "rejects wrongPin without running application code",
+      "project": "webkit",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 417
+        }
+      ],
+      "annotations": [
+        {
+          "type": "browser-version",
+          "description": "27.2"
+        },
+        {
+          "type": "runtime-bytes",
+          "description": "9066"
+        }
+      ]
+    },
+    {
+      "name": "loads a whole gzip object with shared resources",
+      "project": "webkit",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 472
+        }
+      ],
+      "annotations": [
+        {
+          "type": "browser-version",
+          "description": "27.2"
+        },
+        {
+          "type": "runtime-bytes",
+          "description": "9066"
+        }
+      ]
+    },
+    {
+      "name": "renders the CircuitGuard Vite build with root-relative hashed assets",
+      "project": "webkit",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 540
+        }
+      ],
+      "annotations": [
+        {
+          "type": "browser-version",
+          "description": "27.2"
+        }
+      ]
+    }
+  ]
+}

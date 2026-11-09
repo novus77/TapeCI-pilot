@@ -1,0 +1,334 @@
+{
+  "schemaVersion": "tapeci.compression-measurement.v1",
+  "complete": true,
+  "scope": "isolated-anvil-fork",
+  "mainnetWritesPerformed": false,
+  "productionGatewayQualified": false,
+  "independentRpcVerified": false,
+  "automaticSelection": "original",
+  "source": {
+    "files": 4,
+    "bytes": 45409,
+    "digest": "0x0522952b0bedb02b53a201619ce2fca88fdd3bd35139d38f27a6efa1ee5ca944"
+  },
+  "fork": {
+    "sourceHost": "rpc.xlayer.tech",
+    "sourceBlock": "74405711",
+    "sourceBlockHash": "0x9a9cb00981439cdec1818c2252adec341a1606f7fba1a7145b2f7ad4070917b7",
+    "writeTarget": "http://127.0.0.1:51051",
+    "container": "0x5f71fE4573757dA6aaDaebFBed0cc2e3A0C12628",
+    "baselineBlock": "74405712",
+    "baselineBlockHash": "0x0b7858329609951aa69a1f0a6002755d3bc43a3ab82ebb45e6024fa12eedb9a2"
+  },
+  "tapeKit": {
+    "schemaVersion": "tapeci.tapekit-overlay.v1",
+    "tapeKitCommit": "37c617e7e332787c8a32a81e4d7d05a28a06c156",
+    "sourceFileSha256": {
+      "sw-gateway/sw.js": "affabe80d05ddb974b4cc9fce81e973255dfdc9b1c653740f7dbc99db3d8ab72",
+      "sw-gateway/worker.js": "b4d7f3a61a115a515f94d612eb03fcc093271d344af56281cecfcbb57ab6c148",
+      "sw-gateway/serve.js": "b1858e0c8a9b709e372d1b2d8b28176940692d562c736726f03e8fe8d4d4304e",
+      "sw-gateway/build.mjs": "fb31ea9cdd807077c330116be7fd5d61644a12b92be00f197a61d06dd99db042",
+      "sw-gateway/dev-server.mjs": "cb462db1632502ae415d7773405e63a58cc3450e370e39a19c601e2bc0be0044"
+    },
+    "patchedFileSha256": {
+      "sw-gateway/sw.js": "0x9ebda41a76ee48cc515bcb07ad39ac0fa9bb3e48d6a5faad14a8a73c7c115e82",
+      "sw-gateway/worker.js": "0x837e9911e9ac0a40c77cdc26f9f65e2ea263b84a25f0c07197403cb70114c6fe",
+      "sw-gateway/serve.js": "0x4acf457afddf24db1971f95e0001610a94d0bd613a258e2ed71708c33439f486",
+      "sw-gateway/build.mjs": "0x4a95f9a52e71a4a8c561913e0055f9be1f213697c12b6d831f72a2b501450cce",
+      "sw-gateway/dev-server.mjs": "0x864254d2f0b339e7b8b2a26617012c70edcb9806fa147056828a56dd7156a35a"
+    },
+    "adapterSha256": "0x614690462f0defdf7926fff630ed42d045f02969f0a191e69eacc29517f84a46",
+    "adapterBytes": 12885,
+    "bunVersion": "1.3.10",
+    "scope": "local-source-integration-only",
+    "liveGatewayModified": false
+  },
+  "setupFeesIncluded": false,
+  "l2SpecificFeesIncluded": false,
+  "measurements": [
+    {
+      "strategy": "original",
+      "baselineBlockHash": "0x0b7858329609951aa69a1f0a6002755d3bc43a3ab82ebb45e6024fa12eedb9a2",
+      "manifestSha256": "0xf466265bfce06f3c069a638cc6b52e97fa5cf3e6911a475b4203c5a0b3947bb3",
+      "physicalFiles": 4,
+      "physicalBytes": 45477,
+      "physicalChunks": 5,
+      "modelEstimatedGas": "11243032",
+      "accounting": {
+        "transactions": 5,
+        "gasUsed": "11331376",
+        "minedFeeWei": "11485507499560215",
+        "normalizedCostWei": "11505464099434368",
+        "quoteGasPriceWei": "1015363368"
+      },
+      "receipts": [
+        {
+          "hash": "0xbcc486929ec35bc1de8409fb22582039436fb18ece3467de3dbb70d11c8e17c7",
+          "status": "success",
+          "blockNumber": "74405713",
+          "blockHash": "0x8605b3b8ed7a2c8eece90c9da2a26267adb87e85bcbe94fd9551ab6b7ba8ebee",
+          "gasUsed": "3862781",
+          "effectiveGasPrice": "1015363368"
+        },
+        {
+          "hash": "0x590a7ed0d969be8b2aaaf408e29305b761cc7f3e7d24a21c45eb88534c4ab134",
+          "status": "success",
+          "blockNumber": "74405714",
+          "blockHash": "0x612df567b57a770e76ff91461f0a8a5d668974eeec4307ac2ecdb961006929dc",
+          "gasUsed": "5536000",
+          "effectiveGasPrice": "1013513597"
+        },
+        {
+          "hash": "0x9314e74045339284cf814faf89169e17cd6e28f716aa53d88c42dd33430177d9",
+          "status": "success",
+          "blockNumber": "74405715",
+          "blockHash": "0xa0e1e63e9498897acbaab9b8df312a166bdbd71d700fd5c4b9bb7b16bcca5fb7",
+          "gasUsed": "165232",
+          "effectiveGasPrice": "1011913459"
+        },
+        {
+          "hash": "0x3c8e8033438cf1fa21d3f09ce8c37e43748d1037c6b811f12a8a31a158bd9f05",
+          "status": "success",
+          "blockNumber": "74405716",
+          "blockHash": "0x4d23db69f1ac925837b0c895fb0430ed0737957dbd8a76f626bba2f2752e4825",
+          "gasUsed": "1439691",
+          "effectiveGasPrice": "1010426621"
+        },
+        {
+          "hash": "0xe8d676ba34fc6699b161dfd425d76f8992fda9e4d06e9ffa9937f8f0ce14b382",
+          "status": "success",
+          "blockNumber": "74405717",
+          "blockHash": "0xaa025a880bd8a552f917f3af9b3040bd8caf80afd22f3ef2eb1098848896768c",
+          "gasUsed": "327672",
+          "effectiveGasPrice": "1009141164"
+        }
+      ],
+      "gateway": {
+        "readBlock": "74405717",
+        "readBlockHash": "0xaa025a880bd8a552f917f3af9b3040bd8caf80afd22f3ef2eb1098848896768c",
+        "quorum": 1,
+        "directFixtureContainer": true,
+        "verifiedPhysicalFiles": 4,
+        "logicalFilesMatched": 4,
+        "originalResponseHeadersPreserved": true
+      }
+    },
+    {
+      "strategy": "gzip-individual",
+      "baselineBlockHash": "0x0b7858329609951aa69a1f0a6002755d3bc43a3ab82ebb45e6024fa12eedb9a2",
+      "manifestSha256": "0x8593ac2eb2ee2822284dc014c86fad45379848b77daa4df4c911cfffd9cda1fd",
+      "physicalFiles": 6,
+      "physicalBytes": 26959,
+      "physicalChunks": 7,
+      "modelEstimatedGas": "7863144",
+      "accounting": {
+        "transactions": 7,
+        "gasUsed": "8103132",
+        "minedFeeWei": "8150611331231154",
+        "normalizedCostWei": "8227623398868576",
+        "quoteGasPriceWei": "1015363368"
+      },
+      "receipts": [
+        {
+          "hash": "0x0a20f5ca800b3581b7820435e38c340936d091cddb3ab8aa3f897756ecb19bdd",
+          "status": "success",
+          "blockNumber": "74405713",
+          "blockHash": "0xd31c104c26f221387b2662f214e9dc858c3ec4ff35187fe60b38bcd1a49c73a0",
+          "gasUsed": "397056",
+          "effectiveGasPrice": "1008002085"
+        },
+        {
+          "hash": "0xe0d21d2bc17b8cd265cd24fec0bffb6f263ab8c240f49b2f5e63ad8defed5669",
+          "status": "success",
+          "blockNumber": "74405714",
+          "blockHash": "0x58da0a415e662b1080909472053bc272c3de37b14f030d675f22b50eece50d00",
+          "gasUsed": "376033",
+          "effectiveGasPrice": "1007005607"
+        },
+        {
+          "hash": "0xf3d067e446b535e5f2bb5c0fac914451b4ebe3df59d51b41f9d217014abcbab6",
+          "status": "success",
+          "blockNumber": "74405715",
+          "blockHash": "0x12f51dd57ac09e19ba96d335df710ec2ac791e3bb9e61e14e01dc876d7c3361c",
+          "gasUsed": "5559022",
+          "effectiveGasPrice": "1006133043"
+        },
+        {
+          "hash": "0xf8ca86fc7b57d78a1f9eb485fa0e4765fe0b01c17df0e985e7e4ead0ec169d7b",
+          "status": "success",
+          "blockNumber": "74405716",
+          "blockHash": "0x2d56e138fd81690be1ba585563cb13966365ca77b58cff04f839a1f918ed5fa8",
+          "gasUsed": "166057",
+          "effectiveGasPrice": "1005407001"
+        },
+        {
+          "hash": "0x16a7d49e75fc7c934d70432300d4274583359274876014402892d8d9feeeb2ea",
+          "status": "success",
+          "blockNumber": "74405717",
+          "blockHash": "0xeb01aafdb792a45b9d399bfa0ec3c5ac667314a2846a63b11df70efaa2f2602c",
+          "gasUsed": "380404",
+          "effectiveGasPrice": "1004732195"
+        },
+        {
+          "hash": "0xbde38a7111ede21db4a021b0a701b9505487c1db3000592b0f22c71660e3783f",
+          "status": "success",
+          "blockNumber": "74405718",
+          "blockHash": "0xb56da05cf81dac6b3da6dcce3644051ec90927682d2a4ad7204c4e11a84c36b7",
+          "gasUsed": "840788",
+          "effectiveGasPrice": "1004142814"
+        },
+        {
+          "hash": "0x7b1adcdb4283fb1e83c5d054e63348c964a12ac0ee44f25d09e0519369caf0c6",
+          "status": "success",
+          "blockNumber": "74405719",
+          "blockHash": "0xdc619f19aaf239d0e3f9e52f22cf365c378737fa886a94a39978154fcd40d9dd",
+          "gasUsed": "383772",
+          "effectiveGasPrice": "1003629109"
+        }
+      ],
+      "gateway": {
+        "readBlock": "74405719",
+        "readBlockHash": "0xdc619f19aaf239d0e3f9e52f22cf365c378737fa886a94a39978154fcd40d9dd",
+        "quorum": 1,
+        "directFixtureContainer": true,
+        "verifiedPhysicalFiles": 6,
+        "logicalFilesMatched": 4,
+        "originalResponseHeadersPreserved": true
+      }
+    },
+    {
+      "strategy": "gzip-whole",
+      "baselineBlockHash": "0x0b7858329609951aa69a1f0a6002755d3bc43a3ab82ebb45e6024fa12eedb9a2",
+      "manifestSha256": "0xc7ebd6cffbbf77cb3b5c0cab7c3fd8c1eebf59f3a0b1346eceec70dbc5630f27",
+      "physicalFiles": 3,
+      "physicalBytes": 26408,
+      "physicalChunks": 4,
+      "modelEstimatedGas": "6814128",
+      "accounting": {
+        "transactions": 4,
+        "gasUsed": "6910884",
+        "minedFeeWei": "6931844309369712",
+        "normalizedCostWei": "7017058454097312",
+        "quoteGasPriceWei": "1015363368"
+      },
+      "receipts": [
+        {
+          "hash": "0xc9f1271ee8a52561817834dba680d0e243f0e8380b98abcbf2e92a6c96d9084e",
+          "status": "success",
+          "blockNumber": "74405713",
+          "blockHash": "0x5acf35707c1632c615cde2219fba25b15e0fdf67d5b0740d820eb5100ff4eb60",
+          "gasUsed": "5576242",
+          "effectiveGasPrice": "1003177129"
+        },
+        {
+          "hash": "0xd6b91a743672da7b360275e2ede1380ae615647b46c538ec25e60e3ea8a0668c",
+          "status": "success",
+          "blockNumber": "74405714",
+          "blockHash": "0xc17dd90e9c0aa34a0deb4cd781f3556a23db58c9dcd61c3e848b084603af5ac8",
+          "gasUsed": "253208",
+          "effectiveGasPrice": "1002801079"
+        },
+        {
+          "hash": "0x8ad658018b3674000084f62c0ff83300936ef0d09fcc07bd766663a51cc592ff",
+          "status": "success",
+          "blockNumber": "74405715",
+          "blockHash": "0xfadd0df5851079da399a4cb37af74e347a583901ee27d8d9cbec645d40b3dd46",
+          "gasUsed": "697662",
+          "effectiveGasPrice": "1002451789"
+        },
+        {
+          "hash": "0x4124253221a06b4a5793ebf552cb98a66d88366fedcbd348eee7a730ab1c7298",
+          "status": "success",
+          "blockNumber": "74405716",
+          "blockHash": "0x00f853d8ba132967ad200683480222188b1358c6a962e22c4528ac61c0c7dd96",
+          "gasUsed": "383772",
+          "effectiveGasPrice": "1002147352"
+        }
+      ],
+      "gateway": {
+        "readBlock": "74405716",
+        "readBlockHash": "0x00f853d8ba132967ad200683480222188b1358c6a962e22c4528ac61c0c7dd96",
+        "quorum": 1,
+        "directFixtureContainer": true,
+        "verifiedPhysicalFiles": 3,
+        "logicalFilesMatched": 4,
+        "originalResponseHeadersPreserved": true
+      }
+    },
+    {
+      "strategy": "gzip-grouped",
+      "baselineBlockHash": "0x0b7858329609951aa69a1f0a6002755d3bc43a3ab82ebb45e6024fa12eedb9a2",
+      "manifestSha256": "0x69915a28562474d9b124059a51062abe5483f3f2fbfd195b365dcb0e169a1ae3",
+      "physicalFiles": 5,
+      "physicalBytes": 26710,
+      "physicalChunks": 6,
+      "modelEstimatedGas": "7499360",
+      "accounting": {
+        "transactions": 6,
+        "gasUsed": "7691472",
+        "minedFeeWei": "7703369863309169",
+        "normalizedCostWei": "7809638914797696",
+        "quoteGasPriceWei": "1015363368"
+      },
+      "receipts": [
+        {
+          "hash": "0x7f0364d03e9444cb4704514a811dbde29f2ae872af0b6f7ac5f3b4b5818d73ed",
+          "status": "success",
+          "blockNumber": "74405713",
+          "blockHash": "0x7b243841e22e02c26de6d367ea2859298d861a06ee705241df057fab5c8636b7",
+          "gasUsed": "409111",
+          "effectiveGasPrice": "1001879915"
+        },
+        {
+          "hash": "0x82b1fe891938b1f511d5677df0f76e68ae6f0302aaaaad3aec55745db2e5ad40",
+          "status": "success",
+          "blockNumber": "74405714",
+          "blockHash": "0xd954bbcc398365021cc1ad849ba5635d4965a6dae281cb8a9f21047c130ce2d7",
+          "gasUsed": "5559022",
+          "effectiveGasPrice": "1001645842"
+        },
+        {
+          "hash": "0x830d38ce588877036248678619c4309b918cadab0e191891d1ef7a68707ebd1d",
+          "status": "success",
+          "blockNumber": "74405715",
+          "blockHash": "0xf8a780e6c4f43d8f764b52fd22ac0d78a9dd7bee40bcbe60a134d8a4311fe77f",
+          "gasUsed": "166057",
+          "effectiveGasPrice": "1001451004"
+        },
+        {
+          "hash": "0x4b4ca21df007b850cc541ba2896c763593ec0546e167808f6ef32e26860b549e",
+          "status": "success",
+          "blockNumber": "74405716",
+          "blockHash": "0x787f7e2b678feea02e4b524694810cfed9ba2568cba0c10c7c2b7431b3a41a89",
+          "gasUsed": "380404",
+          "effectiveGasPrice": "1001269916"
+        },
+        {
+          "hash": "0x1815f1c0784cd9d9350358fcf42e9d5bdd2b62007fb3bdeed377904181a32307",
+          "status": "success",
+          "blockNumber": "74405717",
+          "blockHash": "0x2b7f43fbb5f486fc3072589a42bdd62bc94dcdc552b84f96b913fe4698d9ee37",
+          "gasUsed": "793106",
+          "effectiveGasPrice": "1001111752"
+        },
+        {
+          "hash": "0x2122fb74ce0da691ba9abeccf50e02c57692dc8f1c1c78acae5e8673526a8124",
+          "status": "success",
+          "blockNumber": "74405718",
+          "blockHash": "0xeb3293541e69dce1acab5482c4571119c36f045b93faf7618047f9043f84f668",
+          "gasUsed": "383772",
+          "effectiveGasPrice": "1000973833"
+        }
+      ],
+      "gateway": {
+        "readBlock": "74405718",
+        "readBlockHash": "0xeb3293541e69dce1acab5482c4571119c36f045b93faf7618047f9043f84f668",
+        "quorum": 1,
+        "directFixtureContainer": true,
+        "verifiedPhysicalFiles": 5,
+        "logicalFilesMatched": 4,
+        "originalResponseHeadersPreserved": true
+      }
+    }
+  ]
+}

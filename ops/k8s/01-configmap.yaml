@@ -1,0 +1,22 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tapeci-config
+  namespace: tapeci
+data:
+  TAPECI_PUBLIC_API_URL: https://api.tapeci.example
+  TAPECI_WEB_URL: https://app.tapeci.example
+  TAPECI_API_HOST: 0.0.0.0
+  TAPECI_API_URL: http://api:8787
+  NEXT_PUBLIC_API_URL: https://api.tapeci.example
+  TAPECI_TRUST_PROXY: "true"
+  TAPECI_RATE_LIMIT_BACKEND: redis
+  TAPECI_DEV_AUTH: "0"
+  TAPECI_OBJECT_STORE: s3
+  S3_REGION: auto
+  S3_PREFIX: tapeci
+  S3_FORCE_PATH_STYLE: "true"
+  TAPECI_WORKER_HOST: 0.0.0.0
+  TAPECI_WORKER_PORT: "8788"
+  TAPECI_AUDIT_BACKFILL_INTERVAL_MS: "3600000"

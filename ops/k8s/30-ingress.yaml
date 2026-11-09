@@ -1,0 +1,35 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: tapeci
+  namespace: tapeci
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: 70m
+spec:
+  tls:
+    - hosts:
+        - app.tapeci.example
+        - api.tapeci.example
+      secretName: tapeci-tls
+  rules:
+    - host: app.tapeci.example
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: web
+                port:
+                  name: http
+    - host: api.tapeci.example
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: api
+                port:
+                  name: http

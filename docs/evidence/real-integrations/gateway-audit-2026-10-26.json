@@ -1,0 +1,53 @@
+{
+  "schema": "tapeci.real-integration.gateway-audit.v1",
+  "observedAt": "2026-10-26T02:45:00.000Z",
+  "readOnly": true,
+  "writeActionsPerformed": false,
+  "target": {
+    "url": "https://10-2-4.tapekit.org/",
+    "onChainName": "10.2.4.tape",
+    "container": "0xC0B4900262d0Bc13F2C67C0Fc4CF92c04E0aB814",
+    "chainId": 196
+  },
+  "dns": {
+    "a": ["104.21.71.52", "172.67.143.110"],
+    "aaaa": [],
+    "cname": [],
+    "note": "Gateway subdomain behind Cloudflare; not a user-owned apex domain. *.tapekit.org is the TapeKit gateway, so no user DNS record exists to audit."
+  },
+  "tls": {
+    "strictAuthorized": true,
+    "hostMatches": true,
+    "issuer": "C=US, O=Let's Encrypt, CN=YE1",
+    "validFrom": "2026-09-13T17:50:26.000Z",
+    "validTo": "2026-12-12T17:50:25.000Z",
+    "protocol": "TLSv1.3",
+    "note": "Validated twice (openssl-independent Node client, authorized=true). An earlier run failed with a socket disconnect; re-running succeeded, so that was transient network, not a certificate problem."
+  },
+  "content": {
+    "bootstrapSha256": "0x3cae50fd41819c41851cc8fe28d07d2f3c686298571194857033ac1d61da1941",
+    "servedByServiceWorker": {
+      "status": 200,
+      "bytes": 12340,
+      "sha256": "0xa116a0da97920272971cb19304b112d4505519d99635dce76b8315517b51609f"
+    },
+    "onChain": {
+      "size": 12340,
+      "declaredSha256": "0xa116a0da97920272971cb19304b112d4505519d99635dce76b8315517b51609f",
+      "observedSha256": "0xa116a0da97920272971cb19304b112d4505519d99635dce76b8315517b51609f"
+    },
+    "matches": true,
+    "note": "The raw HTTP body is the gateway's service-worker bootstrap (by design). After the SW takes over it fetches the container's bytes from chain; those bytes match the on-chain declared SHA-256 exactly."
+  },
+  "negativeControl": {
+    "host": "9999-2-4.tapekit.org",
+    "refused": true,
+    "message": "Cannot display / This processor has no such circuit",
+    "note": "Proves the 200 above is conditional on the name being real and activated."
+  },
+  "status": "VERIFIED",
+  "blockers": [],
+  "residual": [
+    "The harness's own gateway command reports BLOCKED on http.contentHash because it hashes the bootstrap page; the service-worker fetch above is the authoritative check."
+  ]
+}

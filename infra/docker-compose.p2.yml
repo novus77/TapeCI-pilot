@@ -1,0 +1,32 @@
+# TapeCI P2 local infrastructure: PostgreSQL 16 + Redis 7 for API/worker tests.
+# Ports are non-default so they do not collide with a developer's own services.
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: tapeci-postgres
+    environment:
+      POSTGRES_USER: tapeci
+      POSTGRES_PASSWORD: tapeci
+      POSTGRES_DB: tapeci
+    ports:
+      - "55432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U tapeci -d tapeci"]
+      interval: 2s
+      timeout: 2s
+      retries: 30
+    volumes:
+      - tapeci-pg:/var/lib/postgresql/data
+  redis:
+    image: redis:7-alpine
+    container_name: tapeci-redis
+    command: ["redis-server", "--save", "", "--appendonly", "no"]
+    ports:
+      - "56379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 2s
+      timeout: 2s
+      retries: 30
+volumes:
+  tapeci-pg:

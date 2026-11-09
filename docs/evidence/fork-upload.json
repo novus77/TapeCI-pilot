@@ -1,0 +1,579 @@
+{
+  "kind": "tapeci.fork.upload.v1",
+  "generatedBy": "tests/fork/upload.test.ts",
+  "generatedAt": "2026-10-28T02:38:32.051Z",
+  "fork": {
+    "sourceUrl": "https://rpc.xlayer.tech",
+    "sourceHeadAtStart": 74386043,
+    "requestedForkBlock": 74385993,
+    "forkBlockNumber": 74385993,
+    "forkBlockHash": "0xd1f3e761d0843aabf34c9865056275c467732777a275af385e3539b3436f8084",
+    "forkBlockTimestamp": 1793155029,
+    "forkBlockTimeIso": "2026-10-28T02:37:09.000Z",
+    "chainId": 196,
+    "anvilVersion": "anvil Version: 1.7.1",
+    "host": "127.0.0.1",
+    "port": 57827
+  },
+  "chain": {
+    "chainId": 196,
+    "siteRegistry": "0xd6efb7adcc9c83dc4924ad56f6a8e4e969b9adb6",
+    "opener": "0x536add8f30f03b69f6fbf29d425a816a0dc50106",
+    "chunkMax": 24000,
+    "maxFileBytes": 8400000
+  },
+  "container": {
+    "tokenId": "3",
+    "container": "0x5f71fE4573757dA6aaDaebFBed0cc2e3A0C12628",
+    "owner": "0x571d447f4f24688eC35Ccf07f1D6993655F6aF15",
+    "openerEoa": "0x2000000000000000000000000000000000000001",
+    "openTx": {
+      "txHash": "0x0212410f69838446db92e5dd7d8692502f992d6ad9c5bca195cc483e438c7285",
+      "status": "success",
+      "blockNumber": 74385994,
+      "gasUsed": "169734"
+    },
+    "isOpened": true,
+    "registryIsOpenedContainer": true
+  },
+  "matrix": {
+    "expected": {
+      "1B": 1,
+      "24000B": 1,
+      "24001B": 2,
+      "65000B": 3
+    },
+    "observed": {
+      "1B": 1,
+      "24000B": 1,
+      "24001B": 2,
+      "65000B": 3
+    }
+  },
+  "readBlock": 74386001,
+  "files": [
+    {
+      "path": "p0-05/one-byte.bin",
+      "size": 1,
+      "sha256": "0x684888c0ebb17f374298b65ee2807526c066094c701bcc7ebbe1c1095f494fc1",
+      "expectedChunks": 1,
+      "status": "UPLOADED",
+      "verified": true,
+      "transactionHashes": [
+        "0xaf4bfd17a323192ba658ac57ed864a18c2f8456a27aff7dd49ffd34a9cfd4056"
+      ],
+      "transactions": [
+        {
+          "txHash": "0xaf4bfd17a323192ba658ac57ed864a18c2f8456a27aff7dd49ffd34a9cfd4056",
+          "functionName": "putFile",
+          "expectIndex": null,
+          "dataBytes": 1
+        }
+      ],
+      "onChain": {
+        "exists": true,
+        "size": 1,
+        "chunkCount": 1,
+        "sha256": "0x684888c0ebb17f374298b65ee2807526c066094c701bcc7ebbe1c1095f494fc1",
+        "chunkDataBytes": [
+          1
+        ]
+      },
+      "readBack": {
+        "readBlock": 74386001,
+        "size": 1,
+        "sha256": "0x684888c0ebb17f374298b65ee2807526c066094c701bcc7ebbe1c1095f494fc1",
+        "matched": true
+      },
+      "verifiedByDeployerAtReadBlock": true
+    },
+    {
+      "path": "p0-05/24000-bytes.bin",
+      "size": 24000,
+      "sha256": "0x4fe27cf32df5caf3cc28303e74b140dc11bb2236d396931e532f276db3376e77",
+      "expectedChunks": 1,
+      "status": "UPLOADED",
+      "verified": true,
+      "transactionHashes": [
+        "0x0f0d10920940bbb8204882cb452538554466e80b6dcccf112fa9e872f649c472"
+      ],
+      "transactions": [
+        {
+          "txHash": "0x0f0d10920940bbb8204882cb452538554466e80b6dcccf112fa9e872f649c472",
+          "functionName": "putFile",
+          "expectIndex": null,
+          "dataBytes": 24000
+        }
+      ],
+      "onChain": {
+        "exists": true,
+        "size": 24000,
+        "chunkCount": 1,
+        "sha256": "0x4fe27cf32df5caf3cc28303e74b140dc11bb2236d396931e532f276db3376e77",
+        "chunkDataBytes": [
+          24000
+        ]
+      },
+      "readBack": {
+        "readBlock": 74386001,
+        "size": 24000,
+        "sha256": "0x4fe27cf32df5caf3cc28303e74b140dc11bb2236d396931e532f276db3376e77",
+        "matched": true
+      },
+      "verifiedByDeployerAtReadBlock": true
+    },
+    {
+      "path": "p0-05/24001-bytes.bin",
+      "size": 24001,
+      "sha256": "0x68a36768312abacb0c3fff44a2d04fac22a1f35f99666be48407efd48bc27d63",
+      "expectedChunks": 2,
+      "status": "UPLOADED",
+      "verified": true,
+      "transactionHashes": [
+        "0xbea9ed573eecd1082d0f296a1f00a19dd26e8e551ace0caef0b7ba7654d71f06",
+        "0x36b37536572f1bd7e9230e1ac930ebfcfe1c9edf08f80a0f1350a7d73a1d34d7"
+      ],
+      "transactions": [
+        {
+          "txHash": "0xbea9ed573eecd1082d0f296a1f00a19dd26e8e551ace0caef0b7ba7654d71f06",
+          "functionName": "putFile",
+          "expectIndex": null,
+          "dataBytes": 24000
+        },
+        {
+          "txHash": "0x36b37536572f1bd7e9230e1ac930ebfcfe1c9edf08f80a0f1350a7d73a1d34d7",
+          "functionName": "appendChunk",
+          "expectIndex": 1,
+          "dataBytes": 1
+        }
+      ],
+      "onChain": {
+        "exists": true,
+        "size": 24001,
+        "chunkCount": 2,
+        "sha256": "0x68a36768312abacb0c3fff44a2d04fac22a1f35f99666be48407efd48bc27d63",
+        "chunkDataBytes": [
+          24000,
+          1
+        ]
+      },
+      "readBack": {
+        "readBlock": 74386001,
+        "size": 24001,
+        "sha256": "0x68a36768312abacb0c3fff44a2d04fac22a1f35f99666be48407efd48bc27d63",
+        "matched": true
+      },
+      "verifiedByDeployerAtReadBlock": true
+    },
+    {
+      "path": "p0-05/65000-bytes.bin",
+      "size": 65000,
+      "sha256": "0xfcb9dc6a7aff265ea3b99cd2c21c5d9713bcb932ddb62453135ea268fe8f8009",
+      "expectedChunks": 3,
+      "status": "UPLOADED",
+      "verified": true,
+      "transactionHashes": [
+        "0x7c4b58934a311d6cff338a76fd912e92dd1a7d836fed876b992d5536286e5c0f",
+        "0xfdf2560462b4080288192aac49d56fff4dd4020da50b416fef2f035a41321a8c",
+        "0x850b2861bf726c3010bf3a024f16bef1667fb4710f9b68e26297a4c0e6db34f1"
+      ],
+      "transactions": [
+        {
+          "txHash": "0x7c4b58934a311d6cff338a76fd912e92dd1a7d836fed876b992d5536286e5c0f",
+          "functionName": "putFile",
+          "expectIndex": null,
+          "dataBytes": 24000
+        },
+        {
+          "txHash": "0xfdf2560462b4080288192aac49d56fff4dd4020da50b416fef2f035a41321a8c",
+          "functionName": "appendChunk",
+          "expectIndex": 1,
+          "dataBytes": 24000
+        },
+        {
+          "txHash": "0x850b2861bf726c3010bf3a024f16bef1667fb4710f9b68e26297a4c0e6db34f1",
+          "functionName": "appendChunk",
+          "expectIndex": 2,
+          "dataBytes": 17000
+        }
+      ],
+      "onChain": {
+        "exists": true,
+        "size": 65000,
+        "chunkCount": 3,
+        "sha256": "0xfcb9dc6a7aff265ea3b99cd2c21c5d9713bcb932ddb62453135ea268fe8f8009",
+        "chunkDataBytes": [
+          24000,
+          24000,
+          17000
+        ]
+      },
+      "readBack": {
+        "readBlock": 74386001,
+        "size": 65000,
+        "sha256": "0xfcb9dc6a7aff265ea3b99cd2c21c5d9713bcb932ddb62453135ea268fe8f8009",
+        "matched": true
+      },
+      "verifiedByDeployerAtReadBlock": true
+    }
+  ],
+  "rejections": {
+    "duplicateAppendChunk": {
+      "case": "appendChunk with an already-consumed expectIndex (duplicate append)",
+      "functionName": "appendChunk",
+      "signer": "0x571d447f4f24688eC35Ccf07f1D6993655F6aF15",
+      "to": "0xd6efb7adcc9c83dc4924ad56f6a8e4e969b9adb6",
+      "argumentsSummary": {
+        "path": "p0-05/65000-bytes.bin",
+        "expectIndex": 2,
+        "currentChunkCount": 3,
+        "dataBytes": 17000
+      },
+      "calldataBytes": 17252,
+      "ethCall": {
+        "reverted": true,
+        "rawData": "0xef3ff4ae",
+        "selector": "0xef3ff4ae",
+        "knownErrorName": null,
+        "rpcCode": 3,
+        "message": "eth_call failed: 3 execution reverted: custom error 0xef3ff4ae"
+      },
+      "transaction": {
+        "accepted": true,
+        "txHash": "0xfad00a5d684838c1c3d6c4e9ff0d8cc762b8f58d51073b3cb78b2ce45ca8d0de",
+        "receiptStatus": "reverted",
+        "blockNumber": 74386002,
+        "gasUsed": "702890",
+        "sendError": null
+      },
+      "stateBefore": {
+        "blockNumber": 74386001,
+        "pathCount": 4,
+        "files": {
+          "p0-05/65000-bytes.bin": {
+            "exists": true,
+            "size": 65000,
+            "chunkCount": 3
+          }
+        }
+      },
+      "stateAfter": {
+        "blockNumber": 74386002,
+        "pathCount": 4,
+        "files": {
+          "p0-05/65000-bytes.bin": {
+            "exists": true,
+            "size": 65000,
+            "chunkCount": 3
+          }
+        }
+      },
+      "stateUnchanged": true
+    },
+    "illegalExpectIndex": {
+      "case": "appendChunk with an illegal expectIndex (5 when chunkCount is 1)",
+      "functionName": "appendChunk",
+      "signer": "0x571d447f4f24688eC35Ccf07f1D6993655F6aF15",
+      "to": "0xd6efb7adcc9c83dc4924ad56f6a8e4e969b9adb6",
+      "argumentsSummary": {
+        "path": "p0-05/one-byte.bin",
+        "expectIndex": 5,
+        "currentChunkCount": 1,
+        "dataBytes": 1
+      },
+      "calldataBytes": 260,
+      "ethCall": {
+        "reverted": true,
+        "rawData": "0xef3ff4ae",
+        "selector": "0xef3ff4ae",
+        "knownErrorName": null,
+        "rpcCode": 3,
+        "message": "eth_call failed: 3 execution reverted: custom error 0xef3ff4ae"
+      },
+      "transaction": {
+        "accepted": true,
+        "txHash": "0xa48bb2672f43525200a4f9d8391f86a6695366897d9639f0daf337d4d969fd91",
+        "receiptStatus": "reverted",
+        "blockNumber": 74386003,
+        "gasUsed": "93098",
+        "sendError": null
+      },
+      "stateBefore": {
+        "blockNumber": 74386002,
+        "pathCount": 4,
+        "files": {
+          "p0-05/one-byte.bin": {
+            "exists": true,
+            "size": 1,
+            "chunkCount": 1
+          }
+        }
+      },
+      "stateAfter": {
+        "blockNumber": 74386003,
+        "pathCount": 4,
+        "files": {
+          "p0-05/one-byte.bin": {
+            "exists": true,
+            "size": 1,
+            "chunkCount": 1
+          }
+        }
+      },
+      "stateUnchanged": true
+    }
+  },
+  "resume": {
+    "path": "p0-05/resume-3chunks.bin",
+    "size": 50000,
+    "sha256": "0x624d86fff83443801f21f0c50766ae66e56495b08bbec1623d109e01557977d4",
+    "expectedChunks": 3,
+    "manualPutFileTx": {
+      "txHash": "0x2d3b2d117328549d150d93315e82dbb100d6e715eaec47be7993b15d153d3b35",
+      "status": "success",
+      "blockNumber": 74386004,
+      "gasUsed": "5490912"
+    },
+    "partial": {
+      "readBlock": 74386004,
+      "exists": true,
+      "declaredSize": 24000,
+      "chunkCount": 1,
+      "declaredSha256": "0x624d86fff83443801f21f0c50766ae66e56495b08bbec1623d109e01557977d4",
+      "contractCanReadPartialFile": true,
+      "readError": null,
+      "bytesRead": 24000,
+      "expectedPrefixBytes": 24000,
+      "prefixMatches": true,
+      "prefixSha256": "0xa8da977f43bcb4173e4eff9fd2a74076dc271c28f7d518206bb531437b92e5e5"
+    },
+    "recoveryRequiresRestart": false,
+    "resumeStatus": "UPLOADED",
+    "resumeVerified": true,
+    "resumeTransactionHashes": [
+      "0x5c6ba5b943cdc28f2e9149a4d118c3bcdd87c8de96257bca5c822427b1eb302c",
+      "0x03b6148ca1713047330b4141cfc57772afe4b1b79a227d77c949139acfbed96c"
+    ],
+    "resumeTransactions": [
+      {
+        "txHash": "0x5c6ba5b943cdc28f2e9149a4d118c3bcdd87c8de96257bca5c822427b1eb302c",
+        "functionName": "appendChunk",
+        "expectIndex": 1,
+        "dataBytes": 24000
+      },
+      {
+        "txHash": "0x03b6148ca1713047330b4141cfc57772afe4b1b79a227d77c949139acfbed96c",
+        "functionName": "appendChunk",
+        "expectIndex": 2,
+        "dataBytes": 2000
+      }
+    ],
+    "appendedIndices": [
+      1,
+      2
+    ],
+    "duplicatePutFileOnResume": false,
+    "final": {
+      "readBlock": 74386006,
+      "size": 50000,
+      "chunkCount": 3,
+      "sha256": "0x624d86fff83443801f21f0c50766ae66e56495b08bbec1623d109e01557977d4",
+      "matched": true
+    }
+  },
+  "tooLarge": {
+    "path": "p0-05/too-large-8400001.bin",
+    "declaredSize": 8400001,
+    "expectedErrorCode": "FILE_TOO_LARGE",
+    "caughtErrorCode": "FILE_TOO_LARGE",
+    "caughtMessage": "file is 8400001 bytes, TapeOut allows at most 8400000",
+    "blockBefore": 74385994,
+    "blockAfter": 74385994,
+    "pathCountBefore": 0,
+    "pathCountAfter": 0,
+    "noBlockMined": true,
+    "noPathAdded": true
+  },
+  "recoveryFinding": {
+    "contractCanReadPartiallyWrittenFile": true,
+    "recoveryRequiresRestart": false,
+    "resumeUsedDuplicateAppends": false,
+    "note": "SiteRegistry.read() returns the bytes already written for a partially written path, and they were a byte-exact prefix of the local file, so uploadFile reconciled the prefix and appended only the missing chunks. RECOVERY_REQUIRES_RESTART is therefore false for this implementation."
+  },
+  "checks": [
+    {
+      "id": "UPLOAD-08",
+      "description": "an 8,400,001-byte file is rejected in the build phase before any transaction is sent",
+      "expected": {
+        "errorCode": "FILE_TOO_LARGE",
+        "noBlockMined": true,
+        "noPathAdded": true
+      },
+      "actual": {
+        "errorCode": "FILE_TOO_LARGE",
+        "noBlockMined": true,
+        "noPathAdded": true
+      },
+      "pass": true
+    },
+    {
+      "id": "UPLOAD-01",
+      "description": "chunk counts for 1 B / 24,000 B / 24,001 B / 65,000 B are 1 / 1 / 2 / 3 on chain",
+      "expected": {
+        "1B": 1,
+        "24000B": 1,
+        "24001B": 2,
+        "65000B": 3
+      },
+      "actual": {
+        "1B": 1,
+        "24000B": 1,
+        "24001B": 2,
+        "65000B": 3
+      },
+      "pass": true
+    },
+    {
+      "id": "UPLOAD-02",
+      "description": "on-chain chunk sizes are exactly 24,000-byte boundaries (putFile + appendChunk payloads)",
+      "expected": {
+        "1B": [
+          1
+        ],
+        "24000B": [
+          24000
+        ],
+        "24001B": [
+          24000,
+          1
+        ],
+        "65000B": [
+          24000,
+          24000,
+          17000
+        ]
+      },
+      "actual": {
+        "1B": [
+          1
+        ],
+        "24000B": [
+          24000
+        ],
+        "24001B": [
+          24000,
+          1
+        ],
+        "65000B": [
+          24000,
+          24000,
+          17000
+        ]
+      },
+      "pass": true
+    },
+    {
+      "id": "UPLOAD-03",
+      "description": "every uploaded file read back at one pinned block matches the raw SHA-256 and size",
+      "expected": {
+        "allMatched": true,
+        "allDeployerVerified": true
+      },
+      "actual": {
+        "allMatched": true,
+        "allDeployerVerified": true
+      },
+      "pass": true
+    },
+    {
+      "id": "UPLOAD-04",
+      "description": "duplicate appendChunk with a consumed expectIndex reverts and leaves the on-chain bytes unchanged",
+      "expected": {
+        "reverted": true,
+        "transactionStatus": "reverted",
+        "stateUnchanged": true,
+        "bytesUnchanged": true
+      },
+      "actual": {
+        "reverted": true,
+        "transactionStatus": "reverted",
+        "stateUnchanged": true,
+        "bytesUnchanged": true
+      },
+      "pass": true
+    },
+    {
+      "id": "UPLOAD-05",
+      "description": "appendChunk with an illegal expectIndex (5 when chunkCount is 1) reverts without changing the file",
+      "expected": {
+        "reverted": true,
+        "transactionStatus": "reverted",
+        "stateUnchanged": true,
+        "bytesUnchanged": true
+      },
+      "actual": {
+        "reverted": true,
+        "transactionStatus": "reverted",
+        "stateUnchanged": true,
+        "bytesUnchanged": true
+      },
+      "pass": true
+    },
+    {
+      "id": "UPLOAD-06",
+      "description": "a partially written file can be read back as a byte-exact prefix (resume is safe)",
+      "expected": {
+        "contractCanReadPartialFile": true,
+        "prefixMatches": true,
+        "recoveryRequiresRestart": false
+      },
+      "actual": {
+        "contractCanReadPartialFile": true,
+        "prefixMatches": true,
+        "recoveryRequiresRestart": false
+      },
+      "pass": true
+    },
+    {
+      "id": "UPLOAD-07",
+      "description": "uploadFile resumes only the missing chunks, appends no duplicates, and the final hash matches",
+      "expected": {
+        "status": "UPLOADED",
+        "appendedIndices": [
+          1,
+          2
+        ],
+        "duplicatePutFileOnResume": false,
+        "finalMatched": true
+      },
+      "actual": {
+        "status": "UPLOADED",
+        "appendedIndices": [
+          1,
+          2
+        ],
+        "duplicatePutFileOnResume": false,
+        "finalMatched": true
+      },
+      "pass": true
+    },
+    {
+      "id": "UPLOAD-09",
+      "description": "only the uploaded files are registered; the rejected 8.4 MB path is absent",
+      "expected": {
+        "pathCount": 5,
+        "rejectedPathsAbsent": true
+      },
+      "actual": {
+        "pathCount": 5,
+        "rejectedPathsAbsent": true
+      },
+      "pass": true
+    }
+  ],
+  "result": {
+    "pass": true,
+    "checks": 9,
+    "failures": []
+  }
+}

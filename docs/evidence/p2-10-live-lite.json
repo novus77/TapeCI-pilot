@@ -1,0 +1,21 @@
+{
+  "kind": "tapeci.p2-10.live-lite.v1",
+  "generatedAt": "2026-10-25T15:21:00Z",
+  "deploymentId": "1fe90d88-10bf-42d9-b10a-4a96442fd46b",
+  "state": "LIVE",
+  "container": "0xc0b4900262d0bc13f2c67c0fc4cf92c04e0ab814",
+  "owner": "0x25063c2210a0bccce3e15d250573179483275f22",
+  "operator": "0x6c723d1dc3861c0897848b79e231caa2c57622eb",
+  "commit": "bb49d8168acb33235939a072d63b5bffae8d7854",
+  "artifact": "how-to-Pi docs, localized Docsify (lite: no mermaid/prism), 24 files / 321,978 B / 30 chunks",
+  "cost": { "estimatedWei": "1561344960000000", "approvedCapWei": "1873613952000000", "actualGasUsed": "79330013" },
+  "verification": { "status": "VERIFIED", "releaseMatch": true, "pinnedBlockNumber": 74143777, "files": 24 },
+  "journal": { "complete": true, "transactionCount": 30, "entryWrittenLast": true, "allMinedBeforePin": true },
+  "gateway": {
+    "url": "https://10-2-4.tapekit.org/",
+    "result": "This on-chain name is not activated",
+    "reason": "DomainBinding.isLive('10.2.4.tape', container) is false; bind has not been called",
+    "bindCost": { "monthlyFeeWei": "0", "valueWei": "0", "estimatedGas": "187763", "estimatedCostOKB": "0.000003755260187763" }
+  },
+  "note": "Files are on chain and dual-RPC verified. The gateway additionally requires the holder to call DomainBinding.bind; on X Layer monthlyFee is 0, so activation costs gas only."
+}

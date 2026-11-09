@@ -1,0 +1,102 @@
+# TapeCI network suite (P1-01).
+#
+# Triggers: nightly schedule + manual dispatch only. Deliberately NO pull_request
+# trigger: untrusted PR code must not consume public X Layer RPC quota, must not
+# receive secrets, and must not be able to start Anvil forks against shared endpoints
+# (PRD §4.2 / §7).
+#
+# Honest-failure policy: there is NO `continue-on-error` anywhere in this workflow.
+# A red scheduled run is a real signal (public RPC outage, rate limit, implementation
+# drift). Masking it as green would violate the TapeCI red lines; see docs/P1_CI.md.
+#
+# Neither job sends a transaction. `test:mainnet` is read-only and `test:fork` runs
+# against a local Anvil fork that never broadcasts to a public chain.
+name: Network
+
+on:
+  schedule:
+    # 03:17 UTC daily (off the hour, outside the busiest public-RPC window).
+    - cron: "17 3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: network-${{ github.workflow }}-${{ github.ref }}
+  # Never cancel a network run mid-flight: a cancelled read may look like a failure.
+  cancel-in-progress: false
+
+jobs:
+  mainnet-read-only:
+    name: mainnet read-only (pinned multi-operator reads)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v6
+        with:
+          version: 9.15.4
+          run_install: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies (frozen lockfile)
+        run: pnpm install --frozen-lockfile
+
+      - name: Mainnet read-only tests
+        # Runs tests/mainnet: pinned-block reads through two independent RPC
+        # operators only. No signing key, no write ABI call.
+        run: pnpm test:mainnet
+        env:
+          # Optional repository secrets (never committed) for higher RPC quota.
+          # When unset they expand to "" and packages/config keeps its public defaults.
+          TAPECI_RPC_OKX: ${{ secrets.TAPECI_RPC_OKX }}
+          TAPECI_RPC_DRPC: ${{ secrets.TAPECI_RPC_DRPC }}
+
+  fork:
+    name: Anvil fork (authorization + chunk upload)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Install Foundry
+        # Pinned to the version recorded in docs/evidence (Anvil/Forge 1.7.1).
+        # The fork tests start a local Anvil fork of X Layer and never broadcast.
+        uses: foundry-rs/foundry-toolchain@v1.9.1
+        with:
+          version: v1.7.1
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v6
+        with:
+          version: 9.15.4
+          run_install: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies (frozen lockfile)
+        run: pnpm install --frozen-lockfile
+
+      - name: Fork tests
+        run: pnpm test:fork
+        env:
+          TAPECI_RPC_OKX: ${{ secrets.TAPECI_RPC_OKX }}
+          TAPECI_RPC_DRPC: ${{ secrets.TAPECI_RPC_DRPC }}

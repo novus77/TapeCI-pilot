@@ -1,0 +1,115 @@
+# syntax=docker/dockerfile:1
+#
+# TapeCI API image (Fastify, apps/api/src/server.ts).
+#
+# Build from the repository root so the pnpm workspace manifests and package
+# sources are in the build context:
+#   docker build -f infra/Dockerfile.api -t tapeci-api .
+#
+# The API runs TypeScript directly through tsx (the same runner the repository
+# uses for `pnpm api:dev`), so the image executes exactly the sources the test
+# suite exercises. No secret is baked in: every credential arrives through the
+# environment at run time (see infra/env.prod.example).
+#
+# Stage 1 (deps): install once from the lockfile, keyed only on the manifests so
+#   a source edit does not re-download dependencies.
+# Stage 2 (runtime): the resolved dependency tree plus the API/packages sources,
+#   running as `node`. The web app is deliberately not installed here.
+#
+# `--prod` is NOT used: the API is executed from TypeScript sources and needs the
+# root devDependency tsx at run time (pnpm also resolves workspace sub-dependency
+# links more reliably in a full install).
+FROM node:22-bookworm-slim AS deps
+
+ENV PNPM_HOME=/pnpm \
+    COREPACK_HOME=/pnpm/corepack \
+    COREPACK_ENABLE_DOWNLOAD_PROMPT=0
+# pnpm is pinned by the root package.json "packageManager" field.
+RUN corepack enable && corepack prepare pnpm@9.15.4 --activate
+
+WORKDIR /app
+
+# Manifests first: this layer only invalidates when dependencies change.
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml .npmrc ./
+COPY apps/api/package.json apps/api/
+COPY packages/artifact/package.json packages/artifact/
+COPY packages/chain/package.json packages/chain/
+COPY packages/cli/package.json packages/cli/
+COPY packages/config/package.json packages/config/
+COPY packages/database/package.json packages/database/
+COPY packages/deployer/package.json packages/deployer/
+COPY packages/github/package.json packages/github/
+COPY packages/queue/package.json packages/queue/
+COPY packages/release/package.json packages/release/
+COPY packages/shared/package.json packages/shared/
+COPY packages/validator/package.json packages/validator/
+COPY packages/verifier/package.json packages/verifier/
+
+# `@tapeci/api...` brings the workspace packages the API imports; `tapeci` (the
+# root project) supplies tsx. `--prod` still installs the root devDependency
+# tsx because it is needed to run the TypeScript sources.
+RUN corepack pnpm install --frozen-lockfile \
+      --filter "@tapeci/api..." \
+      --filter tapeci \
+ && corepack pnpm store prune
+
+FROM node:22-bookworm-slim AS runtime
+
+ENV NODE_ENV=production \
+    TAPECI_API_HOST=0.0.0.0 \
+    TAPECI_API_PORT=8787
+
+# The official node image already provides the unprivileged `node` user (1000).
+WORKDIR /app
+
+# Copy the resolved dependency tree verbatim. pnpm's workspace links are
+# relative symlinks into node_modules/.pnpm, so the layout must be preserved:
+# a naive `COPY packages` over a fresh tree would leave the links dangling.
+COPY --from=deps --chown=node:node /app/node_modules ./node_modules
+COPY --from=deps --chown=node:node /app/package.json ./package.json
+COPY --from=deps --chown=node:node /app/pnpm-lock.yaml ./pnpm-lock.yaml
+COPY --from=deps --chown=node:node /app/pnpm-workspace.yaml ./pnpm-workspace.yaml
+
+COPY --chown=node:node scripts/p2/ensure-bucket.ts scripts/p2/ensure-bucket.ts
+COPY --chown=node:node apps/api/package.json apps/api/
+COPY --chown=node:node apps/api/src apps/api/src
+COPY --chown=node:node packages/artifact/package.json packages/artifact/
+COPY --chown=node:node packages/artifact/src packages/artifact/src
+COPY --chown=node:node packages/chain/package.json packages/chain/
+COPY --chown=node:node packages/chain/src packages/chain/src
+COPY --chown=node:node packages/config/package.json packages/config/
+COPY --chown=node:node packages/config/src packages/config/src
+COPY --chown=node:node packages/database/package.json packages/database/
+COPY --chown=node:node packages/database/src packages/database/src
+COPY --chown=node:node packages/database/migrations packages/database/migrations
+COPY --chown=node:node packages/deployer/package.json packages/deployer/
+COPY --chown=node:node packages/deployer/src packages/deployer/src
+COPY --chown=node:node packages/github/package.json packages/github/
+COPY --chown=node:node packages/github/src packages/github/src
+COPY --chown=node:node packages/queue/package.json packages/queue/
+COPY --chown=node:node packages/queue/src packages/queue/src
+COPY --chown=node:node packages/release/package.json packages/release/
+COPY --chown=node:node packages/release/src packages/release/src
+COPY --chown=node:node packages/shared/package.json packages/shared/
+COPY --chown=node:node packages/shared/src packages/shared/src
+COPY --chown=node:node packages/validator/package.json packages/validator/
+COPY --chown=node:node packages/validator/src packages/validator/src
+COPY --chown=node:node packages/verifier/package.json packages/verifier/
+COPY --chown=node:node packages/verifier/src packages/verifier/src
+
+# Writable state for the local object store and journal, owned by the run user.
+RUN mkdir -p /app/.tapeci/objects /app/.tapeci/journal \
+ && chown -R node:node /app/.tapeci
+
+USER node
+
+EXPOSE 8787
+
+# Liveness only: /health never touches Postgres or Redis. Orchestrators should
+# use /readyz (503 while a dependency is down) for readiness.
+HEALTHCHECK --interval=15s --timeout=3s --start-period=20s --retries=5 \
+  CMD node -e "fetch('http://127.0.0.1:8787/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"
+
+# Run tsx's CLI directly (no shell, no .bin shim) so SIGTERM reaches Node and
+# the graceful shutdown handler in server.ts runs.
+CMD ["node", "node_modules/tsx/dist/cli.mjs", "apps/api/src/server.ts"]

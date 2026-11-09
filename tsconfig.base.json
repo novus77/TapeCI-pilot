@@ -1,0 +1,70 @@
+{
+  "compilerOptions": {
+    "target": "ES2023",
+    "lib": [
+      "ES2023"
+    ],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "noImplicitOverride": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "verbatimModuleSyntax": true,
+    "isolatedModules": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "types": [
+      "node"
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@tapeci/shared": [
+        "packages/shared/src/index.ts"
+      ],
+      "@tapeci/config": [
+        "packages/config/src/index.ts"
+      ],
+      "@tapeci/chain": [
+        "packages/chain/src/index.ts"
+      ],
+      "@tapeci/deployer": [
+        "packages/deployer/src/index.ts"
+      ],
+      "@tapeci/verifier": [
+        "packages/verifier/src/index.ts"
+      ],
+      "@tapeci/tapekit": [
+        "packages/tapekit/src/index.ts"
+      ],
+      "@tapeci/validator": [
+        "packages/validator/src/index.ts"
+      ],
+      "@tapeci/artifact": [
+        "packages/artifact/src/index.ts"
+      ],
+      "@tapeci/release": [
+        "packages/release/src/index.ts"
+      ],
+      "@tapeci/cli": [
+        "packages/cli/src/cli.ts"
+      ],
+      "@tapeci/database": [
+        "packages/database/src/index.ts"
+      ],
+      "@tapeci/github": [
+        "packages/github/src/index.ts"
+      ],
+      "@tapeci/queue": [
+        "packages/queue/src/index.ts"
+      ],
+      "@tapeci/compression": [
+        "packages/compression/src/index.ts"
+      ]
+    }
+  }
+}

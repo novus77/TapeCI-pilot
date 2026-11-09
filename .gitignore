@@ -1,0 +1,44 @@
+# dependencies / caches
+node_modules/
+.pnpm-store/
+.pnpm-cache/
+.npm-cache/
+.corepack/
+coverage/
+
+# build output
+dist/
+*.tsbuildinfo
+.next/
+apps/web/test-results/
+apps/web/test-results-live/
+apps/web/playwright-report/
+
+
+# local env & secrets
+.env
+.env.*
+!.env.example
+.tapeci/
+
+# production deployment secrets (env.prod.example is the committed template)
+infra/env.prod
+infra/*.env.prod
+!infra/env.prod.example
+
+
+*.pem
+*.key
+
+# runtime artifacts
+artifacts/
+logs/
+*.log
+anvil.pid
+
+# local reference checkout (Superpowers)
+/superpowers/
+
+# OS
+.DS_Store
+./superpowers/

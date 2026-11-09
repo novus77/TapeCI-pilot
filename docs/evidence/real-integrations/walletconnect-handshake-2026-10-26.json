@@ -1,0 +1,21 @@
+{
+  "schema": "tapeci.real-integration.walletconnect.v1",
+  "observedAt": "2026-10-26T03:05:00.000Z",
+  "readOnly": true,
+  "writeActionsPerformed": false,
+  "projectIdConfigured": true,
+  "projectIdSource": "apps/web/.env.local (NEXT_PUBLIC_*, ignored by git; public by design, cannot sign or move funds)",
+  "connectorRegistered": true,
+  "evidence": {
+    "buttonEnabled": true,
+    "qrModalRendered": true,
+    "relayWebSocket": "wss://relay.walletconnect.org/?auth=eyJhbGciOiJFZERTQSIsInR5...",
+    "attestationRequest": "GET https://verify.walletconnect.org/v3/attestation?projectId=0c49dc1c75aa...",
+    "screenshot": ".superpowers/sdd/real-verify/walletconnect-qr.png"
+  },
+  "whatThisProves": "The dapp reached the WalletConnect relay, got an attestation scoped to this project id, and rendered a scannable pairing QR. Without the project id the connector is never registered and the relay handshake cannot start.",
+  "notProven": "No phone wallet scanned the QR, so no session was established and no signature was produced over WalletConnect.",
+  "status": "PARTIAL",
+  "blocker": "HUMAN_REQUIRED: scan the QR with a mobile wallet on X Layer 196, sign, and record the phone wallet name/version.",
+  "howToComplete": "Open /wallet-check, click WalletConnect, scan with a phone wallet, sign the test approval, then run: tsx scripts/real-integrations/wallet/verify-acceptance.ts <record.json>"
+}

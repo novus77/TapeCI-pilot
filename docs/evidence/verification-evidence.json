@@ -1,0 +1,198 @@
+{
+  "chainId": 196,
+  "container": "0x25B20D3eA6b207506340eab2Eb0f45Edc800F6b3",
+  "registry": "0xd6efb7adcc9c83dc4924ad56f6a8e4e969b9adb6",
+  "pinnedBlockNumber": 73623612,
+  "observedAt": "2026-10-19T06:50:50.559Z",
+  "completedAt": "2026-10-19T06:50:53.002Z",
+  "durationMs": 2443,
+  "nodeOperators": [
+    "okx",
+    "drpc"
+  ],
+  "registryImplementation": "0xa85c4143d1D4A77f54b8e4ecC9E6D1418Afea45f",
+  "bindingImplementation": "0x5eBF29b80789e548907C707530C3C7607C4347Df",
+  "checks": [
+    {
+      "path": "index.html",
+      "expectedSha256": "0xe0f21c08c2ad09d3818d39c802153d33b6931311300d7419228d98da0a8300f0",
+      "actualSha256": "0xe0f21c08c2ad09d3818d39c802153d33b6931311300d7419228d98da0a8300f0",
+      "expectedSize": 26993,
+      "actualSize": 26993,
+      "matched": true,
+      "chunkCount": 2,
+      "contentType": "text/html; charset=utf-8",
+      "updatedAt": 1791624483,
+      "actualSha256ByOperator": {
+        "okx": "0xe0f21c08c2ad09d3818d39c802153d33b6931311300d7419228d98da0a8300f0",
+        "drpc": "0xe0f21c08c2ad09d3818d39c802153d33b6931311300d7419228d98da0a8300f0"
+      },
+      "actualSizeByOperator": {
+        "okx": 26993,
+        "drpc": 26993
+      },
+      "declaredByOperator": {
+        "okx": {
+          "sha256": "0xe0f21c08c2ad09d3818d39c802153d33b6931311300d7419228d98da0a8300f0",
+          "size": 26993,
+          "chunkCount": 2,
+          "contentType": "text/html; charset=utf-8",
+          "updatedAt": 1791624483
+        },
+        "drpc": {
+          "sha256": "0xe0f21c08c2ad09d3818d39c802153d33b6931311300d7419228d98da0a8300f0",
+          "size": 26993,
+          "chunkCount": 2,
+          "contentType": "text/html; charset=utf-8",
+          "updatedAt": 1791624483
+        }
+      },
+      "operatorsAgree": true,
+      "errors": []
+    }
+  ],
+  "status": "VERIFIED",
+  "paths": [
+    "index.html"
+  ],
+  "fallbackPath": "index.html",
+  "pin": {
+    "strategy": "second-highest-operator-head-minus-offset",
+    "heads": [
+      {
+        "operator": "okx",
+        "url": "https://rpc.xlayer.tech",
+        "chainId": 196,
+        "head": 73623614
+      },
+      {
+        "operator": "drpc",
+        "url": "https://xlayer.drpc.org",
+        "chainId": 196,
+        "head": 73623614
+      }
+    ],
+    "sortedHeads": [
+      73623614,
+      73623614
+    ],
+    "secondHighestHead": 73623614,
+    "offset": 2,
+    "pinnedBlockNumber": 73623612,
+    "maxHead": 73623614,
+    "divergenceBlocks": 0,
+    "pinLagBlocks": 2,
+    "maxLagBlocks": 300,
+    "formula": "pinnedBlockNumber = secondHighestHead - offset = 73623614 - 2 = 73623612",
+    "pinnedBlockHash": "0x9be0d36816dee5d70bcffb7a53e54bdd61aa59d984e7c122d17b5cbd9735913f",
+    "pinnedBlockTimestamp": 1792392648,
+    "blockAgeSeconds": 3
+  },
+  "implementations": [
+    {
+      "role": "factory",
+      "proxy": "0x1f09daefa827f02cbb40967cc91b259763760761",
+      "implementation": "0x74956236Ab64eD143933040B4137E8A352e4d17b",
+      "allowlisted": true,
+      "codeSize": 130,
+      "expected": [
+        "0x74956236ab64ed143933040b4137e8a352e4d17b"
+      ],
+      "byOperator": {
+        "okx": "0x74956236Ab64eD143933040B4137E8A352e4d17b",
+        "drpc": "0x74956236Ab64eD143933040B4137E8A352e4d17b"
+      },
+      "operatorsAgree": true
+    },
+    {
+      "role": "siteRegistry",
+      "proxy": "0xd6efb7adcc9c83dc4924ad56f6a8e4e969b9adb6",
+      "implementation": "0xa85c4143d1D4A77f54b8e4ecC9E6D1418Afea45f",
+      "allowlisted": true,
+      "codeSize": 176,
+      "expected": [
+        "0xa85c4143d1d4a77f54b8e4ecc9e6d1418afea45f"
+      ],
+      "byOperator": {
+        "okx": "0xa85c4143d1D4A77f54b8e4ecC9E6D1418Afea45f",
+        "drpc": "0xa85c4143d1D4A77f54b8e4ecC9E6D1418Afea45f"
+      },
+      "operatorsAgree": true
+    },
+    {
+      "role": "domainBinding",
+      "proxy": "0x68809fd2fb343aa57d0aeb7f33defe477c9666f9",
+      "implementation": "0x5eBF29b80789e548907C707530C3C7607C4347Df",
+      "allowlisted": true,
+      "codeSize": 176,
+      "expected": [
+        "0x5ebf29b80789e548907c707530c3c7607c4347df"
+      ],
+      "byOperator": {
+        "okx": "0x5eBF29b80789e548907C707530C3C7607C4347Df",
+        "drpc": "0x5eBF29b80789e548907C707530C3C7607C4347Df"
+      },
+      "operatorsAgree": true
+    }
+  ],
+  "disagreements": [],
+  "evidenceMeta": {
+    "schema": "tapeci.verification-evidence.v1",
+    "generator": "scripts/verify/verify.ts",
+    "generatedAt": "2026-10-19T06:50:57.337Z",
+    "command": "corepack pnpm verify",
+    "requestedContainer": "0x25B20D3eA6b207506340eab2Eb0f45Edc800F6b3",
+    "requestedPinnedBlock": null,
+    "config": {
+      "chainId": 196,
+      "name": "X Layer",
+      "factory": "0x1f09daefa827f02cbb40967cc91b259763760761",
+      "opener": "0x536add8f30f03b69f6fbf29d425a816a0dc50106",
+      "registry": "0xd6efb7adcc9c83dc4924ad56f6a8e4e969b9adb6",
+      "binding": "0x68809fd2fb343aa57d0aeb7f33defe477c9666f9",
+      "pinOffset": 2,
+      "maxLagBlocks": 300,
+      "maxBlockAgeSeconds": 300
+    },
+    "notes": [
+      "Read-only verification: no chain writes, no secrets.",
+      "Every read in this report is bound to one pinned block.",
+      "Pin = second-highest operator head minus 2 (TapeKit SPEC §4.2); one vote per independent operator.",
+      "Any operator disagreement is rejection, never a majority vote.",
+      "TapeKit reference-kernel cross-check is additional independent evidence, not a replacement for the two-operator byte comparison.",
+      "VERIFIED is a statement about one pinned block; it is not an L2 finality guarantee."
+    ]
+  },
+  "tapekitKernelCrossCheck": {
+    "status": "ok",
+    "note": "TapeKit reference kernel independently resolved the same container and file hashes; its own pin may differ from this report's pin because it ran later.",
+    "kernelDir": "/tmp/TapeKit_inspect",
+    "kernelCommit": "40994bd65baedbda4df72cb0985031a5f082f606",
+    "command": "node scripts/verify/tapekit-kernel-crosscheck.mjs /tmp/TapeKit_inspect 2.2.0.tape",
+    "siteName": "2.2.0.tape",
+    "expectedContainer": "0x25B20D3eA6b207506340eab2Eb0f45Edc800F6b3",
+    "readBlockNumber": "73623614",
+    "resolved": {
+      "status": "ok",
+      "name": "2.2.0.tape",
+      "container": "0x25b20d3ea6b207506340eab2eb0f45edc800f6b3",
+      "chainId": 196,
+      "pinnedBlockNumber": "73623614",
+      "pinStrategy": "TapeKit kernel/src/rpc.js pinBlock(): per-operator lowest head, second-highest minus 2"
+    },
+    "files": [
+      {
+        "path": "index.html",
+        "status": "ok",
+        "size": 26993,
+        "sha256": "0xe0f21c08c2ad09d3818d39c802153d33b6931311300d7419228d98da0a8300f0",
+        "contentType": "text/html; charset=utf-8",
+        "matchesReportCheck": true
+      }
+    ],
+    "containerMatches": true,
+    "filesConsistent": true,
+    "consistentWithReport": true,
+    "error": null
+  }
+}

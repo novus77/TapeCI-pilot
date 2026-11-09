@@ -1,0 +1,227 @@
+{
+  "startedAt": "2026-10-26T01:54:51.761Z",
+  "identity": {
+    "credentialSource": ".tapeci/github-app.env (parsed in process, never printed)",
+    "appJwtSigned": true,
+    "appJwtAlg": "RS256",
+    "appJwtSegmentCount": 3,
+    "appJwtPrinted": false,
+    "elapsedMs": 1108,
+    "getApp": {
+      "status": 200,
+      "ok": true,
+      "id": 5383055,
+      "slug": "tapeci-local-12e350",
+      "name": "tapeci-local-12e350",
+      "ownerLogin": "novus77",
+      "permissionScopes": [
+        "contents",
+        "metadata"
+      ],
+      "subscribedEvents": [
+        "push"
+      ],
+      "htmlUrlHost": "github.com"
+    },
+    "getAppInstallations": {
+      "status": 200,
+      "ok": true,
+      "count": 1,
+      "accounts": [
+        {
+          "installationId": 173094654,
+          "accountLogin": "novus77",
+          "accountType": "User",
+          "repositorySelection": "selected",
+          "suspended": false
+        }
+      ]
+    },
+    "configuredSlug": "tapeci-local-12e350",
+    "configuredAppIdMatchesApi": true
+  },
+  "webhook": {
+    "fixture": {
+      "projectId": "bba56fa4-4ba8-4618-b735-b4b02e0a3dc7",
+      "userId": "a1c8be9a-d5a5-4c50-99c5-26363a0736a1",
+      "installationRowId": "6980e9a4-a6bb-47b6-8287-4d8e9176dc87",
+      "containerId": "094d5220-c84f-4d67-9c5e-8a5c21392d48",
+      "repositoryId": 990002,
+      "repositoryFullName": "tapeci-verify/webhook-fixture",
+      "installationId": 990001,
+      "defaultBranch": "main"
+    },
+    "payloadIsTestOnly": true,
+    "payloadRepository": "tapeci-verify/webhook-fixture",
+    "payloadRepositoryId": 990002,
+    "delivery": {
+      "deliveryId": "f50e6139-a0c5-4514-afa5-7691f033c4ef",
+      "event": "push",
+      "ref": "refs/heads/main",
+      "commitSha": "e4d10efd4dac68c8188be56762f6d0cf042ad7d8",
+      "signatureScheme": "X-Hub-Signature-256 / HMAC-SHA256 over exact raw bytes",
+      "signatureComputedInProcess": true
+    },
+    "responses": {
+      "first": {
+        "status": 202,
+        "duplicate": false,
+        "accepted": true,
+        "deploymentId": "af372ae8-8906-4817-9534-44c19b44f31e"
+      },
+      "replay": {
+        "status": 200,
+        "duplicate": true,
+        "accepted": true,
+        "deploymentId": "af372ae8-8906-4817-9534-44c19b44f31e"
+      },
+      "wrongSignature": {
+        "deliveryId": "3dec9e10-2421-4d5a-986f-fa62c8fc6ba2",
+        "status": 401,
+        "code": "INVALID_WEBHOOK_SIGNATURE",
+        "message": "GitHub webhook signature is invalid",
+        "rowWritten": false
+      }
+    },
+    "idempotency": {
+      "rowsForReplayedDeliveryId": 1,
+      "replayCreatedSecondRow": false,
+      "deploymentRowsForFixture": 1,
+      "replayCreatedSecondDeployment": false,
+      "replayReturnedSameDeploymentIdAsFirst": true
+    },
+    "database": {
+      "countsBefore": {
+        "webhook_deliveries": "1",
+        "deployments": "21",
+        "deployment_events": "120"
+      },
+      "countsAfter": {
+        "webhook_deliveries": "2",
+        "deployments": "22",
+        "deployment_events": "121"
+      },
+      "webhookDeliveries": [
+        {
+          "id": "0cd86ee5-ae53-4a38-8fab-0b138a36601e",
+          "github_delivery_id": "f50e6139-a0c5-4514-afa5-7691f033c4ef",
+          "event_type": "push",
+          "accepted": true,
+          "error_code": null,
+          "installation_numeric_id": "990001",
+          "repository_id": "990002",
+          "ref": "refs/heads/main",
+          "commit_sha": "e4d10efd4dac68c8188be56762f6d0cf042ad7d8",
+          "processed": true,
+          "received_at": "2026-10-26T01:54:53.028Z"
+        }
+      ],
+      "deployments": [
+        {
+          "id": "af372ae8-8906-4817-9534-44c19b44f31e",
+          "state": "RECEIVED",
+          "trigger_kind": "webhook",
+          "commit_sha": "e4d10efd4dac68c8188be56762f6d0cf042ad7d8",
+          "webhook_delivery_id": "0cd86ee5-ae53-4a38-8fab-0b138a36601e",
+          "source_event_ref": "990002:e4d10efd4dac68c8188be56762f6d0cf042ad7d8:main",
+          "project_id": "bba56fa4-4ba8-4618-b735-b4b02e0a3dc7",
+          "registry_address": "0x7e5700000000000000000000000000000000000b",
+          "target_chain_id": "196",
+          "requested_at": "2026-10-26T01:54:53.028Z"
+        }
+      ],
+      "deploymentEvents": [
+        {
+          "deployment_id": "af372ae8-8906-4817-9534-44c19b44f31e",
+          "old_state": null,
+          "new_state": "RECEIVED",
+          "event_type": "WEBHOOK_RECEIVED",
+          "actor_kind": "webhook"
+        }
+      ]
+    }
+  },
+  "oauth": {
+    "login": {
+      "status": 302,
+      "redirectFollowed": false,
+      "locationHost": "github.com",
+      "locationScheme": "https:",
+      "locationPath": "/login/oauth/authorize",
+      "locationParamNames": [
+        "allow_signup",
+        "client_id",
+        "redirect_uri",
+        "state"
+      ],
+      "stateParamPresent": true,
+      "clientIdParamPresent": true,
+      "allowSignup": "false",
+      "callbackUriHost": "127.0.0.1:8787",
+      "callbackUriPath": "/v1/auth/github/callback"
+    },
+    "stateCookies": [
+      {
+        "name": "tapeci_oauth_state",
+        "valueRecorded": false,
+        "hasValue": true,
+        "flags": [
+          "Path=/",
+          "SameSite=Lax",
+          "Max-Age=600",
+          "HttpOnly"
+        ]
+      }
+    ],
+    "signedStateCookiePresent": true,
+    "callbackMissingStateAndCookie": {
+      "status": 400,
+      "code": "INVALID_OAUTH_STATE",
+      "message": "OAuth state is missing or does not match",
+      "sessionCookieSet": false,
+      "tokenExchangeAttempted": false
+    },
+    "callbackForgedStateWithBogusCode": {
+      "status": 400,
+      "code": "INVALID_OAUTH_STATE",
+      "message": "OAuth state is invalid or expired",
+      "sessionCookieSet": false,
+      "tokenExchangeAttempted": false,
+      "failsClosed": true
+    },
+    "note": "State verification runs before the code exchange, so a bogus code never reaches github.com and no session cookie is issued."
+  },
+  "restartBefore": {
+    "phase": "before-restart",
+    "apiHealth": {
+      "status": 200,
+      "body": {
+        "ok": true,
+        "service": "tapeci-api"
+      }
+    },
+    "apiReady": {
+      "status": 200,
+      "body": {
+        "status": "ready",
+        "checks": {
+          "database": true,
+          "redis": true
+        }
+      }
+    },
+    "counts": {
+      "webhook_deliveries": "2",
+      "deployments": "22",
+      "deployment_events": "121"
+    },
+    "fixtureRows": {
+      "deployment_id": "af372ae8-8906-4817-9534-44c19b44f31e",
+      "delivery_row_id": "0cd86ee5-ae53-4a38-8fab-0b138a36601e",
+      "github_delivery_id": "f50e6139-a0c5-4514-afa5-7691f033c4ef",
+      "state": "RECEIVED",
+      "trigger_kind": "webhook",
+      "commit_sha": "e4d10efd4dac68c8188be56762f6d0cf042ad7d8"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+name: Kubernetes manifest validation
+
+on:
+  push:
+    paths: ["ops/k8s/**", "scripts/ops/validate-k8s.sh", ".github/workflows/k8s-validate.yml"]
+  pull_request:
+    paths: ["ops/k8s/**", "scripts/ops/validate-k8s.sh", ".github/workflows/k8s-validate.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: azure/setup-kubectl@v4
+        with:
+          version: v1.31.0
+      - name: Install kubeconform
+        run: |
+          curl -fsSL -o /tmp/kubeconform.tar.gz \
+            https://github.com/yannh/kubeconform/releases/download/v0.6.7/kubeconform-linux-amd64.tar.gz
+          tar -xzf /tmp/kubeconform.tar.gz -C /usr/local/bin kubeconform
+      - name: Render kustomization and validate schemas
+        run: scripts/ops/validate-k8s.sh

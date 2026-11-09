@@ -1,0 +1,101 @@
+{
+  "readOnly": true,
+  "generatedAt": "2026-10-24T16:31:57.117Z",
+  "container": "0xc0b4900262d0bc13f2c67c0fc4cf92c04e0ab814",
+  "budgetTier": {
+    "tier": "A",
+    "totalOkb": 0.001,
+    "capOkb": 0.001
+  },
+  "reports": [
+    {
+      "operator": "okx",
+      "urlHost": "rpc.xlayer.tech",
+      "chainId": 196,
+      "blockNumber": "74090475",
+      "gasPriceWei": "20000001",
+      "openerFeeWei": "80000000000000000",
+      "openerFeeOkb": "0.08",
+      "container": {
+        "address": "0xC0B4900262d0bC13F2C67C0Fc4CF92c04E0aB814",
+        "tokenChainId": "196",
+        "processor": "0x68f65046fDEab90d8dB376C27B5E6AE159d240cc",
+        "tokenId": "10",
+        "derivedMatches": true,
+        "isProcessor": true,
+        "owner": "0x25063c2210a0BCcCE3e15d250573179483275f22",
+        "opened": true,
+        "processorIndex": null
+      },
+      "signer": {
+        "address": "0x25063c2210a0BCcCE3e15d250573179483275f22",
+        "balanceWei": "129365280139264007",
+        "balanceOkb": "0.129365280139264007"
+      }
+    },
+    {
+      "operator": "drpc",
+      "urlHost": "xlayer.drpc.org",
+      "chainId": 196,
+      "blockNumber": "74090477",
+      "gasPriceWei": "21000000",
+      "openerFeeWei": "80000000000000000",
+      "openerFeeOkb": "0.08",
+      "container": {
+        "address": "0xC0B4900262d0bC13F2C67C0Fc4CF92c04E0aB814",
+        "tokenChainId": "196",
+        "processor": "0x68f65046fDEab90d8dB376C27B5E6AE159d240cc",
+        "tokenId": "10",
+        "derivedMatches": true,
+        "isProcessor": true,
+        "owner": "0x25063c2210a0BCcCE3e15d250573179483275f22",
+        "opened": true,
+        "processorIndex": null
+      },
+      "signer": {
+        "address": "0x25063c2210a0BCcCE3e15d250573179483275f22",
+        "balanceWei": "129365280139264007",
+        "balanceOkb": "0.129365280139264007"
+      }
+    }
+  ],
+  "checks": [
+    {
+      "name": "chainId:okx",
+      "ok": true,
+      "detail": "chainId=196"
+    },
+    {
+      "name": "chainId:drpc",
+      "ok": true,
+      "detail": "chainId=196"
+    },
+    {
+      "name": "container.opened",
+      "ok": true,
+      "detail": "container must already be opened by its holder"
+    },
+    {
+      "name": "container.owner",
+      "ok": true,
+      "detail": "current owner is required for the approval signer"
+    },
+    {
+      "name": "container.derivedMatches",
+      "ok": true,
+      "detail": "container must be the canonical factory/opener derivation"
+    },
+    {
+      "name": "rpc.agreement",
+      "ok": true,
+      "detail": "all RPC operators must agree on owner/opened/processor at the pinned block"
+    },
+    {
+      "name": "signer.balance",
+      "ok": true,
+      "detail": "balance=0.129365280139264007 OKB, tier A cap=0.001 OKB"
+    }
+  ],
+  "blockers": [],
+  "note": "Opening fee applies only when creating a new container; deployment gas needs a PLAN_READY artifact. No transaction was signed or sent."
+}
